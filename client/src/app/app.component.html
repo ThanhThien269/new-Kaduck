@@ -1,19 +1,20 @@
-<div>
+<!-- <div>
   <app-tool-bar (newOpenSideBarEvent)="drawer.toggle()"></app-tool-bar>
 </div>
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <app-side-bar></app-side-bar>
-    <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
     <button (click)="showFiller = !showFiller" mat-raised-button>
       Toggle extra text
-    </button> -->
+    </button>
   </mat-drawer>
 
-  <!-- <div class="example-sidenav-content">
+  <div class="example-sidenav-content">
     <button type="button" mat-button (click)="">
       Toggle sidenav
     </button>
-  </div> -->
-
-</mat-drawer-container>
+  </div>
+  <router-outlet></router-outlet>
+</mat-drawer-container> -->
+  <router-outlet></router-outlet>
