@@ -10,6 +10,7 @@ align-items: center;
 .login-form{
   width: 60%;
   margin-top: -10%;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,8 +37,12 @@ h1{
   text-align: center;
 
 }
+// .btn-gg{
+//   background-color: #499CFC;
+// }
 button{
   width: 100%;
+
 }
 
 p{
@@ -45,18 +50,38 @@ p{
 }
 .loginWgg{
   display: flex;
-  justify-content: center;
+
+  // justify-content: center;
+  align-items: center;
   // margin-left: 10px;
   width: 100%;
   height: 3.5rem;
+
+  .icon-gg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 3.5rem;
+    .icon{
+      width: 25%;
+      margin-right: 10%;
+      margin-left: -20%;
+      background-color: #f2f2f2;
+      padding: 1%;
+    }
+    p{
+    margin: auto 0;
+    }
+  }
   button{
+
     height: 100%;
+color: #f2f2f2;
+
   }
 }
-.icon{
-  width: 12px;
-  height: 12px;
-}
+
 }
 
 .form{
@@ -74,6 +99,8 @@ p{
   width: 100%;
   height: 4rem;
   padding: auto 5rem;
+  background-color: #499CFC;
+
 }
 }
 .banner{
@@ -89,11 +116,17 @@ justify-content: center;
 align-items: center;
 box-shadow: 0px 0px 8px 0px;
 
+.content{
+display: flex;
+flex-direction: column;
+align-items: center;
 h1{
   font-size: 40px;
 
   color:#f2f2f2;
 
 }
+
 }
 
+}

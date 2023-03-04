@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LobbyRoutingModule } from './lobby-routing.module';
-import { LobbyComponent } from './lobby.component';
+import { LibraryRoutingModule } from './library-routing.module';
+import { LibraryComponent } from './library.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
 
 @NgModule({
   declarations: [
-    LobbyComponent
+    LibraryComponent
   ],
   imports: [
     CommonModule,
-    LobbyRoutingModule,
+    LibraryRoutingModule,
     SharedModule
   ]
 })
-export class LobbyModule { }
+export class LibraryModule { }
