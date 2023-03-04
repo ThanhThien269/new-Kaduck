@@ -1,0 +1,79 @@
+
+<div>
+  <app-tool-bar (newOpenSideBarEvent)="drawer.toggle()"></app-tool-bar>
+</div>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+  <div id="contents">
+    <div id="createroom">
+      <div id="createroom_container">
+        <div id="pic_create">
+          <img src="../../../assets/Gaming-bro.png" alt="Gamingbro" style="width: 90%;height: 100%;">
+        </div>
+        <div id="gamepin_container">
+          <div id="gamepin">
+            <div id="PINenter">
+              <div id="input_container">
+                <mat-form-field id="gamepin_input">
+                  <input id="input" style="display: flex; text-align: center;"  matInput placeholder="Gaming PIN" >
+                </mat-form-field>
+              </div>
+              <div id="enter_btn">
+                <button id="enter" mat-raised-button>ENTER</button>
+              </div>
+            </div>
+          </div>
+          <div id="crea">
+            <div id="CREATE">
+              <div id="or">
+                <p style="font-size:x-large;color: #f2f2f2;">OR</p>
+              </div>
+              <div id="create_btn">
+                <button id="create" mat-raised-button>CREATE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="lower">
+      <div id="lower_container">
+        <div id="dcv">
+          <div id="maybedcv" >
+            <p style="font-size:x-large">Maybe you like</p>
+          </div>
+          <div id="datadcv">..</div>
+          <div id="seeall">
+            <a href="">See all</a>
+          </div>
+        </div>
+        <div id="lower_right">
+          <div id="mykaduck">
+            <div id="mykaduckfont" >
+              <p style="font-size:x-large">My Kaducks</p>
+            </div>
+            <div id="datamykaduck">..</div>
+            <div id="seeall">
+              <a href="">See all</a>
+            </div>
+          </div>
+          <div id="latest">
+            <div id="latestfont" >
+              <p style="font-size:x-large">Latest</p>
+            </div>
+            <div id="datalatest">..</div>
+            <div id="seeall">
+              <a href="">See all</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</mat-drawer-container>
+
+
