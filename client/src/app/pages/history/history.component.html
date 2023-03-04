@@ -1,0 +1,50 @@
+<div>
+  <app-tool-bar (newOpenSideBarEvent)="drawer.toggle()"></app-tool-bar>
+</div>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+
+
+<div class="btn_container">
+
+  <button mat-icon-button class="btn_trash"><mat-icon>delete_forever</mat-icon></button>
+  <span class="spacer"></span>
+
+  <div><input class="input" type="text" placeholder="Search"></div>
+</div>
+
+<div id="rec_contain">
+  <div id="rec_all">
+   <div id="title_all">All (0)</div>
+   <span class="spacer"></span>
+  </div>
+</div>
+
+<div id="rec_contain">
+<div id="rec_list_all">
+  <input id="checkbox" type="checkbox">
+ <div id="title">Name</div>
+ <div id="title">Date</div>
+ <div id="title">No. of players</div>
+</div>
+</div>
+
+<div id="rec_contain">
+  <div id="rec_list">
+    <input id="checkbox" type="checkbox">
+   <div id="title">Title here</div>
+   <span class="spacer"></span>
+  </div>
+</div>
+<div id="rec_contain">
+  <div id="rec_list">
+    <input id="checkbox" type="checkbox">
+   <div id="title">Title here</div>
+   <span class="spacer"></span>
+  </div>
+</div>
+
+</mat-drawer-container>
+
