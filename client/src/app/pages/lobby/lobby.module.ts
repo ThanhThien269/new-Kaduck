@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LobbyRoutingModule } from './lobby-routing.module';
 import { LobbyComponent } from './lobby.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { LobbyComponent } from './lobby.component';
   ],
   imports: [
     CommonModule,
-    LobbyRoutingModule
+    LobbyRoutingModule,
+    SharedModule
   ]
 })
 export class LobbyModule { }
