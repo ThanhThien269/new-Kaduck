@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -17,14 +16,17 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { ToolBarComponent } from '../components/tool-bar/tool-bar.component';
+import { SideBarComponent } from '../components/side-bar/side-bar.component';
 
 
 @NgModule({
   declarations: [
+    SideBarComponent,
+    ToolBarComponent
   ],
   imports: [
     FormsModule,
@@ -70,8 +72,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatTreeModule,
     MatExpansionModule,
     MatSidenavModule,
-
-    MatSidenavModule
+    MatSidenavModule,
+    SideBarComponent,
+    ToolBarComponent
   ]
 })
 export class SharedModule { }
