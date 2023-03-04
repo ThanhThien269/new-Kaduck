@@ -1,0 +1,46 @@
+<div>
+  <app-tool-bar (newOpenSideBarEvent)="drawer.toggle()"></app-tool-bar>
+</div>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+
+
+<div class="search_container">
+  <div class="btn_tags_container">
+    <mat-button-toggle-group appearance="legacy">
+      <mat-button-toggle class="btn_tags">Recent</mat-button-toggle>
+      <mat-button-toggle class="btn_tags">Favourite</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <span class="spacer"></span>
+
+<div><input class="input" type="text" placeholder="Search"></div>
+
+</div>
+    <div id="rec_contain">
+    <div id="rec_recent">
+      <input id="checkbox" type="checkbox">
+      <img src="../../../assets/kaduck-logo.png" alt="" style="width: 100px; height: 100  px;">
+     <div id="title">Title here</div>
+     <span class="spacer"></span>
+     <div>
+      <div id="edit">
+        <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+        <button mat-icon-button>
+          <mat-icon>share</mat-icon>
+        </button>
+      </div>
+      <div><button id="start">START</button></div>
+    </div>
+    </div>
+  </div>
+</mat-drawer-container>
+
+
+
+
