@@ -1,0 +1,42 @@
+<div id="KaDuckApp">
+  <mat-toolbar class="tool_bar" >
+    <!-- <mat-drawer-container class="example-container" autosize>
+      <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Auto-resizing sidenav</p>
+        <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+        <button (click)="showFiller = !showFiller" mat-raised-button>
+          Toggle extra text
+        </button>
+      </mat-drawer>
+
+      <div class="example-sidenav-content">
+        <button type="button" mat-button (click)="drawer.toggle()">
+          Toggle sidenav
+        </button>
+      </div>
+    </mat-drawer-container> -->
+    <button mat-icon-button class="menu" aria-label="Example icon-button with menu icon" (click)="toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span><img id="duck_pic" src="../../../assets/Kaduck.png" alt="Kaduck"></span>
+    <span id="name">KADUCK</span>
+    <span class="example-spacer"></span>
+    <div class="sign_in">
+      <div class="button">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+      <mat-panel-title id="title">
+      Self aware panel
+      </mat-panel-title>
+      <mat-panel-description id="des">
+      Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+    </div>
+  </div>
+  </mat-toolbar>
+
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+<div class="login-form">
+<div  class="logo">
+  <img id="image"src="../../../assets/kaduck-logo (1).png">
+</div>
+<div class="login-wrap">
+  <h1>Create an account</h1>
+  <p>Continue with google or email address</p>
+  <div class="loginWgg">
+    <button mat-stroked-button (click)="login()"*ngIf= "this.users" color="primary"><img class="icon" src="../../../assets/🦆 icon _google_.png"> Login with Google</button>
+  </div>
+
+  <div style="display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: 10px;">
+                    <div style="height: 0.5px;
+                                background-color:rgb(92, 92, 92);
+                                width: 100px;"></div>
+                    <div style="margin-left: 5px;
+                                margin-right: 5px;
+                                font-weight: 300;">
+                        or
+                    </div>
+                    <div style="height: 0.5px;
+                                background-color:rgb(92, 92, 92);
+                                width: 100px;"></div>
+                </div>
+  <div class="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password">
+    </mat-form-field>
+    <button mat-flat-button color="primary">Login</button>
+  </div>
+
+</div>
+
+
+</div>
+
+<div class="banner">
+  <h1>Welcome to KaDuck</h1>
+
+  </div>
+
+</div>
+
+
+

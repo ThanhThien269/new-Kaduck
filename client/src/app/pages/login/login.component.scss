@@ -1,0 +1,61 @@
+.container{
+  display: flex;
+
+  background-color: #ffff;
+  width: 100%;
+  height: 100%;
+}
+
+
+.login-wrap{
+  background: #f2f2f2;
+
+  border-radius: 5px;
+  padding: 60px;
+  margin-left: 320px;
+
+h1{
+  text-align: center;
+}
+
+p{
+  text-align: center;
+}
+.loginWgg{
+  display: flex;
+  justify-content: center;
+}
+.icon{
+  width: 12px;
+  height: 12px;
+}
+}
+
+.form{
+
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+}
+.banner{
+width: 60%;
+height: 70%;
+margin-top: 20px;
+margin-left: 200px;
+border-radius: 120px 0px 0px 120px;
+border: 1px solid black;
+background-color: #29348E;
+padding: 100px;
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+h1{
+  font-size: 50px;
+
+  color:#f2f2f2;
+
+}
+}
+
