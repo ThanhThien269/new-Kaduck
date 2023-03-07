@@ -54,6 +54,7 @@
   height:100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 #gamepin{
   background-color: #3441B1;
@@ -82,22 +83,24 @@
   display: flex;
   justify-content: center;
 }
-#CREATE{
-  margin: 5%;
-}
+
 #or{
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-bottom :10%;
 }
 #create{
-  width: 13rem;
+  width: 100%;
   font-size: x-large;
   background-color: #499CFC;
   color: #f2f2f2;
-  margin-top: 5%;
   border-radius: 7px;
+  margin-bottom: 10%;
 }
+#create_btn{
+  width: 13rem;
+}
+
 
 #dcv{
   background-color: #f2f2f2;
