@@ -9,6 +9,7 @@ export class ToolBarComponent {
   @Output() newOpenSideBarEvent = new EventEmitter<string>();
   panelOpenState = false;
   showFiller = false;
+
   toggle() {
     this.newOpenSideBarEvent.emit('heh')
   }
