@@ -10,7 +10,7 @@
   </div>
 
   <div class="loginWgg">
-    <button mat-flat-button color="primary" (click)="login()"*ngIf= "this.users" >
+    <button mat-flat-button [routerLink]="['../home']" color="primary" (click)="login()"*ngIf= "this.users" >
       <div class="icon-gg">
         <img class="icon" src="../../../assets/🦆 icon _google_.png">
         <p>Login with Google</p>
