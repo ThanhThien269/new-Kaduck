@@ -32,11 +32,8 @@ import {MatSelectModule} from '@angular/material/select';
     ToolBarComponent
   ],
   imports: [
-<<<<<<< HEAD
 
-=======
     MatTableModule,
->>>>>>> 3b5b495a4a502bd8ba9fad83520e45e7f908a8c9
     FormsModule,
     MatButtonModule,
     MatCardModule,
@@ -61,11 +58,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule
   ],
   exports:[
-<<<<<<< HEAD
 
-=======
     MatTableModule,
->>>>>>> 3b5b495a4a502bd8ba9fad83520e45e7f908a8c9
     FormsModule,
     MatButtonModule,
     MatCardModule,
