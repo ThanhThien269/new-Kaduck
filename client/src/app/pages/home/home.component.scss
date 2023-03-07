@@ -13,20 +13,25 @@
   background-color: #D9D9D9;
   width: 100%;
   height: 100%;
+  padding-bottom: 10%;
 }
 #createroom{
-  width: 60%;
-  height: 45%;
+  width: 80%;
+  height: 55%;
   margin: 0 auto;
-  border: solid 15px #D9D9D9;
+  padding-top: 2%;
+  margin-bottom: 2rem ;
   border-radius: 10px;
 }
 #lower{
-  background-color:white;
-  width: 60%;
-  height: 50%;
+  background-color:#D9D9D9;
+  width: 80%;
+  height: 47%;
   margin: 0 auto;
-  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
 }
 #createroom_container{
   background-color: red;
@@ -36,12 +41,7 @@
   border-radius: 10px;
   flex-direction: row;
 }
-#lower_container{
-  background-color: #D9D9D9 ;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-}
+
 #pic_create{
   background-color: #3441B1;
   width: 50%;
@@ -54,6 +54,7 @@
   height:100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 #gamepin{
   background-color: #3441B1;
@@ -61,16 +62,17 @@
   height:50%;
   display: flex;
   justify-content: center;
-
 }
 #PINenter{
-  margin: 5%;
+  width: 57%;
+  height: 30%;
 }
 #enter_btn{
   width: 100%;
 }
 #enter{
   width: 100%;
+  padding: 10%;
   font-size: x-large;
   background-color: #499CFC;
   color: #f2f2f2;
@@ -83,28 +85,43 @@
   display: flex;
   justify-content: center;
 }
-#CREATE{
-  margin: 5%;
-}
+
 #or{
   display: flex;
   justify-content: center;
+  text-align: center;
+  margin-bottom: 6.5%;
+}
+#create_box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #create{
-  width: 13rem;
+  width: 100%;
   font-size: x-large;
   background-color: #499CFC;
   color: #f2f2f2;
-  margin-top: 5%;
   border-radius: 7px;
+  padding: 10%;
+}
+#create_btn{
+  width: 57%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
+
 #dcv{
-  background-color: #D9D9D9;
-  width: 45%;
-  height: 70%;
-  border: solid 2px black;
+  background-color: #f2f2f2;
+  width: 55%;
+  height: 100%;
   border-radius: 10px;
+  box-shadow: 0px 0px 10px 0 rgb(34 41 47/ 10%);
+
 }
 #maybedcv{
   margin: 10px;
@@ -157,25 +174,52 @@
   width: 50%;
   height:100%;
   display: flex;
+  justify-content: center;
+  align-items: flex-end;
   flex-direction: column;
-  margin-left: 5%;
+
 }
 #mykaduck{
   background-color: #F2F2F2;
-  width: 100%;
-  height:60%;
+  width: 85%;
+  height:70%;
   display: flex;
   flex-direction: column;
-  border: solid 2px black;
-  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0 rgb(34 41 47/ 10%);
+    border-radius: 10px;
+
 }
 #latest{
   background-color: #F2F2F2;
-  width: 100%;
-  height:50%;
+  width: 85%;
+  height:70%;
   display: flex;
   flex-direction: column;
   margin-top: 5px ;
-  border: solid 2px black;
+  box-shadow: 0px 0px 10px 0 rgb(34 41 47/ 10%);
   border-radius: 10px;
+
+}
+
+#input{
+  border: #3441B1 solid 1px;
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-size: 30px;
+}
+#gamepin_input{
+  background-color: #3441B1;
+}
+
+#gamepin {
+  width: 100%;
+  margin-top: 5%;
+}
+
+mat-card {
+  background-color: #3441B1;
+  box-shadow: 0px 0px;
+  padding-top: 15px;
 }
