@@ -1,0 +1,61 @@
+<app-tool-bar></app-tool-bar>
+<div id="contents">
+  <div id="leftbar">
+    <div id="addquestion_box">
+      <button id="addquestion_btn" mat-raised-button   >
+        Add Question</button>
+    </div>
+    <div id="deletesave_box">
+        <button id ="delete_btn" mat-raised-button >
+          Delete</button>
+        <button id="save_btn" mat-raised-button >
+          Save</button>
+    </div>
+  </div>
+  <div id="middle">
+    <div id="middle_higher">
+      <div id="middle_higher_container">
+        <div id="typequestion" >
+          <mat-form-field id="question_input" style="width: 100%; ">
+            <input id="input" style="display: flex; text-align: center;" matInput placeholder="Type your question here">
+          </mat-form-field>
+        </div>
+        <div id="addimg">
+        </div>
+      </div>
+    </div>
+    <div id="middle_lower">
+      <div id="middle_lower_left">
+          <button id="A_box" mat-raised-button  >A.</button>
+          <button id="C_box" mat-raised-button  >C.</button>
+        </div>
+      <div id="middle_lower_right">
+        <button id="B_box" mat-raised-button  >B.</button>
+        <button id="D_box" mat-raised-button  >D.</button>
+      </div>
+    </div>
+  </div>
+  <div id="rightbar">
+    <div id="timelimit_box">
+      <p style="font-size:x-large">Time limit </p>
+      <mat-icon fontSet="material-icons-outlined" >
+        timer_outline
+        </mat-icon>
+      <button id="timelimit_btn" mat-button  [matMenuTriggerFor]="aboveMenu" >
+        10 Seconds</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+          <button mat-menu-item>30 Seconds</button>
+          <button mat-menu-item>20 Seconds</button>
+        </mat-menu>
+    </div>
+    <div id="score_box">
+      <p style="font-size:x-large">Points <mat-icon style="height: 10%;width: 30%;font-size: 76%;" >emoji_events</mat-icon></p>
+      <button id="score_btn" mat-button  [matMenuTriggerFor]="belowMenu" >
+        Standard</button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+          <button mat-menu-item>Double</button>
+          <button mat-menu-item>Triple</button>
+        </mat-menu>
+    </div>
+  </div>
+</div>

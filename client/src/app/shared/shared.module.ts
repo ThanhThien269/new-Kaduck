@@ -22,6 +22,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ToolBarComponent } from '../components/tool-bar/tool-bar.component';
 import { SideBarComponent } from '../components/side-bar/side-bar.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatTreeModule,
     MatExpansionModule,
     MatSidenavModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSelectModule
   ],
   exports:[
     FormsModule,
@@ -76,7 +78,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSidenavModule,
     SideBarComponent,
     ToolBarComponent,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }
