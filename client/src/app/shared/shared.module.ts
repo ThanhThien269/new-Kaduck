@@ -22,6 +22,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ToolBarComponent } from '../components/tool-bar/tool-bar.component';
 import { SideBarComponent } from '../components/side-bar/side-bar.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ToolBarComponent
   ],
   imports: [
+    MatTableModule,
     FormsModule,
     MatButtonModule,
     MatCardModule,
@@ -53,6 +55,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatButtonToggleModule
   ],
   exports:[
+    MatTableModule,
     FormsModule,
     MatButtonModule,
     MatCardModule,
