@@ -18,7 +18,7 @@
                 <mat-card>
                   <input id="input"   matInput placeholder="Gaming PIN">
                   <div id="enter_btn">
-                    <button  id="enter" mat-raised-button>ENTER</button>
+                    <button  id="enter" mat-raised-button (click)="lobby()">ENTER</button>
                   </div>
                 </mat-card>
             </div>
@@ -29,7 +29,7 @@
                 <p style="font-size:x-large;color: #f2f2f2;">OR</p>
               </div>
               <div id="create_btn">
-                <button id="create" style="width: 100%;" mat-raised-button>CREATE</button>
+                <button id="create" style="width: 100%;" mat-raised-button (click)="createquestion()">CREATE</button>
               </div>
             </div>
           </div>
@@ -41,7 +41,7 @@
         <div id="maybedcv" >
         <p style="font-size:x-large">Maybe you like</p>
       </div>
-      <div id="datadcv"><img src="../../../assets/work (1).png" alt="" style="width: 100%;height: 100%;"></div>
+      <div id="datadcv"><img src="../../../assets/work2.png" alt="" style="width: 100%;height: 100%;"></div>
       <div id="seeall">
         <a href="">See all</a>
       </div>
@@ -53,7 +53,7 @@
           </div>
           <div id="datamykaduck">..</div>
           <div id="seeall">
-            <a href="">See all</a>
+            <button (click)="library()" style ="outline: none;">See all</button>
           </div>
         </div>
         <div id="latest">
@@ -62,7 +62,7 @@
           </div>
           <div id="datalatest">..</div>
           <div id="seeall">
-            <a href="">See all</a>
+            <button (click)="history()">See all</button>
           </div>
         </div>
       </div>

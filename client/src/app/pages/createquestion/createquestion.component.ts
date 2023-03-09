@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 interface Points {
   value: string;
   viewValue: string;
@@ -19,6 +20,7 @@ interface Answer{
   styleUrls: ['./createquestion.component.scss']
 })
 export class CreatequestionComponent {
+  constructor(private router : Router){}
   points: Points[] = [
     {value: 'standard', viewValue: 'Standard'},
     {value: 'double', viewValue: 'Double'},
@@ -35,5 +37,8 @@ export class CreatequestionComponent {
     {value: 'D', viewValue: ' D'},
 
   ]
+  library(){
+    this.router.navigate(['/library']);
+  }
 }
 

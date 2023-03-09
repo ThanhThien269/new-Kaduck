@@ -11,15 +11,15 @@
 <div id="sideBar">
     <div id="sidebar_container">
       <div id="sidebar_icon">
-        <button id="icon_btn">
+        <button id="icon_btn" (click)="home()">
           <mat-icon class="home">home</mat-icon>
           <p id="home_font">Home</p>
         </button>
-        <button id="icon_btn">
+        <button id="icon_btn" (click)="library()">
           <mat-icon class="library">library_books</mat-icon>
           <p id="library_font">Library</p>
         </button>
-        <button id="icon_btn">
+        <button id="icon_btn" (click)="history()">
           <mat-icon class="history">format_list_bulleted</mat-icon>
           <p id="history_font">History</p>
         </button>
