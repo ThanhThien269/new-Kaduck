@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { PlayingRoutingModule } from './playing-routing.module';
 import { PlayingComponent } from './playing.component';
 
-
 @NgModule({
   declarations: [
     PlayingComponent
@@ -17,3 +16,7 @@ import { PlayingComponent } from './playing.component';
   ]
 })
 export class PlayingModule { }
+
+function timer(){
+
+}
