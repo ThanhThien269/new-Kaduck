@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-library',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./library.component.scss']
 })
 export class LibraryComponent {
+  constructor (private router: Router){}
+
+  lobby(){
+    this.router.navigate(['/lobby']);
+  }
 
 }
