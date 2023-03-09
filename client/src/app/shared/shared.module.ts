@@ -33,6 +33,7 @@ import { RouterModule } from '@angular/router';
     ToolBarComponent
   ],
   imports: [
+
     MatTableModule,
     FormsModule,
     MatButtonModule,
@@ -59,6 +60,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports:[
+
     MatTableModule,
     FormsModule,
     MatButtonModule,
