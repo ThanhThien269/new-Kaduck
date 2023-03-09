@@ -1,8 +1,51 @@
 
 .top{
   width: 100%;
-  height: 10%;
+  height: 20%;
   background-color: #29348E;
+  display:flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  .logopt{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .text{
+    // border: 1px solid black;
+    // margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+   height: 100%;
+   width: 70%;
+   padding: 0;
+  }
+  .btn-next{
+
+
+    // margin-top: 2%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 15%;
+    height: 100%;
+    // border: 1px solid black;
+    // .next{
+    //   background-color: #499CFC;
+    //   padding: 50% 70% 50% 70%;
+    //   // width: 100%;
+    //   // height: 60%;
+    // }
+  }
 
 }
 .bottom{
@@ -10,50 +53,60 @@ display: flex;
 justify-content: center;
 
   width: 100%;
-  height: 90%;
+  height: 80%;
   background-color: #29348E;
   .content{
     display: flex;
     flex-direction: column;
-    justify-content: first baseline;
+    justify-content:center;
     align-items: center;
     text-align: center;
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 80%;
     height: 90%;
     padding: 0;
     .content-top{
       width: 60%;
       height: 40%;
-      border: 1px solid black;
+      // border: 1px solid black;
       display: flex;
       flex-direction: column;
-      justify-content: first baseline;
+      justify-content: center;
       align-items: center;
+      // margin-top: 4%;
+
     }
     .nameroom{
+
       border: none;
+      width: 40%;
+      height: 30%;
       border-radius: 5%;
       background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
     .rating{
-      border: 1px solid black;
+      // border: 1px solid black;
       display: flex;
       flex-direction: column;
-      justify-content:  first baseline;
+      justify-content:  center;
       align-items: center;
       width: 60%;
       height: 70%;
       .name{
         width: 90%;
         height: 40%;
-        border: 1px solid black;
+        // border: 1px solid black;
         display: flex;
         justify-content: center;
+        align-items: center;
         text-align: center;
         .namewin{
           width: 30%;
-          height: 20%;
+          height: 40%;
           border: none ;
           border-radius: 6%;
           background-color: #f2f2f2;
@@ -68,27 +121,73 @@ justify-content: center;
         display: flex;
         align-items: flex-end;
 
-        border: 1px solid black;
+        // border: 1px solid black;
         width: 90%;
         height: 100%;
-        .podium__item {
+        .podium__item2 {
           width: 30%;
           height: 60%;
-          // display: flex;
-          // justify-content: center;
-          // align-items: center;
-          // text-align: center;
-          // background-color: red;
-        }
-        .podium__ranksecond {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 35px;
-          color: #fff;
-          background-color: blue;
 
+          justify-content:center;
+          align-items: center;
+          text-align: center;
+          // background-color: red;
+          .podium__ranksecond2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            color: #fff;
+            background-color: #E58F04;
+            width: 100%;
+            height: 100%;
+
+          }
         }
+        .podium__item1 {
+          width: 40%;
+          height: 100%;
+          display: flex;
+
+          justify-content:center;
+          align-items: center;
+          text-align: center;
+          // background-color: red;
+          .podium__rankfirst {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            color: #fff;
+            background-color:#FF6D66;
+            width: 100%;
+            height: 100%;
+
+          }
+        }
+        .podium__item3 {
+          width: 30%;
+          height: 40%;
+          display: flex;
+
+          justify-content:center;
+          align-items: center;
+          text-align: center;
+          // background-color: red;
+          .podium__rankthree {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            color: #fff;
+            background-color: #66E68E;
+            width: 100%;
+            height: 100%;
+
+          }
+        }
+
 
 
       }

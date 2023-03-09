@@ -1,7 +1,11 @@
+import { Actions } from '@ngrx/effects';
+import { AuthState } from 'src/state/auth.state';
 import { LoginService } from './../../services/login.service';
 import { Component, Input, Output } from '@angular/core';
 import { onAuthStateChanged } from '@angular/fire/auth';
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
+import { Store } from '@ngrx/store';
+import *as AuthActions from "../../../actions/auth.actions"
 
 @Component({
   selector: 'app-login',
@@ -32,27 +36,25 @@ import { trigger, transition, style, animate, keyframes } from '@angular/animati
 })
 export class LoginComponent {
   hide=true;
-  constructor( private loginService: LoginService ){}
- users: any;
+  constructor( private store: Store <{ auth: AuthState}> ){}
+//  users: any;
 
 
-  ngOnInit(): void{
-    onAuthStateChanged(this.loginService.login,(users)=>{
-      console.log(users)
-if( users != null){
-  this.users = users;
-}else{
-  this.users= !users;
-}
-    })
-  }
+//   ngOnInit(): void{
+//     onAuthStateChanged(this.loginService.login,(users)=>{
+//       console.log(users)
+// if( users != null){
+//   this.users = users;
+// }else{
+//   this.users= !users;
+// }
+//     })
+//   }
   login(){
-    this.loginService.loginWithGoogle().then((res) =>{
-      console.log(res)
-    })
+   this.store.dispatch(AuthActions.login())
   }
   logout(){
-    this.loginService.logout();
+
   }
 }
 
