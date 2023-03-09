@@ -31,10 +31,16 @@
 #middle_higher_left{
   width: 15%;
   background-color: #66E68E;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 #middle_higher_right{
   width: 15%;
-  background-color: #56d20f;
+  background-color: #66E68E;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 #middle_lower{
   flex-direction: row;
@@ -59,9 +65,9 @@
 }
 
 #typequestion{
-  height: 20%;
+  height: 19%;
   margin-top: 6%;
-  background-color: #499CFC;
+  background-color: #002652;
 }
 #addimg{
   width: 60%;
@@ -132,4 +138,6 @@
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+@media screen and (max-width: 600px) {
 }

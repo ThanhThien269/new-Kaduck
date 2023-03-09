@@ -214,13 +214,15 @@
     flex-direction: column;
     padding-bottom: 100%;
   }
+  #answer_txt p {
+    font-size: 20px;
+  }
   #leftbar{
     width: 18.5%;
   }
   #rightbar{
     width: 19%;
   }
-
 }
 #timelimit_txt{
   display: flex;
