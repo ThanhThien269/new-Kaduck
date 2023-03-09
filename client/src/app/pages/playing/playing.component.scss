@@ -1,7 +1,7 @@
 
 #contents{
   width: 100%;
-  height: 100%;
+  height: 91%;
   background-color: rgb(156, 86, 0);
   display: flex;
   flex-direction: row;
@@ -16,7 +16,7 @@
 #middle_higher{
   display: flex;
   justify-content: center;
-  height: 50%;
+  height: 65%;
   background-color: #2b430a;
   width: 100%;
 }
@@ -24,20 +24,21 @@
   display: flex;
   height: 100%;
   width: 70%;
-  background-color: #540a21;
+  background-color: #499CFC;
   flex-direction: column;
   text-align: center;
+  animation: dancing 15s infinite;
 }
 #middle_higher_left{
   width: 15%;
-  background-color: #66E68E;
+  background-color: #002652;
   justify-content: center;
   display: flex;
   align-items: center;
 }
 #middle_higher_right{
   width: 15%;
-  background-color: #66E68E;
+  background-color: #002652;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -45,21 +46,21 @@
 #middle_lower{
   flex-direction: row;
   display: flex;
-  height: 60%;
+  height: 47%;
   background-color: #ec0c0c;
   width: 100%;
 }
 #middle_lower_left{
   width: 50%;
   height: 100%;
-  background-color: #a8afb8;
+  background-color: #499CFC;
   flex-direction: column;
   display: flex;
 }
 #middle_lower_right{
   width: 50%;
   height: 100%;
-  background-color: #a3aebc;
+  background-color: #499CFC;
   flex-direction: column;
   display: flex;
 }
@@ -67,7 +68,7 @@
 #typequestion{
   height: 19%;
   margin-top: 6%;
-  background-color: #002652;
+  background-color: #f2f2f2;
 }
 #addimg{
   width: 60%;
@@ -79,20 +80,20 @@
 
 }
 #A_box{
-  width: 70%;
-  height: 30%;
+  width: 100%;
+  height: 40%;
   margin: 0 auto;
-  margin-top: 7%;
+  margin-top: 5%;
   border-radius: 15px;
   font-size: 30px;
   background-color: #FF6D66;
   color: #f2f2f2;
 }
 #C_box{
-  width: 70%;
-  height: 30%;
+  width: 100%;
+  height: 40%;
   margin: 0 auto;
-  margin-top: 4%;
+  margin-top: 1%;
   border-radius: 15px;
   font-size: 30px;
   background-color: #E8B8AE;
@@ -101,10 +102,10 @@
 }
 #B_box{
   border-radius: 15px;
-  width: 70%;
-  height: 30%;
+  width: 100%;
+  height: 40%;
   margin: 0 auto;
-  margin-top: 7%;
+  margin-top: 5%;
   font-size: 30px;
   background-color: #66E68E;
   color: #f2f2f2;
@@ -112,10 +113,10 @@
 }
 #D_box{
   font-size: 30px;
-  width: 70%;
-  height: 30%;
+  width: 100%;
+  height: 40%;
   margin: 0 auto;
-  margin-top: 4%;
+  margin-top: 1%;
   border-radius: 15px;
   background-color: #E58F04;
   color: #f2f2f2;
@@ -140,4 +141,20 @@
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 @media screen and (max-width: 600px) {
+}
+@keyframes dancing {
+  0% {
+    // scale: 1;
+    background-color: #499CFC;
+  }
+
+  50% {
+    // scale: 1.2;
+    background-color: #66E68E;
+  }
+
+  100% {
+    // scale: 1;
+    background-color: #E8B8AE
+  }
 }
