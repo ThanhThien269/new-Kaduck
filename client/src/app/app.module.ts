@@ -11,7 +11,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from 'src/reducers/auth.reducer';
+import { authReducer } from 'src/app/reducer/auth.reducer';
 
 @NgModule({
   declarations: [

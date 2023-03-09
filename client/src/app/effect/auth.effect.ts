@@ -1,11 +1,11 @@
 
 import { idToken, User, signOut } from '@angular/fire/auth';
-import { login, logout } from './../actions/auth.actions';
+import { login, logout } from './../action/auth.action';
 
 
 
 import { Injectable } from '@angular/core';
-import *as AuthActions from "../actions/auth.actions"
+import *as AuthActions from "../../app/action/auth.action"
 import {Actions, createEffect, ofType} from "@ngrx/effects"
 import { switchMap,map, from, catchError } from 'rxjs';
 import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';

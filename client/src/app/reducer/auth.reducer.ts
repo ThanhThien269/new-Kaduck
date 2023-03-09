@@ -1,6 +1,6 @@
 import {createReducer, on} from"@ngrx/store";
 import { AuthState } from 'src/state/auth.state';
-import *as AuthActions from "../actions/auth.actions"
+import *as AuthActions from "../../app/action/auth.action"
 const initialState:AuthState = {
 
 idToken: "",
@@ -15,7 +15,3 @@ export const authReducer = createReducer
   on(AuthActions.loginFailure, (state) =>({ ...state , error:""})),
   on(AuthActions.logout, (state) =>({ ...state ,idToken:"", error:""}))
 );
-
-
-
-

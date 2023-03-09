@@ -5,7 +5,7 @@ import { Component, Input, Output } from '@angular/core';
 import { onAuthStateChanged } from '@angular/fire/auth';
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 import { Store } from '@ngrx/store';
-import *as AuthActions from "../../../actions/auth.actions"
+import *as AuthActions from "../../../app/action/auth.action"
 
 @Component({
   selector: 'app-login',
