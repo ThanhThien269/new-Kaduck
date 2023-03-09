@@ -18,6 +18,7 @@ export class AuthEffects{
       switchMap(()=>{
         return this.authService.login();
       }),map((token)=>{
+        console.log(token);
         return AuthActions.loginSuccess(token);
       }),
       catchError((error)=>{

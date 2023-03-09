@@ -36,20 +36,10 @@ import *as AuthActions from "../../../app/action/auth.action"
 })
 export class LoginComponent {
   hide=true;
-  constructor( private store: Store <{ auth: AuthState}> ){}
-//  users: any;
+  constructor( private store: Store <{ auth: AuthState}> , private loginService: LoginService){}
+  ngOnInit(): void{
 
-
-//   ngOnInit(): void{
-//     onAuthStateChanged(this.loginService.login,(users)=>{
-//       console.log(users)
-// if( users != null){
-//   this.users = users;
-// }else{
-//   this.users= !users;
-// }
-//     })
-//   }
+  }
   login(){
    this.store.dispatch(AuthActions.login())
   }
