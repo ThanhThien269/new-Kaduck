@@ -1,3 +1,4 @@
+import { AuthEffects } from './../app/effect/auth.effect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,7 +9,9 @@ import { SharedModule } from './shared/shared.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { authReducer } from 'src/app/reducer/auth.reducer';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { StoreModule } from '@ngrx/store';
     SharedModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    StoreModule.forRoot({}, {})
+    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forRoot({auth: authReducer}, {})
 
   ],
   providers: [],
