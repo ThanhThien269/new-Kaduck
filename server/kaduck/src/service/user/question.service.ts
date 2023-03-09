@@ -1,6 +1,6 @@
+import { InjectModel } from '@nestjs/mongoose';
 /* eslint-disable prefer-const */
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Question, UserDocument } from 'src/schemas/question.schema';
 
