@@ -1,4 +1,4 @@
-import { AuthEffects } from './../effects/auth.effect';
+import { AuthEffects } from './../app/effect/auth.effect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
