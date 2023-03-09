@@ -13,20 +13,25 @@
   background-color: #D9D9D9;
   width: 100%;
   height: 100%;
+  padding-bottom: 10%;
 }
 #createroom{
-  width: 60%;
-  height: 45%;
+  width: 80%;
+  height: 55%;
   margin: 0 auto;
-  border: solid 15px #D9D9D9;
+  padding-top: 2%;
+  margin-bottom: 2rem ;
   border-radius: 10px;
 }
 #lower{
-  background-color:white;
-  width: 60%;
-  height: 45%;
+  background-color:#D9D9D9;
+  width: 80%;
+  height: 47%;
   margin: 0 auto;
-  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
 }
 #createroom_container{
   background-color: red;
@@ -36,12 +41,7 @@
   border-radius: 10px;
   flex-direction: row;
 }
-#lower_container{
-  background-color: #D9D9D9 ;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-}
+
 #pic_create{
   background-color: #3441B1;
   width: 50%;
@@ -59,18 +59,20 @@
 #gamepin{
   background-color: #3441B1;
   width: 100%;
-  height:100%;
+  height:50%;
   display: flex;
   justify-content: center;
 }
 #PINenter{
   width: 57%;
+  height: 30%;
 }
 #enter_btn{
   width: 100%;
 }
 #enter{
   width: 100%;
+  padding: 10%;
   font-size: x-large;
   background-color: #499CFC;
   color: #f2f2f2;
@@ -79,7 +81,7 @@
 #crea{
   background-color: #3441B1;
   width: 100%;
-  height:50%;
+  height:100%;
   display: flex;
   justify-content: center;
 }
@@ -87,7 +89,14 @@
 #or{
   display: flex;
   justify-content: center;
-  margin-bottom :10%;
+  text-align: center;
+  margin-bottom: 6.5%;
+}
+#create_box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #create{
   width: 100%;
@@ -95,19 +104,24 @@
   background-color: #499CFC;
   color: #f2f2f2;
   border-radius: 7px;
-  margin-bottom: 10%;
+  padding: 10%;
 }
 #create_btn{
-  width: 13rem;
+  width: 57%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 
 #dcv{
   background-color: #f2f2f2;
-  width: 45%;
-  height: 90%;
+  width: 55%;
+  height: 100%;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0 rgb(34 41 47/ 10%);
+
 }
 #maybedcv{
   margin: 10px;
@@ -118,7 +132,6 @@
   width: 90%;
   height: 55%;
   margin: 10px;
-  background-color: #f20430;
   margin: 0 auto;
 }
 #mykaduckfont{
@@ -160,21 +173,24 @@
   width: 50%;
   height:100%;
   display: flex;
+  justify-content: center;
+  align-items: flex-end;
   flex-direction: column;
-  margin-left: 5%;
+
 }
 #mykaduck{
   background-color: #F2F2F2;
-  width: 100%;
+  width: 85%;
   height:70%;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 10px 0 rgb(34 41 47/ 10%);
     border-radius: 10px;
+
 }
 #latest{
   background-color: #F2F2F2;
-  width: 100%;
+  width: 85%;
   height:70%;
   display: flex;
   flex-direction: column;
@@ -190,6 +206,7 @@
   padding: 20px 0;
   border-radius: 10px;
   margin-bottom: 15px;
+  font-size: 30px;
 }
 #gamepin_input{
   background-color: #3441B1;
@@ -197,6 +214,7 @@
 
 #gamepin {
   width: 100%;
+  margin-top: 5%;
 }
 
 mat-card {

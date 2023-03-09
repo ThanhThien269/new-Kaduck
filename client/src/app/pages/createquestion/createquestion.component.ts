@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 interface Points {
   value: string;
   viewValue: string;
@@ -19,14 +20,15 @@ interface Answer{
   styleUrls: ['./createquestion.component.scss']
 })
 export class CreatequestionComponent {
+  constructor(private router : Router){}
   points: Points[] = [
     {value: 'standard', viewValue: 'Standard'},
     {value: 'double', viewValue: 'Double'},
   ];
   time : Time[]=[
-    {value: '5seconds', viewValue: '5 Seconds'},
-    {value: '10seconds', viewValue: '10 Seconds'},
-    {value: '15seconds', viewValue: '15 Seconds'},
+    {value: '5', viewValue: '5 Seconds'},
+    {value: '10', viewValue: '10 Seconds'},
+    {value: '15', viewValue: '15 Seconds'},
   ]
   answers : Answer[]=[
     {value: 'A', viewValue: ' A'},
@@ -35,5 +37,8 @@ export class CreatequestionComponent {
     {value: 'D', viewValue: ' D'},
 
   ]
+  library(){
+    this.router.navigate(['/library']);
+  }
 }
 

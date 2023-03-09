@@ -8,14 +8,34 @@
 
 
 <div class="btn_container">
-
+<div class="top_content">
   <button mat-icon-button class="btn_trash"><mat-icon>delete_forever</mat-icon></button>
   <span class="spacer"></span>
 
   <div><input class="input" type="text" placeholder="Search"></div>
+
 </div>
 
-<div id="rec_contain">
+  <div class="container">
+    <table >
+    <tr>
+      <th><input type="checkbox"> All (5)</th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>No. of players</th>
+    </tr>
+
+    <tr *ngFor="let item of history">
+      <td><input type="checkbox"></td>
+      <td>{{item.name}}</td>
+      <td>{{item.weight}}</td>
+      <td>{{item.symbol}}</td>
+    </tr>
+</table>
+  </div>
+</div>
+
+<!-- <div id="rec_contain">
   <div id="rec_all">
    <div id="title_all">All (0)</div>
    <span class="spacer"></span>
@@ -23,28 +43,32 @@
 </div>
 
 <div id="rec_contain">
-<div id="rec_list_all">
-  <input id="checkbox" type="checkbox">
- <div id="title">Name</div>
- <div id="title">Date</div>
- <div id="title">No. of players</div>
+<div class="rec_list_all">
+  <input class="checkbox" type="checkbox">
+ <div class="title">Name</div>
+ <div class="title">Date</div>
+ <div class="title">No. of players</div>
 </div>
 </div>
 
 <div id="rec_contain">
-  <div id="rec_list">
-    <input id="checkbox" type="checkbox">
-   <div id="title">Title here</div>
+  <div class="rec_list_all">
+    <input class="checkbox" type="checkbox">
+   <div class="title">Title here</div>
    <span class="spacer"></span>
   </div>
 </div>
 <div id="rec_contain">
-  <div id="rec_list">
-    <input id="checkbox" type="checkbox">
-   <div id="title">Title here</div>
+  <div class="rec_list_all">
+    <input class="checkbox" type="checkbox">
+   <div class="title">Title here</div>
    <span class="spacer"></span>
   </div>
-</div>
+</div> -->
+
+
+
+
 
 </mat-drawer-container>
 

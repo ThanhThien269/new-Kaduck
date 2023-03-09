@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     AppRoutingModule,
     SharedModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    StoreModule.forRoot({}, {})
 
   ],
   providers: [],
