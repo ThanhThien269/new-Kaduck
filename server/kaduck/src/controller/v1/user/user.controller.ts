@@ -26,8 +26,4 @@ export class UserController {
     async deleteId(@Query('id') id:string){
         return this.questionService.deleteById(id);
     }
-    // @Put('update')
-    // async updateById(@Query('id')  id:string){
-    //     return this.questionService.updateById(id);
-    // }
 }

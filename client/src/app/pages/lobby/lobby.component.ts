@@ -1,5 +1,7 @@
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 import { Component } from '@angular/core';
+import { Socket } from 'ngx-socket-io';
+
 
 @Component({
   selector: 'app-lobby',
@@ -28,9 +30,34 @@ import { Component } from '@angular/core';
   ])
   ]
 })
+
+
 export class LobbyComponent {
-lock=false;
-locked(){
-this.lock=!this.lock
-}
+
+  id: string = '';
+
+  constructor(private _socket: Socket) {}
+
+  ngOnInit() {
+    this.id = Math.floor(Math.random() * 899999 + 100000).toString()
+
+    this._socket.on('connect', () => {
+      console.log("connected");
+      this._socket.emit('create', this.id);
+    })
+
+    this.listenForChanged().subscribe((data: any) => {
+      console.log(data);
+    })
+  }
+
+  listenForChanged() {
+    return this._socket.fromEvent('receive-joiner')
+  }
+
+  lock = false;
+
+  locked(){
+    this.lock=!this.lock
+  }
 }

@@ -21,6 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'lobby',
+    canActivate: [AuthGuardGuard],
     loadChildren: () =>
       import('./pages/lobby/lobby.module').then((m) => m.LobbyModule),
   },
@@ -58,6 +59,7 @@ const routes: Routes = [
         (m) => m.GuestplayingModule
       ),
   },
+  { path: 'join/:id', loadChildren: () => import('./pages/join/join.module').then(m => m.JoinModule) },
 ];
 
 @NgModule({

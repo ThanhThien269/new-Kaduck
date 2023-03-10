@@ -16,9 +16,9 @@
           <div id="gamepin">
             <div id="PINenter" >
                 <mat-card>
-                  <input id="input"   matInput placeholder="Gaming PIN">
+                  <input id="input" matInput placeholder="Gaming PIN" [(ngModel)]="pin">
                   <div id="enter_btn">
-                    <button  id="enter" mat-raised-button (click)="lobby()">ENTER</button>
+                    <button  id="enter" mat-raised-button (click)="join()">ENTER</button>
                   </div>
                 </mat-card>
             </div>
