@@ -1,3 +1,4 @@
+import { QuestionKitStoredComponent } from './../components/question-kit-stored/question-kit-stored.component';
 import { NgModule } from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
@@ -30,7 +31,8 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     SideBarComponent,
-    ToolBarComponent
+    ToolBarComponent,
+    QuestionKitStoredComponent
   ],
   imports: [
 
@@ -87,7 +89,8 @@ import { RouterModule } from '@angular/router';
     ToolBarComponent,
     MatButtonToggleModule,
     MatSelectModule,
-    RouterModule
+    RouterModule,
+    QuestionKitStoredComponent
   ]
 })
 export class SharedModule { }

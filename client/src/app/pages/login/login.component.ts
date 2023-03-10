@@ -1,5 +1,5 @@
 import { Actions } from '@ngrx/effects';
-import { AuthState } from 'src/state/auth.state';
+import { AuthState } from '../../state/auth.state';
 import { LoginService } from './../../services/login.service';
 import { Component, Input, Output } from '@angular/core';
 import { onAuthStateChanged } from '@angular/fire/auth';

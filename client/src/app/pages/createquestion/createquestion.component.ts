@@ -1,4 +1,6 @@
+import { QuestionKitStoredComponent } from './../../components/question-kit-stored/question-kit-stored.component';
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 interface Points {
   value: string;
@@ -20,7 +22,20 @@ interface Answer{
   styleUrls: ['./createquestion.component.scss']
 })
 export class CreatequestionComponent {
-  constructor(private router : Router){}
+  constructor(private router : Router, private dialog:MatDialog){}
+
+  openDialog(){
+    const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+      this.dialog.open(QuestionKitStoredComponent, dialogConfig);
+      dialogConfig.position = {
+        'top': '0',
+        left: '0'
+    };
+  }
+
   points: Points[] = [
     {value: 'standard', viewValue: 'Standard'},
     {value: 'double', viewValue: 'Double'},
@@ -37,8 +52,8 @@ export class CreatequestionComponent {
     {value: 'D', viewValue: ' D'},
 
   ]
-  library(){
-    this.router.navigate(['/library']);
-  }
+  // library(){
+  //   this.router.navigate(['/library']);
+  // }
 }
 
