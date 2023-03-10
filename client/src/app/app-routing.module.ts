@@ -27,6 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'createquestion',
+
     loadChildren: () =>
       import('./pages/createquestion/createquestion.module').then(
         (m) => m.CreatequestionModule

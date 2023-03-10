@@ -1,16 +1,17 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
-
-
-export type UserDocument = HydratedDocument<Player>;
-
+import { Prop, Schema,SchemaFactory } from "@nestjs/mongoose";
+import { HydratedDocument } from "mongoose";
+export type PlayerDocument= HydratedDocument<Player>;
 @Schema()
-export class Player{
+export class Player {
     @Prop()
-    name:string;
-    
+    id: string;
     @Prop()
-    id:string;
-
+    name: string;
+    @Prop()
+    score: string;
+    @Prop()
+    email: string;
+    @Prop()
+    photoUrl: string;
 }
 export const PlayerSchema = SchemaFactory.createForClass(Player);

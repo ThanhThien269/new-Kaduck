@@ -2,11 +2,11 @@ import { InjectModel } from '@nestjs/mongoose';
 /* eslint-disable prefer-const */
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import { Question, UserDocument } from 'src/schemas/question.schema';
+import { QuesDocument, Question,  } from 'src/schemas/question.schema';
 
 @Injectable()
 export class QuestionService {
-    constructor(@InjectModel(Question.name) private questionModel: Model<UserDocument>) { }
+    constructor(@InjectModel(Question.name) private questionModel: Model<QuesDocument>) { }
 
     async getAll(): Promise<Question[]> {
         try{

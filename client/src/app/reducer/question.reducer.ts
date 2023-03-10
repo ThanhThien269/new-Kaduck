@@ -1,5 +1,5 @@
 import { QuestionState } from "../state/question.state";
-import * as questionActions from "/new-Kaduck/client/src/app/action/question.action";
+import * as questionActions from "../action/question.action";
 import { createReducer, on } from "@ngrx/store";
 
 export const initialState: QuestionState = {
