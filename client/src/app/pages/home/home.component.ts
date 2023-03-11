@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service'
 import { User } from '@angular/fire/auth'
-<<<<<<< HEAD
-=======
 import { FormControl, FormGroup } from '@angular/forms';
 
->>>>>>> 5698e4873af73ae6386ffd523c10b5c7a531e4ab
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
