@@ -1,9 +1,7 @@
-
-
 import { Injectable } from '@nestjs/common';
-import {Auth, DecodedIdToken, getAuth} from "firebase-admin/auth"
 import { getApp } from 'firebase-admin/app';
-import { auth } from 'firebase-admin';
+import { Auth, DecodedIdToken, getAuth } from 'firebase-admin/auth';
+
 @Injectable()
 export class AuthService {
     private auth : Auth;
@@ -19,4 +17,4 @@ export class AuthService {
     getUserProfile(){
         return "User profile"
     }
-}   
+}

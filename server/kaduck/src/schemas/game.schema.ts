@@ -7,20 +7,23 @@ import { HydratedDocument } from 'mongoose';
 import { Player } from './player.schema';
 
 
-export type UserDocument = HydratedDocument<Room>;
+export type GameDocument = HydratedDocument<Game>;
 
 @Schema()
-export class Room{
+export class Game{
     @Prop()
-    name:string;
+    id:string;
 
     @Prop()
-    PIN:string;
+    disabled:boolean;
+
+    @Prop()
+    pin:string;
     
     @Prop()
-    player:Player[];
+    players:Player[];
 
     @Prop()
-    question:Question_Kit;
+    question_kit:Question_Kit[];
 }
-export const RoomSchema = SchemaFactory.createForClass(Room);
+export const RoomSchema = SchemaFactory.createForClass(Game);
