@@ -1,3 +1,4 @@
+import { answer } from './../../../../client/src/app/models/answer.model';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
@@ -9,21 +10,6 @@ export class Question {
     questions: string;
 
     @Prop()
-    answers_A:string;
-
-    @Prop()
-    correct_answer: string;
-
-    @Prop()
-    answers_B: string;
-  
-    @Prop()
-    answers_C:string;
-
-    @Prop()
-    answers_D:string;
-
-    @Prop()
     timer:string;
     
     @Prop()
@@ -32,9 +18,8 @@ export class Question {
     @Prop()
     point_type:string;
 
-    // @Prop({require:true})
-    // id: string;
-
+    @Prop()
+    answers: answer[];
 }
 
 export const QuestionSchema = SchemaFactory.createForClass(Question);

@@ -15,12 +15,14 @@
         <div id="gamepin_container">
           <div id="gamepin">
             <div id="PINenter" >
+              <form [formGroup]="inputPin" (ngSubmit)="join()">
                 <mat-card>
-                  <input id="input" matInput placeholder="Gaming PIN" [(ngModel)]="pin">
+                  <input id="input" matInput placeholder="Gaming PIN" [(ngModel)]="pin" formControlName="input_pin">
                   <div id="enter_btn">
                     <button  id="enter" mat-raised-button (click)="join()">ENTER</button>
                   </div>
                 </mat-card>
+              </form>
             </div>
           </div>
           <div id="crea">

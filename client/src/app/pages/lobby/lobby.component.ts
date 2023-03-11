@@ -12,12 +12,12 @@ import { User } from '@angular/fire/auth'
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
-        style({ opacity: 4 }),
-        animate('6000ms', style({ opacity: 0 }))
-      ]),
-      transition(':leave', [
         style({ opacity: 1 }),
         animate('1000ms', style({ opacity: 0 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 4 }),
+        animate('5000ms', style({ opacity: 0 }))
       ])
     ]),
     trigger('rotate', [
