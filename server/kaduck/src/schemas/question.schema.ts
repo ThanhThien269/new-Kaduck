@@ -19,6 +19,7 @@ export class Question {
 
     @Prop()
     point_type:string;
+
     @Prop()
     answer_A:string;
     @Prop()

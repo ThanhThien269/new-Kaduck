@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
+
   }
   ngOnInit(): void {
 
@@ -52,5 +53,6 @@ export class HomeComponent implements OnInit {
 
   join(){
     this.router.navigate([`join/${this.pin}`]);
+
   }
 }
