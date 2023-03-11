@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service'
 import { User } from '@angular/fire/auth'
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -19,6 +18,7 @@ export class HomeComponent {
   ) {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
+
   }
 
   library(){
@@ -39,5 +39,6 @@ export class HomeComponent {
 
   join() {
     this.router.navigate([`join/${this.pin}`]);
+
   }
 }
