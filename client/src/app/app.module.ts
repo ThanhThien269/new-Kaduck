@@ -12,6 +12,10 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from 'src/app/reducer/auth.reducer';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+
+const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {} };
 
 @NgModule({
   declarations: [
@@ -26,8 +30,8 @@ import { authReducer } from 'src/app/reducer/auth.reducer';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     EffectsModule.forRoot([AuthEffects]),
-    StoreModule.forRoot({auth: authReducer}, {})
-
+    StoreModule.forRoot({auth: authReducer}, {}),
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

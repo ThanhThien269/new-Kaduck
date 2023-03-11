@@ -27,21 +27,21 @@ export class QuestionService {
     }
     async create(question: Question): Promise<Question> {
         try{
-            const createdUser = new this.questionModel(question);
-            return await createdUser.save();
+            const createdQuestion = new this.questionModel(question);
+            return await createdQuestion.save();
         }catch(error){
             return null;
         }
     }
-    async deleteById(_id:string): Promise<Question>{
+    async deleteById(id:string): Promise<Question | null>{
         try {
-            return await this.questionModel.findByIdAndDelete(_id);
-            
+            let questions = await this.questionModel.findByIdAndDelete(id).exec();
+            return questions;
         } catch(error){
             return null;
         }
     }
-
+    
     // async updateById(user: User, _id: string): Promise<User> {
     //     try{
     //         return await this.userModel.findByIdAndUpdate(_id, user);
