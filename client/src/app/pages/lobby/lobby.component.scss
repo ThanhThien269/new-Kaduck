@@ -137,13 +137,15 @@
 
   }
   .user-join{
-    width: 10%;
+    width: auto;
     height: 30%;
 
     // border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    padding: 2rem;
 
     // .duck{
     //   width: 8%;
