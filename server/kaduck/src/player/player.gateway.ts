@@ -1,9 +1,8 @@
-import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
-import { WebSocketServer } from '@nestjs/websockets/decorators';
+import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 
 @WebSocketGateway({ cors: true})
-export class PlayGateway {
+export class PlayerGateway {
   @WebSocketServer() server: any;
 
   handleConnection(client:any,...args:any[]){

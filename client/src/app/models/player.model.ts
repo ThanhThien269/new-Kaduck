@@ -3,4 +3,5 @@ export interface players{
   name : string;
   email: string;
   photoUrl: string;
+  score: string;
 }

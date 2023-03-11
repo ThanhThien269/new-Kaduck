@@ -4,7 +4,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
 
-export type UserDocument = HydratedDocument<Question_Kit>;
+export type Question_KitDocument = HydratedDocument<Question_Kit>;
 
 @Schema()
 export class Question_Kit{
@@ -12,7 +12,10 @@ export class Question_Kit{
     
     @Prop()
     id:string;
-
+    @Prop()
+    name:string;
+    @Prop()
+    description:string;
     @Prop()
     question_kit:Question[];
 }
