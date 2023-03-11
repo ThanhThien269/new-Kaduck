@@ -1,6 +1,7 @@
 import {createReducer, on} from"@ngrx/store";
 import { AuthState } from '../state/auth.state';
 import *as AuthActions from "../../app/action/auth.action"
+import { Pipe, PipeTransform } from "@angular/core";
 const initialState:AuthState = {
 
 idToken: "",

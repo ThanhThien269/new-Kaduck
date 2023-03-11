@@ -1,7 +1,7 @@
 .container{
   display: flex;
-justify-content: space-between;
-align-items: center;
+  justify-content: space-between;
+  align-items: center;
   background-color: #ffff;
   width: 100%;
   height: 100%;
@@ -63,10 +63,21 @@ p{
     justify-content: center;
     width: 100%;
     height: 1.5rem;
+    // .textlg{
+    //   width: 84%;
+    //   height: 100%;
+    //   border: 1px solid black;
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: center;
+    //   font-size: 12px;
+    // }
     .icon{
-      width: 18%;
+
+      width: 16%;
+      height: 100%;
       margin-right: 10%;
-      margin-left: -42%;
+      margin-left: -28%;
       background-color: #f2f2f2;
       padding: 7%;
       border: 1px solid #29348E;

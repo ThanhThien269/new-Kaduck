@@ -61,6 +61,7 @@ const routes: Routes = [
       ),
   },
   { path: 'join/:id', loadChildren: () => import('./pages/join/join.module').then(m => m.JoinModule) },
+
 ];
 
 @NgModule({
