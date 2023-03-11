@@ -1,3 +1,4 @@
+import { LobbyService } from './../../services/lobby.service';
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
@@ -17,7 +18,7 @@ import { User } from '@angular/fire/auth'
       ]),
       transition(':leave', [
         style({ opacity: 4 }),
-        animate('5000ms', style({ opacity: 0 }))
+        animate('1000ms', style({ opacity: 0 }))
       ])
     ]),
     trigger('rotate', [
@@ -34,41 +35,32 @@ import { User } from '@angular/fire/auth'
 })
 
 export class LobbyComponent {
-  user: User | null = null;
-  id: string = '';
-
-  lists: string[] = []
-
+  user = this.lobbyService.user;
+  id = this.lobbyService.id
+  lists = this.lobbyService.lists;
+  lock = false;
   constructor(
     private _socket: Socket,
-    private loginService: LoginService
-  ) {}
+    private lobbyService: LobbyService
+  ) {
 
-  ngOnInit() {
-    this.id = Math.floor(Math.random() * 899999 + 100000).toString()
-
-    this._socket.on('connect', () => {
-      console.log("connected");
-      this._socket.emit('join', {
-        id: this.id,
-        name: this.user?.displayName,
-        type: "create"
-      });
-    })
-
-    this.listenForChanged().subscribe((data: any) => {
-      console.log(data);
-      this.lists.push(data as string);
-    })
   }
-
-  listenForChanged() {
-    return this._socket.fromEvent('receive-joiner')
-  }
-
-  lock = false;
-
+  // createPin(){
+  //   this.lobbyService.listenForChanged();
+  // }
   locked(){
     this.lock=!this.lock
   }
 }
+
+  // listenForChanged() {
+  //   return this._socket.fromEvent('receive-joiner')
+  // }
+
+
+  // lock = false;
+
+  // locked(){
+  //   this.lock=!this.lock
+  // }
+
