@@ -24,4 +24,17 @@ export class QuestionKitService {
                 console.log(error);
             }
         }
+        async create(questionKit: Question_Kit){
+            try{
+                let ques =  questionKit.question_kit;
+                questionKit.question_kit=[];
+                questionKit.id=Math.floor(Math.random() * 1000 ).toString();
+                let nqk = await this.questionKitModel.create(questionKit);
+                
+            }catch(error){
+                console.log(error);
+            }
+
+            
+        }
 }
