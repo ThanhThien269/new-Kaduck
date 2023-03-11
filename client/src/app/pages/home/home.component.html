@@ -10,15 +10,15 @@
     <div id="createroom">
       <div id="createroom_container">
         <div id="pic_create">
-          <img src="../../../assets/Gaming-bro.png" alt="Gamingbro" style="width: 90%;height: 100%;">
+          <img src="../../../assets/Gaming-bro.png" alt="Gamingbro" style="width: 100%;height: 100%;">
         </div>
         <div id="gamepin_container">
           <div id="gamepin">
             <div id="PINenter" >
                 <mat-card>
-                  <input id="input"   matInput placeholder="Gaming PIN">
+                  <input id="input" matInput placeholder="Gaming PIN" [(ngModel)]="pin">
                   <div id="enter_btn">
-                    <button  id="enter" mat-raised-button (click)="lobby()">ENTER</button>
+                    <button  id="enter" mat-raised-button (click)="join()">ENTER</button>
                   </div>
                 </mat-card>
             </div>

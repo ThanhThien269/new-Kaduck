@@ -4,6 +4,7 @@ import {
   Auth,
   GoogleAuthProvider,
   signInWithPopup,
+  onAuthStateChanged,
   signOut,
   User,
 } from '@angular/fire/auth';
@@ -12,13 +13,19 @@ import {
   providedIn: 'root',
 })
 export class LoginService {
-  users: User | undefined;
+  user: User | null = null;
 
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth) {
+    onAuthStateChanged(this.auth, (user) => {
+      this.user = user;
+    })
+  }
+
   async login() {
     let cred = await signInWithPopup(this.auth, new GoogleAuthProvider());
     return cred.user.getIdToken();
   }
+
   async logout() {
     return signOut(this.auth);
   }

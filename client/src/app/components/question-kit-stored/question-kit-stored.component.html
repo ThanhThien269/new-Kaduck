@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Let's finishing </h1>
+<p>Enter title and description for your KaDuck</p>
+
+<form >
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+      <input matInput
+              placeholder="Enter KaDuck Title">
+
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+  </form>
+
+
+<mat-dialog-actions>
+  <button mat-raised-button (click)="close()" >Close</button>
+  <button mat-raised-button (click)="save()" color="primary">Save</button>
+</mat-dialog-actions>

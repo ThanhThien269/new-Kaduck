@@ -23,11 +23,7 @@ export class UserController {
     }
 
     @Delete('delete')
-    async deleteById(@Query('id') id:string){
+    async deleteId(@Query('id') id:string){
         return this.questionService.deleteById(id);
     }
-    // @Put('update')
-    // async updateById(@Query('id')  id:string){
-    //     return this.questionService.updateById(id);
-    // }
 }

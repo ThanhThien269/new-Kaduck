@@ -1,5 +1,5 @@
 import { createAction,props } from "@ngrx/store";
-import {  question } from "/../new-Kaduck/client/src/app/models/question.model";
+import {  question } from "../models/question.model";
 
 export const loadQuestions = createAction(`[Question] Load Questions`);
 export const loadQuestionsSuccess = createAction(`[Question] Load Questions`,props<{questions : question[]}>());

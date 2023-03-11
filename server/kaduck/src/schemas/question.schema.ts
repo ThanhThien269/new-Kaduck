@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-export type UserDocument = HydratedDocument<Question>;
+export type QuesDocument = HydratedDocument<Question>;
 
 @Schema()
 export class Question {
@@ -32,8 +32,8 @@ export class Question {
     @Prop()
     point_type:string;
 
-    @Prop({require:true})
-    id: string;
+    // @Prop({require:true})
+    // id: string;
 
 }
 
