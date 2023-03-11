@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service'
@@ -13,9 +14,9 @@ export class HomeComponent implements OnInit {
   currentUser: User | null = null;
   uid: string = '';
   pin: string = '';
-
-  userInput = new FormControl('');
-  inputMatches = false;
+  // pin = this.homeService.pin;
+  // userInput = new FormControl('');
+  // inputMatches = false;
 
   constructor(
     private router : Router,
@@ -53,6 +54,6 @@ export class HomeComponent implements OnInit {
 
   join(){
     this.router.navigate([`join/${this.pin}`]);
-
+    // this.homeService.join();
   }
 }
