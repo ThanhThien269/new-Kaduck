@@ -1,6 +1,8 @@
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 import { Component } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
+import { LoginService } from 'src/app/services/login.service';
+import { User } from '@angular/fire/auth'
 
 
 @Component({
@@ -31,23 +33,32 @@ import { Socket } from 'ngx-socket-io';
   ]
 })
 
-
 export class LobbyComponent {
-
+  user: User | null = null;
   id: string = '';
 
-  constructor(private _socket: Socket) {}
+  lists: string[] = []
+
+  constructor(
+    private _socket: Socket,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
     this.id = Math.floor(Math.random() * 899999 + 100000).toString()
 
     this._socket.on('connect', () => {
       console.log("connected");
-      this._socket.emit('create', this.id);
+      this._socket.emit('join', {
+        id: this.id,
+        name: this.user?.displayName,
+        type: "create"
+      });
     })
 
     this.listenForChanged().subscribe((data: any) => {
       console.log(data);
+      this.lists.push(data as string);
     })
   }
 

@@ -31,7 +31,8 @@ export class JoinComponent {
       console.log("connected");
       this._socket.emit('join', {
         id: this.id,
-        name: this.user?.displayName
+        name: this.user?.displayName,
+        type: "join"
       });
     })
   }

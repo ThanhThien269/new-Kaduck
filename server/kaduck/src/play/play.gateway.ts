@@ -1,11 +1,10 @@
 import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
 import { WebSocketServer } from '@nestjs/websockets/decorators';
+import { Socket } from 'socket.io';
 
-@WebSocketGateway()
-export class GatewaysGateway {
+@WebSocketGateway({ cors: true})
+export class PlayGateway {
   @WebSocketServer() server: any;
-  
-  availableRoom = [];
 
   handleConnection(client:any,...args:any[]){
     console.log(`Client connected: ${client.id}`);
@@ -23,18 +22,9 @@ export class GatewaysGateway {
   }
 
   @SubscribeMessage('join')
-  handleJoin(client: any, payload: any): string {
-    if(!this.availableRoom.includes(payload.id))  {
-      return "Room not found"
-    }
-    
+  handleJoin(client: Socket, payload: any): string {
+    client.join(payload.id);
     client.broadcast.to(payload.id).emit('receive-joiner', payload.name);
     return "Joined"
-  }
-
-  @SubscribeMessage('create')
-  handleCreate(client: any, payload: any): string {
-    this.availableRoom.push(payload.id);
-    return "Created"
   }
 }
