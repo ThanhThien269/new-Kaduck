@@ -13,7 +13,7 @@ export class ToolBarComponent {
   showFiller = false;
 
   toggle() {
-    this.newOpenSideBarEvent.emit('heh')
+    this.newOpenSideBarEvent.emit('heh');
   }
   signOut(){
     this.auth.logout();
