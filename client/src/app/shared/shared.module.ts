@@ -26,7 +26,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ import { RouterModule } from '@angular/router';
     MatSidenavModule,
     MatButtonToggleModule,
     MatSelectModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:[
 
@@ -90,7 +91,8 @@ import { RouterModule } from '@angular/router';
     MatButtonToggleModule,
     MatSelectModule,
     RouterModule,
-    QuestionKitStoredComponent
+    QuestionKitStoredComponent,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
