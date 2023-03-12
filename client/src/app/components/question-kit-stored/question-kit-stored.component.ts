@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,13 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./question-kit-stored.component.scss']
 })
 export class QuestionKitStoredComponent {
-  constructor(private dialog:MatDialogRef<QuestionKitStoredComponent>,private router : Router){}
-close(){
-  this.dialog.close();
-}
-save(){
-  // this.dialog.close(this.form.value);
-  this.dialog.close();
-  this.router.navigate(['/library']);
-}
+  constructor(
+    private dialog:MatDialogRef<QuestionKitStoredComponent>,
+    private router : Router,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ){}
+
+  close(){
+    this.dialog.close();
+  }
+
+  save(){
+    // this.dialog.close(this.form.value);
+    //this.dialog.close();
+    //this.router.navigate(['/library']);
+  }
 }

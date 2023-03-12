@@ -4,18 +4,17 @@
 <form >
   <mat-form-field appearance="fill">
     <mat-label>Title</mat-label>
-      <input matInput
-              placeholder="Enter KaDuck Title">
+      <input name="title" matInput placeholder="Enter KaDuck Title" [(ngModel)]="data.title">
 
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Description</mat-label>
-      <textarea matInput></textarea>
+      <textarea name="description" matInput [(ngModel)]="data.description"></textarea>
     </mat-form-field>
   </form>
 
 
 <mat-dialog-actions>
   <button mat-raised-button (click)="close()" >Close</button>
-  <button mat-raised-button (click)="save()" color="primary">Save</button>
+  <button mat-raised-button (click)="save()" color="primary" [mat-dialog-close]="data">Save</button>
 </mat-dialog-actions>
