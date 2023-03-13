@@ -1,3 +1,4 @@
+import { question } from './../models/question.model';
 import { Injectable } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { Socket } from 'ngx-socket-io';
@@ -25,10 +26,17 @@ export class LobbyService {
       console.log(data);
       this.lists.push(data as string);
     }) }
+    startGame(question:question) {
+      this._socket.emit("startGame",question);
+    }
 
 
   listenForChanged() {
     return this._socket.fromEvent('receive-joiner')
   }
+
+  // timer(){
+  //   this._socket.emit("timesUp")
+  // }
 
 }
