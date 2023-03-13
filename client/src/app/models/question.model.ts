@@ -1,7 +1,5 @@
 export interface question{
     questions : string;
-    description: string;
-    title: string;
     timer : number;
     img : string;
     points : number;

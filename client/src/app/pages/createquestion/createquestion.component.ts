@@ -4,9 +4,11 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { question } from 'src/app/models/question.model';
+import { question_kit } from 'src/app/models/question_kit.model';
 import { Store } from '@ngrx/store'
-import { QuestionState } from 'src/app/state/question.state'
-import * as QuestionActions from 'src/app/action/question.action'
+
+import { QuestionKitState } from 'src/app/state/question_kit.state';
+import * as QuestionKitActions from 'src/app/action/question_kit.action'
 
 interface Points {
   value: string;
@@ -34,23 +36,39 @@ export class CreatequestionComponent {
   constructor(
     private router : Router,
     private dialog:MatDialog,
-    private store: Store<{ question: QuestionState }>
+    private store: Store<{ question_kit: QuestionKitState }>
     ){}
 
-  questionModel: question = {
-    questions : '',
+  question_kit_model: question_kit = {
+    id: Date.now().toString(),
+    name: '',
     description: '',
-    title: '',
-    timer : 0,
-    img : '',
-    points : 0,
-    point_type : '',
-    id: Math.random().toString(),
-    answer_A : '',
-    answer_B : '',
-    answer_C : '',
-    answer_D : '',
-    true_answer : ''
+    questions: [],
+  };
+  currentQuestion: question = this.createQuestionModel();;
+
+  createQuestionModel() {
+    let questionModel: question = {
+      questions : '',
+      timer : 0,
+      img : '',
+      points : 0,
+      point_type : '',
+      id: Date.now().toString(),
+      answer_A : '',
+      answer_B : '',
+      answer_C : '',
+      answer_D : '',
+      true_answer : ''
+    }
+
+    this.question_kit_model.questions.push(questionModel);
+    this.currentQuestion = questionModel;
+    return questionModel;
+  }
+
+  switchQuestion(question: question) {
+    this.currentQuestion = question;
   }
 
 
@@ -58,8 +76,8 @@ export class CreatequestionComponent {
     let dialogRef = this.dialog.open(QuestionKitStoredComponent, {
       width: '500px',
       data: {
-        title: this.questionModel.title,
-        description: this.questionModel.description
+        title: this.question_kit_model.name,
+        description: this.question_kit_model.description
       }
     });
 
@@ -67,13 +85,13 @@ export class CreatequestionComponent {
       console.log(result)
       if(!result) return;
 
-      this.questionModel.title = result.title;
-      this.questionModel.description = result.description;
+      this.question_kit_model.name = result.title;
+      this.question_kit_model.description = result.description;
 
-      console.log(this.questionModel);
-      this.store.dispatch(QuestionActions.postQuestion({ question: this.questionModel }))
+      this.store.dispatch(QuestionKitActions.postQuestionKit({ question_kit: this.question_kit_model }))
     })
   }
+
 
 
   points: Points[] = [
@@ -91,10 +109,5 @@ export class CreatequestionComponent {
     {value: 'C', viewValue: ' C'},
     {value: 'D', viewValue: ' D'},
   ]
-
-
-  // library(){
-  //   this.router.navigate(['/library']);
-  // }
 }
 

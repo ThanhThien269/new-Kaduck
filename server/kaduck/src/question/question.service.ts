@@ -1,4 +1,3 @@
-
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -8,7 +7,7 @@ import { Question, QuestionDocument } from 'src/schemas/question.schema';
 export class QuestionService {
     constructor(@InjectModel(Question.name) private questionModel: Model<QuestionDocument>) { }
 
-    async getAll(): Promise<Question[]> {
+    async getQuestions(): Promise<Question[]> {
         try{
             let questions = await this.questionModel.find().exec();
             return questions;
@@ -18,7 +17,7 @@ export class QuestionService {
     }
     
     //getDetail
-    async getDetail(id: string): Promise<Question> {
+    async getQuestion(id: string): Promise<Question> {
         try{
             return await this.questionModel.findOne({id:id}).exec();
         }catch(error){
@@ -26,7 +25,7 @@ export class QuestionService {
         }
     }
 
-    async create(question: Question): Promise<Question> {
+    async createQuestion(question: Question): Promise<Question> {
         try{
             const createdQuestion = new this.questionModel(question);
             return await createdQuestion.save();
@@ -35,7 +34,7 @@ export class QuestionService {
         }
     }
 
-    async delete(question:Question): Promise<Question | null>{
+    async deleteQuestion(question:Question): Promise<Question | null>{
         try {
             let quest = await this.questionModel.findOneAndDelete({id:question.id}).exec();
             return quest;
@@ -44,9 +43,10 @@ export class QuestionService {
         }
     }
     
-    async updateById(question: Question): Promise<Question> {
+    async updateQuestion(question: Question): Promise<Question> {
         try{
             let tempQuestion = await this.questionModel.findOne({id:question.id}).exec();
+
             tempQuestion['questions'] = question.questions;
             tempQuestion['timer'] = question.timer;
             tempQuestion['img'] = question.img;
@@ -57,6 +57,7 @@ export class QuestionService {
             tempQuestion['answer_C'] = question.answer_C;
             tempQuestion['answer_D'] = question.answer_D;
             tempQuestion['true_answer'] = question.true_answer;
+
             return tempQuestion.save();
         }catch(error){
             return null;

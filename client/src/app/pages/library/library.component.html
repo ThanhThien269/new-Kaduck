@@ -18,11 +18,11 @@
 <span class="spacer"></span>
 <div><input class="input" type="text" placeholder="Search"></div>
 </div>
-<div id="rec_contain" *ngFor="let question of (questions$ | async)">
+<div id="rec_contain" *ngFor="let question of (questionKits$ | async)">
   <div id="rec_recent">
     <input id="checkbox" type="checkbox">
     <img src="../../../assets/kaduck-logo.png" alt="" style="width: 100px; height: 100px; float:left;padding-top:15px">
-    <div id="title">{{question.title}}</div>
+    <div id="title">{{question.name}}</div>
     <span class="spacer"></span>
     <div>
       <div id="edit">

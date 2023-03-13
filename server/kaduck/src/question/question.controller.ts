@@ -5,30 +5,28 @@ import { QuestionService } from './question.service';
 @Controller('question')
 export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}
-
-
   @Get('all')
   async getAll(){
-    return await this.questionService.getAll();
+    return await this.questionService.getQuestions();
   }
 
   @Get('')
   getQuestion(@Query('id') id:string){
-      return this.questionService.getDetail(id);
+      return this.questionService.getQuestion(id);
   }
 
   @Post('create')
   async createQuestion(@Body() question:Question){        
-      return this.questionService.create(question);
+      return this.questionService.createQuestion(question);
   }
 
   @Put('update')
   async updateQuestion(@Body() question:Question){        
-      return this.questionService.create(question);
+      return this.questionService.createQuestion(question);
   }
 
   @Delete('delete')
   async deleteQuestion(@Body() question:Question){
-      return this.questionService.delete(question);
+      return this.questionService.deleteQuestion(question);
   }
 }

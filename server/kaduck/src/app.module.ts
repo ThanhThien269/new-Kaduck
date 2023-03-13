@@ -6,7 +6,7 @@ import { PlayerModule } from './player/player.module';
 import { QuestionModule } from './question/question.module';
 import { QuestionKitModule } from './question_kit/question_kit.module';
 import { AuthModule } from './auth/auth.module';
-
+import { GameModule } from './game/game.module';
 
 @Module({
   imports: [
@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
     QuestionModule,
     QuestionKitModule,
     AuthModule,
+    GameModule,
   ],
   controllers: [AppController],
   providers: [AppService],
