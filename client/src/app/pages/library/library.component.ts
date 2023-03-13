@@ -1,10 +1,10 @@
 import { map, Observable } from 'rxjs';
-import { question } from './../../models/question.model';
+import { question_kit } from './../../models/question_kit.model';
 import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { QuestionState } from 'src/app/state/question.state';
-import * as QuestionActions from 'src/app/action/question.action'
+import { QuestionKitState } from 'src/app/state/question_kit.state';
+import * as QuestionKitActions from 'src/app/action/question_kit.action'
 
 @Component({
   selector: 'app-library',
@@ -12,14 +12,14 @@ import * as QuestionActions from 'src/app/action/question.action'
   styleUrls: ['./library.component.scss']
 })
 export class LibraryComponent {
-  constructor (private router: Router, private store: Store<{question:QuestionState}>) {}
+  constructor (private router: Router, private store: Store<{question_kit: QuestionKitState}>) {}
 
-  questions$ = new Observable<question[]>;
+  questionKits$ = new Observable<question_kit[]>;
 
   ngOnInit() {
-    this.questions$ = this.store.select('question').pipe(map(state => state.questions));
-    this.store.dispatch(QuestionActions.getQuestions());
-    this.questions$.subscribe(ques => console.log(ques))
+    this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
+    this.store.dispatch(QuestionKitActions.getQuestionKits());
+    this.questionKits$.subscribe(ques => console.log(ques));
   }
 
   lobby() {

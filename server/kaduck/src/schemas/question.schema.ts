@@ -10,12 +10,6 @@ export class Question {
     id:string;
 
     @Prop()
-    title:string;
-
-    @Prop()
-    description:string;
-    
-    @Prop()
     img:string;
 
     @Prop()
