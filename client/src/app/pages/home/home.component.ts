@@ -14,9 +14,8 @@ export class HomeComponent implements OnInit {
   uid: string = '';
   pin: string = '';
 
-  inputPin = new FormGroup({
-    input_pin: new FormControl('')
-  });
+  userInput = new FormControl('');
+  inputMatches = false;
 
   constructor(
     private router : Router,
@@ -51,13 +50,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/lobby']);
   }
 
-  join() {
-    // console.log(this.inputPin.value);
-    // if(this.pin ==''){
-    //   alert('HAY NHAP GI DO');
-    // }else if(this.inputPin.value !== this.pin){
-    //   console.log('Nhap sai');
-    // }else{
+  join(){
     this.router.navigate([`join/${this.pin}`]);
   }
 }
