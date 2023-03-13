@@ -16,7 +16,8 @@ export class Question_Kit{
 
     @Prop()
     description:string;
-    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }] })
-    question_kit:Question[];
+
+    @Prop()
+    questions:Question[];
 }
 export const QuestionKitSchema = SchemaFactory.createForClass(Question_Kit);
