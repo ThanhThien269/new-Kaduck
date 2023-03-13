@@ -8,8 +8,7 @@ import { Socket } from 'ngx-socket-io';
 export class LobbyService {
   user: User | null = null;
   id: string = '';
-
-  lists: string[] = []
+  lists: string[] = [];
   constructor( private _socket: Socket) {
       this.id = Math.floor(Math.random() * 899999 + 100000).toString()
       this._socket.on('connect', () => {
