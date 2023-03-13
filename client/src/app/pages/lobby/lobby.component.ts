@@ -39,15 +39,15 @@ export class LobbyComponent {
   id = this.lobbyService.id
   lists = this.lobbyService.lists;
   lock = false;
+
   constructor(
     private _socket: Socket,
     private lobbyService: LobbyService
   ) {
-
   }
-  // createPin(){
-  //   this.lobbyService.listenForChanged();
-  // }
+  createPin(){
+    this.lobbyService.listenForChanged();
+  }
   locked(){
     this.lock=!this.lock
   }

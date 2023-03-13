@@ -1,7 +1,10 @@
+import { questionReducer } from './reducer/question.reducer';
+import { QuestionEffects } from './effect/question.effect';
 import { AuthEffects } from './../app/effect/auth.effect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,14 +26,15 @@ const config: SocketIoConfig = { url: 'http://localhost:4545/', options: {} };
 
   ],
   imports: [
+
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    EffectsModule.forRoot([AuthEffects]),
-    StoreModule.forRoot({auth: authReducer}, {}),
+    EffectsModule.forRoot([AuthEffects, QuestionEffects]),
+    StoreModule.forRoot({auth: authReducer, question:questionReducer}, {}),
     SocketIoModule.forRoot(config)
   ],
   providers: [],

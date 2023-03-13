@@ -5,10 +5,9 @@ import { CreatequestionRoutingModule } from './createquestion-routing.module';
 import { CreatequestionComponent } from './createquestion.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
 @NgModule({
   declarations: [
-    CreatequestionComponent
+    CreatequestionComponent,
   ],
   imports: [
     CommonModule,

@@ -27,7 +27,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     SideBarComponent,
@@ -35,7 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     QuestionKitStoredComponent
   ],
   imports: [
-
+    HttpClientModule,
     MatTableModule,
     FormsModule,
     MatButtonModule,
@@ -63,7 +63,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports:[
-
+    HttpClientModule,
     MatTableModule,
     FormsModule,
     MatButtonModule,

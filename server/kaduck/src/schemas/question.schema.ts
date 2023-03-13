@@ -5,12 +5,22 @@ export type QuestionDocument = HydratedDocument<Question>;
 
 @Schema()
 export class Question {
+    
     @Prop()
     id:string;
+
+    @Prop()
+    title:string;
+
+    @Prop()
+    description:string;
+    
     @Prop()
     img:string;
+
     @Prop()
     questions: string;
+
     @Prop()
     timer:string;
     
@@ -22,6 +32,7 @@ export class Question {
 
     @Prop()
     answer_A:string;
+    
     @Prop()
     answer_B:string;
     @Prop()

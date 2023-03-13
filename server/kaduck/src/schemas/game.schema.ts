@@ -3,7 +3,7 @@ import { Question_Kit } from './question_kit.schema';
 // import { question_kit } from './../../../../client/src/app/models/question_kit.model';
 
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import mongoose,{ HydratedDocument } from 'mongoose';
 import { Player } from './player.schema';
 
 
@@ -20,10 +20,10 @@ export class Game{
     @Prop()
     pin:string;
     
-    @Prop()
+    @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Player' }] })
     players:Player[];
 
     @Prop()
-    question_kit:Question_Kit[];
+    question_kitId:string;
 }
-export const RoomSchema = SchemaFactory.createForClass(Game);
+export const GameSchema = SchemaFactory.createForClass(Game);
