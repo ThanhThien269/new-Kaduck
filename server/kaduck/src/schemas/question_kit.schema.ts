@@ -8,15 +8,17 @@ export type Question_KitDocument = HydratedDocument<Question_Kit>;
 
 @Schema()
 export class Question_Kit{
-  
-    
     @Prop()
     id:string;
+
     @Prop()
     name:string;
+
     @Prop()
     description:string;
+
     @Prop()
-    question_kit:Question[];
+    questions: Question[];
+
 }
 export const QuestionKitSchema = SchemaFactory.createForClass(Question_Kit);

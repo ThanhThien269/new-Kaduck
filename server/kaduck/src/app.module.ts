@@ -7,7 +7,6 @@ import { QuestionModule } from './question/question.module';
 import { QuestionKitModule } from './question_kit/question_kit.module';
 import { AuthModule } from './auth/auth.module';
 
-
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb+srv://thienmlt8601:thien2609@kaduck.t22cfnm.mongodb.net/kaduck'),
