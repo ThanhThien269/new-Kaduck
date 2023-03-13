@@ -1,10 +1,10 @@
-import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
+import { MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 
 @WebSocketGateway({ cors: true})
 export class PlayerGateway {
   @WebSocketServer() server: any;
-
+  lobby:''
   handleConnection(client:any,...args:any[]){
     console.log(`Client connected: ${client.id}`);
   }
@@ -25,5 +25,17 @@ export class PlayerGateway {
     client.join(payload.id);
     client.broadcast.to(payload.id).emit('receive-joiner', payload.name);
     return "Joined"
+  }
+  @SubscribeMessage('startGame')
+  handleStartGame(@MessageBody() body: any) {
+    this.server.to(this.lobby).emit('nextQuestion', body);
+  }
+  @SubscribeMessage('timesUp')
+  handleTimeOut(@MessageBody() body: any) {
+    this.server.to(this.lobby).emit('flipping-card', body);
+  }
+  @SubscribeMessage('Podium')
+  handleShowRanking(@MessageBody() body: any) {
+    this.server.to(this.lobby).emit('ranked', body);
   }
 }
