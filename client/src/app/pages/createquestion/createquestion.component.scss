@@ -228,10 +228,23 @@
   display: flex;
 }
 
+.question-box-name{
+  display: flex;
+  justify-content: center;
+}
+
+#question-name:hover{
+  background-color: rgb(170, 167, 167);
+}
+
+#question-name:focus{
+  background-color: gray;
+}
 
 #question-name{
-  margin: 0 auto;
+  margin-top: 5px;
   border: 1px solid black;
   border-radius: 5px;
-  width: 50%;
+  width: 80%;
+  word-break: keep-all;
 }
