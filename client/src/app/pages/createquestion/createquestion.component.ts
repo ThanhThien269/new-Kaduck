@@ -92,8 +92,6 @@ export class CreatequestionComponent {
     })
   }
 
-
-
   points: Points[] = [
     {value: 'standard', viewValue: 'Standard'},
     {value: 'double', viewValue: 'Double'},
