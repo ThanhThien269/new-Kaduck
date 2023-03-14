@@ -5,9 +5,10 @@ import { question_kit } from '../models/question_kit.model';
 
 export const initialState: QuestionKitState = {
   question_kits: [],
-  question_kit: {} as question_kit,
   loading: false,
   error: '',
+  pickedKit: null,
+  isSuccess: false,
 };
 
 export const question_kitReducer = createReducer(
@@ -19,29 +20,26 @@ export const question_kitReducer = createReducer(
       error: '',
     };
   }),
-  on(
-    questionKitActions.getQuestionKitsSuccess,
-    (state, { question_kits, question_kit }) => {
-      console.log(question_kits);
-      return {
-        question_kits: question_kits,
-        question_kit: question_kit,
-        loading: false,
-        error: '',
-      };
-    }
-  ),
+  on(questionKitActions.getQuestionKitsSuccess, (state, { question_kits }) => {
+    return {
+      ...state,
+      question_kits: question_kits,
+      loading: false,
+      isSuccess: true,
+      error: '',
+    };
+  }),
   on(questionKitActions.getQuestionKitsFailure, (state, { error }) => {
     return {
-      question_kits: [],
-      question_kit: {} as question_kit,
+      ...state,
+      isSuccess: false,
       loading: false,
       error: error,
     };
   }),
 
   //getQuestionKit
-  on(questionKitActions.getQuestionKit, (state, { id }) => {
+  on(questionKitActions.getQuestionKit, (state) => {
     return {
       ...state,
       loading: true,
@@ -51,8 +49,8 @@ export const question_kitReducer = createReducer(
 
   on(questionKitActions.getQuestionKitSuccess, (state, { question_kit }) => {
     return {
-      question_kits: [...state.question_kits],
-      question_kit: question_kit,
+      ...state,
+      pickedKit: question_kit,
       loading: false,
       error: '',
     };
@@ -60,8 +58,8 @@ export const question_kitReducer = createReducer(
 
   on(questionKitActions.getQuestionKitFailure, (state, { error }) => {
     return {
-      question_kits: [...state.question_kits],
-      question_kit: {} as question_kit,
+      ...state,
+      isSuccess: false,
       loading: false,
       error: error,
     };
@@ -78,8 +76,8 @@ export const question_kitReducer = createReducer(
 
   on(questionKitActions.postQuestionKitSuccess, (state, { question_kit }) => {
     return {
+      ...state,
       question_kits: [...state.question_kits, question_kit],
-      question_kit: question_kit,
       loading: false,
       error: '',
     };
@@ -87,14 +85,13 @@ export const question_kitReducer = createReducer(
 
   on(questionKitActions.postQuestionKitFailure, (state, { error }) => {
     return {
-      question_kits: [...state.question_kits],
-      question_kit: {} as question_kit,
+      ...state,
       loading: false,
       error: error,
     };
   }),
   //updateQuestionKit
-  on(questionKitActions.updateQuestionKit, (state, { question_kit }) => {
+  on(questionKitActions.updateQuestionKit, (state) => {
     return {
       ...state,
       loading: true,
@@ -102,62 +99,22 @@ export const question_kitReducer = createReducer(
     };
   }),
   on(questionKitActions.updateQuestionKitSuccess, (state, { question_kit }) => {
-    let question_kits = state.question_kits;
-    let tempQuestionKits: question_kit[] = [];
-
-    question_kits.forEach((quest) => {
-      if (quest.id === question_kit.id) {
-        tempQuestionKits.push(question_kit);
-        return;
-      }
-      tempQuestionKits.push(quest);
-    });
-
     return {
-      question_kits: tempQuestionKits,
-      question_kit: question_kit,
+      ...state,
+      question_kits: state.question_kits.map((quest) => {
+        if (quest.id === question_kit.id) {
+          return question_kit;
+        }
+        return quest;
+      }),
+      isSuccess: true,
       loading: false,
       error: '',
     };
   }),
   on(questionKitActions.updateQuestionKitFailure, (state, { error }) => {
     return {
-      question_kits: [...state.question_kits],
-      question_kit: {} as question_kit,
-      loading: false,
-      error: error,
-    };
-  }),
-  //deleteQuestionKit
-  on(questionKitActions.deleteQuestionKit, (state, { question_kit }) => {
-    return {
       ...state,
-      loading: true,
-      error: '',
-    };
-  }),
-  on(questionKitActions.deleteQuestionKitSuccess, (state, { question_kit }) => {
-    let question_kits = state.question_kits;
-    let tempQuestionKits: question_kit[] = [];
-
-    question_kits.forEach((quest) => {
-      if (quest.id === question_kit.id) {
-        return;
-      }
-      tempQuestionKits.push(quest);
-    });
-
-    return {
-      question_kits: tempQuestionKits,
-      question_kit: {} as question_kit,
-      loading: false,
-      error: '',
-    };
-  }),
-  on(questionKitActions.deleteQuestionKitFailure, (state, { error }) => {
-    return {
-      question_kits: [...state.question_kits],
-      question_kit: {} as question_kit,
       loading: false,
       error: error,
     };

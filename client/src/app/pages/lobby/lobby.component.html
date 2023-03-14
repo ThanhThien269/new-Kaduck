@@ -1,4 +1,9 @@
-<!-- <div class="container" *ngIf="!isStarting">
+<div class="container" *ngIf="!isStarting">
+  <audio autoplay preload="none" loop>
+    <source
+      src="../../../assets/Classical_Music_Mazurka_Chopin_Classical_Pia.mp3"
+    />
+  </audio>
   <div class="top">
     <img @rotate id="imagelb" src="../../../assets/kaduck-logo (1).png" />
     <div class="text">
@@ -50,30 +55,21 @@
       </div>
     </div>
   </div>
-</div> -->
-<div id="contents">
+</div>
+<div id="contents" *ngIf="isStarting">
   <div id="middle">
     <div id="middle_higher">
       <div id="middle_higher_left">
-        <div class="numofanswers" style="font-size: 25px; color: #f2f2f2"></div>
+        <div class="numofanswers"></div>
       </div>
-      <div
-        id="middle_higher_container"
-        *ngFor="let item of questionKit$ | async"
-      >
-        <div
-          id="typequestion"
-          style="display: flex; justify-content: center; align-items: center"
-          *ngFor="let question of item.questions; let i = index"
-        >
-          <p style="text-align: center">
-            {{ question.questions }}
-          </p>
+      <div id="middle_higher_container">
+        <div id="typequestion">
+          <p style="text-align: center"></p>
         </div>
         <div id="addimg"></div>
       </div>
       <div id="middle_higher_right">
-        <div id="timer" style="font-size: 25px; color: #f2f2f2"></div>
+        <div id="timer"></div>
       </div>
     </div>
     <div id="middle_lower">

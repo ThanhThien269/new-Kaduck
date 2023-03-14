@@ -1,6 +1,7 @@
+import { Question, QuestionDocument } from 'src/schemas/question.schema';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import {
   Question_Kit,
   Question_KitDocument,
@@ -12,25 +13,28 @@ export class QuestionKitService {
   constructor(
     @InjectModel(Question_Kit.name)
     private questionKitModel: Model<Question_KitDocument>,
-    private questionService: QuestionService,
+    @InjectModel(Question.name) private questionModel: Model<QuestionDocument>,
   ) {}
 
-  async getQuestionKits(): Promise<Question_Kit[]> {
+  async getAllKits(): Promise<Question_Kit[]> {
     try {
-      let questionKits = await this.questionKitModel.find().exec();
+      let questionKits = await this.questionKitModel
+        .find()
+        .populate('questions')
+        .exec();
       return questionKits;
     } catch (error) {
       return null;
     }
   }
 
-  async getQuestionKit(id: string) {
+  async getQuestionKit(id: string): Promise<Question_Kit | null> {
     try {
       let questionKit = await this.questionKitModel
-        .find({ id: id })
+        .findOne({ id: id })
         .populate('questions')
         .exec();
-      return questionKit;
+      return questionKit as Question_Kit;
     } catch (error) {
       return null;
     }
@@ -38,53 +42,52 @@ export class QuestionKitService {
 
   async createQuestionKit(question_kit: Question_Kit) {
     try {
-      const createdQuestionKit = new this.questionKitModel(question_kit);
-      console.log(createdQuestionKit);
+      let kit = question_kit.questions;
+      question_kit.questions = [];
+      question_kit.id = Date.now().toString();
+      let createdQuestionKit = await this.questionKitModel.create(question_kit);
 
-      question_kit.questions.forEach((question) => {
-        console.log(question);
-        this.questionService.createQuestion(question);
+      await kit.forEach(async (question: any) => {
+        question.id = Date.now().toString();
+        let newQues = await this.questionModel.create(question);
+
+        await this.questionKitModel.findOneAndUpdate(
+          { id: createdQuestionKit.id },
+          {
+            $push: {
+              questions: newQues._id,
+            },
+          },
+        );
       });
-
-      return await createdQuestionKit.save();
+      return createdQuestionKit;
     } catch (error) {
       console.log(error);
     }
   }
 
-  async updateQuestionKit(question_kit: Question_Kit) {
+  async update(id: string, kit: Question_Kit) {
     try {
-      let tempQuestionKit = await this.questionKitModel
-        .findOne({ id: question_kit.id })
-        .exec();
-
-      tempQuestionKit['name'] = question_kit.name;
-      tempQuestionKit['description'] = question_kit.description;
-      tempQuestionKit['questions'] = question_kit.questions;
-
-      question_kit.questions.forEach((question) => {
-        this.questionService.updateQuestion(question);
-      });
-
-      return tempQuestionKit.save();
+      await this.questionKitModel.findOneAndUpdate({ id: id }, kit);
+      return kit;
     } catch (error) {
-      return null;
+      console.log(error);
     }
   }
 
-  async deleteQuestionKit(question_kit: Question_Kit) {
-    try {
-      let questionKit = await this.questionKitModel
-        .findOneAndDelete({ id: question_kit.id })
-        .exec();
+  //   async deleteQuestionKit(question_kit: Question_Kit) {
+  //     try {
+  //       let questionKit = await this.questionKitModel
+  //         .findOneAndDelete({ id: question_kit.id })
+  //         .exec();
 
-      question_kit.questions.forEach((question) => {
-        this.questionService.deleteQuestion(question);
-      });
+  //       question_kit.questions.forEach((question) => {
+  //         this.questionService.deleteQuestion(question);
+  //       });
 
-      return questionKit;
-    } catch (error) {
-      return null;
-    }
-  }
+  //       return questionKit;
+  //     } catch (error) {
+  //       return null;
+  //     }
+  //   }
 }

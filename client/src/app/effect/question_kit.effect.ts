@@ -19,7 +19,6 @@ export class QuestionKitEffects {
           map((question_kits) => {
             return QuestionKitActions.getQuestionKitsSuccess({
               question_kits: question_kits,
-              question_kit: question_kits[0],
             });
           }),
           catchError((error) =>
@@ -78,24 +77,6 @@ export class QuestionKitEffects {
           }),
           catchError((error) =>
             of(QuestionKitActions.updateQuestionKitFailure({ error: error }))
-          )
-        )
-      )
-    )
-  );
-
-  deleteQuestionKit$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(QuestionKitActions.deleteQuestionKit),
-      switchMap((action) =>
-        this.questionKitService.deleteQuestionKit(action.question_kit).pipe(
-          map((question_kit) => {
-            return QuestionKitActions.deleteQuestionKitSuccess({
-              question_kit: question_kit,
-            });
-          }),
-          catchError((error) =>
-            of(QuestionKitActions.deleteQuestionKitFailure({ error: error }))
           )
         )
       )

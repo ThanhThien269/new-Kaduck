@@ -6,7 +6,7 @@ export const getQuestionKits = createAction('[QuestionKit] getQuestionKits');
 
 export const getQuestionKitsSuccess = createAction(
   '[QuestionKit] getQuestionKitsSuccess',
-  props<{ question_kits: question_kit[]; question_kit: question_kit }>()
+  props<{ question_kits: question_kit[] }>()
 );
 
 export const getQuestionKitsFailure = createAction(
@@ -53,19 +53,5 @@ export const updateQuestionKitSuccess = createAction(
 );
 export const updateQuestionKitFailure = createAction(
   '[QuestionKit] updateQuestionKitFailure',
-  props<{ error: string }>()
-);
-
-// Delete QuestionKit
-export const deleteQuestionKit = createAction(
-  '[QuestionKit] deleteQuestionKit',
-  props<{ question_kit: question_kit }>()
-);
-export const deleteQuestionKitSuccess = createAction(
-  '[QuestionKit] deleteQuestionKitSuccess',
-  props<{ question_kit: question_kit }>()
-);
-export const deleteQuestionKitFailure = createAction(
-  '[Question] deleteQuestionFailure',
   props<{ error: string }>()
 );

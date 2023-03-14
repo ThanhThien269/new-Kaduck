@@ -5,28 +5,29 @@ import { Store } from '@ngrx/store';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionKitState } from 'src/app/state/question_kit.state';
-import * as QuestionKitActions from 'src/app/action/question_kit.action'
+import * as QuestionKitActions from 'src/app/action/question_kit.action';
 
 @Component({
   selector: 'app-library',
   templateUrl: './library.component.html',
-  styleUrls: ['./library.component.scss']
+  styleUrls: ['./library.component.scss'],
 })
 export class LibraryComponent {
-  constructor (private router: Router, private store: Store<{question_kit: QuestionKitState}>) {}
-  questionKits$ = new Observable<question_kit[]>;
-
+  constructor(
+    private router: Router,
+    private store: Store<{ question_kit: QuestionKitState }>
+  ) {}
+  questionKits$ = new Observable<question_kit[]>();
 
   ngOnInit() {
-    this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
+    this.questionKits$ = this.store
+      .select('question_kit')
+      .pipe(map((state) => state.question_kits));
     this.store.dispatch(QuestionKitActions.getQuestionKits());
     this.questionKits$.subscribe();
   }
 
   lobby(id: string) {
-    this.router.navigate(['/lobby', {id}]);
-  }
-  deleteQuestionKit(question_kit: question_kit) {
-    this.store.dispatch(QuestionKitActions.deleteQuestionKit({question_kit}));
+    this.router.navigate(['/lobby', { id }]);
   }
 }

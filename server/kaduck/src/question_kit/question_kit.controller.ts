@@ -15,8 +15,8 @@ import { QuestionKitService } from './question_kit.service';
 export class QuestionKitController {
   constructor(private readonly questionKitService: QuestionKitService) {}
   @Get('all')
-  async getQuestionKits() {
-    return await this.questionKitService.getQuestionKits();
+  async getAll() {
+    return await this.questionKitService.getAllKits();
   }
 
   @Get('')
@@ -30,12 +30,10 @@ export class QuestionKitController {
   }
 
   @Put('update')
-  async updateQuestionKit(@Body() question_kit: Question_Kit) {
-    return await this.questionKitService.updateQuestionKit(question_kit);
-  }
-
-  @Delete('delete')
-  async deleteQuestionKit(@Body() question_kit: Question_Kit) {
-    return await this.questionKitService.deleteQuestionKit(question_kit);
+  async updateQuestionKit(
+    @Query('id') id: string,
+    @Body() question_kit: Question_Kit,
+  ) {
+    return await this.questionKitService.update(id, question_kit);
   }
 }
