@@ -70,8 +70,10 @@ export class CreatequestionComponent {
   switchQuestion(question: question) {
     this.currentQuestion = question;
   }
-
-
+  deleteQuestion(){
+    this.question_kit_model.questions = this.question_kit_model.questions.filter( question => question.id !== this.currentQuestion.id);
+    this.currentQuestion = this.question_kit_model.questions[0];
+  }
   openCreateQuestionDialog(){
     let dialogRef = this.dialog.open(QuestionKitStoredComponent, {
       width: '500px',

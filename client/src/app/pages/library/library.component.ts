@@ -27,4 +27,7 @@ export class LibraryComponent {
   lobby() {
     this.router.navigate(['/lobby']);
   }
+  deleteQuestionKit(question_kit: question_kit) {
+    this.store.dispatch(QuestionKitActions.deleteQuestionKit({question_kit}));
+  }
 }
