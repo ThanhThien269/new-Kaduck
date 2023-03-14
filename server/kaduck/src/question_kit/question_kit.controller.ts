@@ -29,4 +29,9 @@ export class QuestionKitController {
     async deleteQuestionKit(@Body() question_kit: Question_Kit){
         return await this.questionKitService.deleteQuestionKit(question_kit);
     }
+    
+    @Delete("deleleAll")
+    async deleteAllQuestionKit(@Body() question_kit: Question_Kit){
+        return await this.questionKitService.deleteAllQuestionKit(question_kit);
+    }
 }

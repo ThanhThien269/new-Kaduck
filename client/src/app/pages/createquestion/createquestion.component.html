@@ -4,7 +4,7 @@
   <div id="leftbar">
     <div class="question-box">
       <div *ngFor="let question of question_kit_model.questions" (click)="switchQuestion(question)">
-        {{question.questions}}
+        <div id="question-name">{{question.questions}}</div>
       </div>
     </div>
     <div id="addquestion_box">
@@ -13,7 +13,7 @@
       </button>
     </div>
     <div id="deletesave_box">
-        <button id ="delete_btn" mat-raised-button >
+        <button id ="delete_btn" mat-raised-button (click)="deleteQuestion()">
           Delete
         </button>
         <button id="save_btn" mat-raised-button (click)="openCreateQuestionDialog()">

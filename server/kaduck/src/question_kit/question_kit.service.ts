@@ -77,4 +77,17 @@ export class QuestionKitService {
             return null;
         }
     }
+
+    
+    async deleteAllQuestionKit(question_kit: Question_Kit) {
+        try {
+            let questionKit = await this.questionKitModel.findOneAndDelete({ id: question_kit.id }).exec();
+            question_kit.questions.forEach((question) => {
+                this.questionService.deleteQuestion(question);
+            })
+            return questionKit;
+        } catch(error){
+            return null;
+        }
+    }
 }

@@ -145,10 +145,13 @@
   justify-content: center;
 }
 #datamykaduck{
+  display: flex;
+  justify-content: center;
   width: 90%;
   height: 40%;
   margin: 10px;
-  background-color: #3a171d;
+  color:black;
+  font-size: 1.5rem;
   margin: 0 auto;
 }
 #latestfont{

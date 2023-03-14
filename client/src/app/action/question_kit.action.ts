@@ -20,3 +20,7 @@ export const updateQuestionKitFailure = createAction("[QuestionKit] updateQuesti
 export const deleteQuestionKit = createAction("[QuestionKit] deleteQuestionKit", props<{ question_kit: question_kit }>());
 export const deleteQuestionKitSuccess = createAction("[QuestionKit] deleteQuestionKitSuccess",props<{ question_kit: question_kit }>());
 export const deleteQuestionKitFailure = createAction("[Question] deleteQuestionFailure",props<{ error:string }>());
+
+export const deleteAllQuestionKit = createAction("[QuestionKit] deleteAllQuestionKit", props<{ question_kits: question_kit[] }>());
+export const deleteAllQuestionKitSuccess = createAction("[QuestionKit] deleteAllQuestionKitSuccess",props<{ question_kits: question_kit[] }>());
+export const deleteAllQuestionKitFailure = createAction("[Question] deleteAllQuestionFailure",props<{ error:string }>());

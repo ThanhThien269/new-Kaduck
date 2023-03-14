@@ -20,7 +20,7 @@
 </div>
 <div id="rec_contain" *ngFor="let question of (questionKits$ | async)">
   <div id="rec_recent">
-    <input id="checkbox" type="checkbox">
+    <!-- <input id="checkbox" type="checkbox"> -->
     <img src="../../../assets/kaduck-logo.png" alt="" style="width: 100px; height: 100px; float:left;padding-top:15px">
     <div id="title">{{question.name}}</div>
     <span class="spacer"></span>
@@ -30,8 +30,8 @@
           <button mat-icon-button>
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button>
-            <mat-icon>share</mat-icon>
+          <button mat-icon-button (click)="deleteQuestionKit(question)">
+            <mat-icon>delete_forever</mat-icon>
           </button>
         </div>
         <button id="start" (click)="lobby()">START</button>

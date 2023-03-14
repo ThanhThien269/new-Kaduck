@@ -142,4 +142,37 @@ export const question_kitReducer = createReducer(
       error: error
     }
   }),
+  //deleteAllQuestionKit
+  on(questionKitActions.deleteAllQuestionKit, (state)=>{
+    return {
+      ...state,
+      loading:true,
+      error:'',
+      question_kits: [],
+    }
+  }),
+  // on(questionKitActions.deleteAllQuestionKitSuccess, (state, { question_kits }) => {
+  //   let question_kits = state.question_kits;
+  //   let tempQuestionKits: question_kit[] = [];
+
+  //   question_kits.forEach((quest)=>{
+  //     if(quest.id === question_kit.id){
+  //       return;
+  //     }
+  //     tempQuestionKits.push(quest);
+  //   })
+
+  //   return {
+  //     question_kits:tempQuestionKits,
+  //     loading:false,
+  //     error:''
+  //   }
+  // }),
+  // on(questionKitActions.deleteAllQuestionKitFailure, (state, {error}) => {
+  //   return {
+  //     question_kits:[...state.question_kits],
+  //     loading:false,
+  //     error: error
+  //   }
+  // }),
 )
