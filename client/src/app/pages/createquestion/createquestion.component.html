@@ -3,8 +3,8 @@
 
   <div id="leftbar">
     <div class="question-box">
-      <div *ngFor="let question of question_kit_model.questions" (click)="switchQuestion(question)">
-        <div id="question-name">{{question.questions}}</div>
+      <div class="question-box-name" *ngFor="let question of question_kit_model.questions" (click)="switchQuestion(question)">
+        <button id="question-name">{{question.questions}}</button>
       </div>
     </div>
     <div id="addquestion_box">
