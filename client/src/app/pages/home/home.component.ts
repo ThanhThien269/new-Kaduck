@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service'
 import { User } from '@angular/fire/auth'
 import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { map, Observable, take } from 'rxjs';
+import { QuestionKitState } from 'src/app/state/question_kit.state';
+import * as QuestionKitActions from 'src/app/action/question_kit.action'
+import { question_kit } from './../../models/question_kit.model';
 
 @Component({
   selector: 'app-home',
@@ -21,15 +26,23 @@ export class HomeComponent implements OnInit {
   constructor(
     private router : Router,
     private loginService: LoginService,
-
+    private store: Store<{question_kit: QuestionKitState}>
   )
   {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
 
   }
-  ngOnInit(): void {
+  questionKit$ = new Observable<question_kit>;
 
+  ngOnInit() {
+    // this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
+    // this.store.dispatch(QuestionKitActions.getQuestionKits());
+    // this.questionKits$.subscribe(ques => console.log(ques));
+
+    this.store.dispatch(QuestionKitActions.getQuestionKits());
+    this.questionKit$ = this.store.select('question_kit').pipe(map(state => state.question_kits[0]),
+    take(1));
   }
 
   callingFunction() {

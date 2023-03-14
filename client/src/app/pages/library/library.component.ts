@@ -1,3 +1,4 @@
+// import { question_kit } from './../../models/question_kit.model';
 import { map, Observable } from 'rxjs';
 import { question_kit } from './../../models/question_kit.model';
 import { Store } from '@ngrx/store';
@@ -15,6 +16,7 @@ export class LibraryComponent {
   constructor (private router: Router, private store: Store<{question_kit: QuestionKitState}>) {}
   questionKits$ = new Observable<question_kit[]>;
 
+
   ngOnInit() {
     this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
     this.store.dispatch(QuestionKitActions.getQuestionKits());
@@ -24,5 +26,7 @@ export class LibraryComponent {
   lobby(id: string) {
     this.router.navigate(['/lobby', {id}]);
   }
-
+  deleteQuestionKit(question_kit: question_kit) {
+    this.store.dispatch(QuestionKitActions.deleteQuestionKit({question_kit}));
+  }
 }
