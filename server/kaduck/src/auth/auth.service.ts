@@ -13,8 +13,11 @@ export class AuthService {
         let decodedData = await this.auth.verifyIdToken(token);
     return decodedData;
     }
+   ProFile ={
+    "OWy3c3DjUvUpBhePELxw07IapLA3" : "Minh profile",
+   }
    
-    getUserProfile(){
-        return "User profile"
+    getUserProfile(uid: string){
+        return this.ProFile[uid];
     }
 }
