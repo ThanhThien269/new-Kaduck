@@ -13,17 +13,16 @@ import * as QuestionKitActions from 'src/app/action/question_kit.action'
 })
 export class LibraryComponent {
   constructor (private router: Router, private store: Store<{question_kit: QuestionKitState}>) {}
-
   questionKits$ = new Observable<question_kit[]>;
 
   ngOnInit() {
     this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
     this.store.dispatch(QuestionKitActions.getQuestionKits());
-    this.questionKits$.subscribe(ques => console.log(ques));
+    this.questionKits$.subscribe();
   }
 
-  lobby() {
-    this.router.navigate(['/lobby']);
+  lobby(id: string) {
+    this.router.navigate(['/lobby', {id}]);
   }
 
 }

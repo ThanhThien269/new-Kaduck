@@ -60,8 +60,11 @@ const routes: Routes = [
         (m) => m.GuestplayingModule
       ),
   },
-  { path: 'join/:id', loadChildren: () => import('./pages/join/join.module').then(m => m.JoinModule) },
-
+  {
+    path: 'join/:id',
+    loadChildren: () =>
+      import('./pages/join/join.module').then((m) => m.JoinModule),
+  },
 ];
 
 @NgModule({

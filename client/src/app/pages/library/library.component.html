@@ -22,6 +22,7 @@
   <div id="rec_recent">
     <input id="checkbox" type="checkbox">
     <img src="../../../assets/kaduck-logo.png" alt="" style="width: 100px; height: 100px; float:left;padding-top:15px">
+
     <div id="title">{{question.name}}</div>
     <span class="spacer"></span>
     <div>
@@ -34,7 +35,7 @@
             <mat-icon>share</mat-icon>
           </button>
         </div>
-        <button id="start" (click)="lobby()">START</button>
+        <button id="start" (click)="lobby(question.id)">START</button>
       </div>
     </div>
   </div>

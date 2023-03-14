@@ -13,13 +13,13 @@ import { LoginService } from 'src/app/services/login.service';
 export class JoinComponent {
   id: string = '';
   user: User | null = null;
-
+  time = 10;
   constructor(
     private route: ActivatedRoute,
     private _socket: Socket,
-    private loginService: LoginService
+    private loginService: LoginService,
   ) {}
-
+  isStarting: boolean = false;
   ngOnInit() {
     this.user = this.loginService.user;
 
@@ -35,5 +35,14 @@ export class JoinComponent {
         type: "join"
       });
     })
+  }
+  timeUp(){
+    const timer = setInterval(() =>{
+        this.time -= 1;
+        if(this.time == 0){
+          clearInterval(timer);
+          this._socket.emit('timesUp');
+        }
+    }, 1000);
   }
 }
