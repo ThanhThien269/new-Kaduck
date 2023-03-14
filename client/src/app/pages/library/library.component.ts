@@ -1,3 +1,4 @@
+import { updateQuestionKit } from './../../action/question_kit.action';
 import { map, Observable } from 'rxjs';
 import { question_kit } from './../../models/question_kit.model';
 import { Store } from '@ngrx/store';
@@ -27,5 +28,8 @@ export class LibraryComponent {
   }
   deleteQuestionKit(question_kit: question_kit) {
     this.store.dispatch(QuestionKitActions.deleteQuestionKit({question_kit}));
+  }
+  updateQuestionKit(question_kit: question_kit) {
+    this.store.dispatch(QuestionKitActions.updateQuestionKit({question_kit}));
   }
 }
