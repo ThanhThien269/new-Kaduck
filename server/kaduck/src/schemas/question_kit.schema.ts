@@ -16,7 +16,8 @@ export class Question_Kit{
 
     @Prop()
     description:string;
+
     @Prop()
-    questions : Question[];
+    questions:Question[];
 }
 export const QuestionKitSchema = SchemaFactory.createForClass(Question_Kit);

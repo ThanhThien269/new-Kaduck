@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { QuestionKitStoredComponent } from './../../components/question-kit-stored/question-kit-stored.component';
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -29,6 +30,9 @@ interface Answer{
   styleUrls: ['./createquestion.component.scss']
 })
 export class CreatequestionComponent {
+
+
+
   constructor(
     private router : Router,
     private dialog:MatDialog,
@@ -89,8 +93,6 @@ export class CreatequestionComponent {
       this.store.dispatch(QuestionKitActions.postQuestionKit({ question_kit: this.question_kit_model }))
     })
   }
-
-
 
   points: Points[] = [
     {value: 'standard', viewValue: 'Standard'},

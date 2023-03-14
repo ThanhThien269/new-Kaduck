@@ -83,6 +83,7 @@
   float: right;
 
 }
+
 #start{
   margin-top: 30px;
   margin-right: 15px;
@@ -93,6 +94,7 @@
   background-color: #499cfc;
   border: none;
   box-shadow: 1px 1px rgb(203, 199, 199);
+
 }
 #start:hover{
   background-color: #006be6;
@@ -106,4 +108,7 @@
   width: 20%;
 
 }
-
+button{
+  height: 100%;
+  width: 100%;
+}
