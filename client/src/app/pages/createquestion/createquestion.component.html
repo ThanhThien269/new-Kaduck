@@ -1,23 +1,33 @@
 <app-tool-bar></app-tool-bar>
 <div id="contents">
+
   <div id="leftbar">
+    <div class="question-box">
+      <div *ngFor="let question of question_kit_model.questions" (click)="switchQuestion(question)">
+        {{question.questions}}
+      </div>
+    </div>
     <div id="addquestion_box">
-      <button id="addquestion_btn" mat-raised-button   >
-        Add Question</button>
+      <button id="addquestion_btn" mat-raised-button (click)="createQuestionModel()">
+        Add Question
+      </button>
     </div>
     <div id="deletesave_box">
         <button id ="delete_btn" mat-raised-button >
-          Delete</button>
-        <button id="save_btn" mat-raised-button (click)="openDialog()">
-          Save</button>
+          Delete
+        </button>
+        <button id="save_btn" mat-raised-button (click)="openCreateQuestionDialog()">
+          Save
+        </button>
     </div>
   </div>
+
   <div id="middle">
     <div id="middle_higher">
       <div id="middle_higher_container">
         <div id="typequestion" >
           <mat-form-field id="question_input" style="width: 100%; ">
-            <input id="input" style="display: flex; text-align: center;" matInput placeholder="Type your question here">
+            <input id="input" style="display: flex; text-align: center;" matInput placeholder="Type your question here" [(ngModel)]="currentQuestion.questions">
           </mat-form-field>
         </div>
         <div id="addimg">
@@ -25,14 +35,13 @@
       </div>
     </div>
     <div id="middle_lower">
-
       <div id="middle_lower_left">
-          <input class="edit_btn" id ="A_box" type="text" placeholder="A">
-          <input class="edit_btn" id ="C_box" type="text" placeholder="C">
-        </div>
+        <input class="edit_btn" id ="A_box" type="text" placeholder="A" [(ngModel)]="currentQuestion.answer_A">
+        <input class="edit_btn" id ="C_box" type="text" placeholder="C" [(ngModel)]="currentQuestion.answer_C">
+      </div>
       <div id="middle_lower_right">
-        <input class="edit_btn" id ="B_box" type="text" placeholder="B">
-        <input class="edit_btn" id ="D_box" type="text" placeholder="D">
+        <input class="edit_btn" id ="B_box" type="text" placeholder="B" [(ngModel)]="currentQuestion.answer_B">
+        <input class="edit_btn" id ="D_box" type="text" placeholder="D" [(ngModel)]="currentQuestion.answer_D">
       </div>
     </div>
   </div>
@@ -40,14 +49,14 @@
     <div id="timelimit_box">
       <div id="timelimit_txt">
         <p style="font-size:x-large">Time limit </p>
-      <mat-icon fontSet="material-icons-outlined"  >
-        timer_outline
-      </mat-icon>
+        <mat-icon fontSet="material-icons-outlined"  >
+          timer_outline
+        </mat-icon>
       </div>
       <div id="timelimit_btn">
         <mat-form-field appearance="fill">
           <mat-label>Chose</mat-label>
-          <mat-select>
+          <mat-select [(value)]="currentQuestion.timer">
             <mat-option *ngFor="let t of time" [value]="t.value">
               {{t.viewValue}}
             </mat-option>
@@ -58,13 +67,13 @@
     </div>
     <div id="score_box">
       <div id="score_txt">
-        <p style="font-size:x-large">Points </p>
+        <p style="font-size:x-large">Points</p>
         <mat-icon  >emoji_events</mat-icon>
       </div>
       <div id="score_btn">
         <mat-form-field appearance="fill">
           <mat-label>Chose</mat-label>
-          <mat-select>
+          <mat-select [(value)]="currentQuestion.point_type">
             <mat-option *ngFor="let point of points" [value]="point.value">
               {{point.viewValue}}
             </mat-option>
@@ -78,7 +87,7 @@
         <div id="answer_btn">
           <mat-form-field appearance="fill">
             <mat-label>Chose</mat-label>
-            <mat-select>
+            <mat-select [(value)]="currentQuestion.true_answer">
               <mat-option *ngFor="let a of answers" [value]="a.value">
                 {{a.viewValue}}
               </mat-option>

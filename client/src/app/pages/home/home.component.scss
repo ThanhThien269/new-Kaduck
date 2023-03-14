@@ -100,7 +100,7 @@
 }
 #create{
   width: 100%;
-  font-size: x-large;
+  font-size: 150%;
   background-color: #499CFC;
   color: #f2f2f2;
   border-radius: 7px;
@@ -129,10 +129,15 @@
   justify-content: center;
 }
 #datadcv{
-  width: 90%;
+  width: 80%;
   height: 55%;
   margin: 10px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-size: 40px;
 }
 #mykaduckfont{
   margin: 10px;
@@ -164,7 +169,7 @@
   margin: 0 auto;
 }
 #seeall{
-  margin: 5px;
+  margin-top: 5%;
   justify-content: center;
   display: flex;
 }

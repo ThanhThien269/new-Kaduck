@@ -5,9 +5,9 @@ export interface question{
     points : number;
     point_type : string;
     id : string;
-    answers_A : string;
-    answers_B : string;
-    answers_C : string;
-    answers_D : string;
+    answer_A : string;
+    answer_B : string;
+    answer_C : string;
+    answer_D : string;
     true_answer : string;
 }

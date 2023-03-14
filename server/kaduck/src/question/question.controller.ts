@@ -1,30 +1,32 @@
-import { Body, Controller, Delete, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Put, Post, Query } from '@nestjs/common';
 import { Question } from 'src/schemas/question.schema';
 import { QuestionService } from './question.service';
 
 @Controller('question')
 export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}
-
-
   @Get('all')
-  getAll(){
-      return this.questionService.getAll();
+  async getAll(){
+    return await this.questionService.getQuestions();
   }
 
-  @Get(':id')
-  getDetail(@Param('id') id:string){
-      console.log(id);
-      return this.questionService.getDetail(id);
+  @Get('')
+  getQuestion(@Query('id') id:string){
+      return this.questionService.getQuestion(id);
   }
 
   @Post('create')
-  async getCreate(@Body() user:Question){        
-      return this.questionService.create(user);
+  async createQuestion(@Body() question:Question){        
+      return this.questionService.createQuestion(question);
+  }
+
+  @Put('update')
+  async updateQuestion(@Body() question:Question){        
+      return this.questionService.createQuestion(question);
   }
 
   @Delete('delete')
-  async deleteId(@Query('id') id:string){
-      return this.questionService.deleteById(id);
+  async deleteQuestion(@Body() question:Question){
+      return this.questionService.deleteQuestion(question);
   }
 }

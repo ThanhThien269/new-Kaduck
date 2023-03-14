@@ -2,6 +2,13 @@ import { QuestionKitStoredComponent } from './../../components/question-kit-stor
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { question } from 'src/app/models/question.model';
+import { question_kit } from 'src/app/models/question_kit.model';
+import { Store } from '@ngrx/store'
+
+import { QuestionKitState } from 'src/app/state/question_kit.state';
+import * as QuestionKitActions from 'src/app/action/question_kit.action'
+
 interface Points {
   value: string;
   viewValue: string;
@@ -22,19 +29,65 @@ interface Answer{
   styleUrls: ['./createquestion.component.scss']
 })
 export class CreatequestionComponent {
-  constructor(private router : Router, private dialog:MatDialog){}
+  constructor(
+    private router : Router,
+    private dialog:MatDialog,
+    private store: Store<{ question_kit: QuestionKitState }>
+    ){}
 
-  openDialog(){
-    const dialogConfig = new MatDialogConfig();
+  question_kit_model: question_kit = {
+    id: Date.now().toString(),
+    name: '',
+    description: '',
+    questions: [],
+  };
+  currentQuestion: question = this.createQuestionModel();;
 
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-      this.dialog.open(QuestionKitStoredComponent, dialogConfig);
-      dialogConfig.position = {
-        'top': '0',
-        left: '0'
-    };
+  createQuestionModel() {
+    let questionModel: question = {
+      questions : '',
+      timer : 0,
+      img : '',
+      points : 0,
+      point_type : '',
+      id: Date.now().toString(),
+      answer_A : '',
+      answer_B : '',
+      answer_C : '',
+      answer_D : '',
+      true_answer : ''
+    }
+
+    this.question_kit_model.questions.push(questionModel);
+    this.currentQuestion = questionModel;
+    return questionModel;
   }
+
+  switchQuestion(question: question) {
+    this.currentQuestion = question;
+  }
+
+  openCreateQuestionDialog(){
+    let dialogRef = this.dialog.open(QuestionKitStoredComponent, {
+      width: '500px',
+      data: {
+        title: this.question_kit_model.name,
+        description: this.question_kit_model.description
+      }
+    });
+
+    dialogRef.afterClosed().subscribe( (result: any) => {
+      console.log(result)
+      if(!result) return;
+
+      this.question_kit_model.name = result.title;
+      this.question_kit_model.description = result.description;
+
+      this.store.dispatch(QuestionKitActions.postQuestionKit({ question_kit: this.question_kit_model }))
+    })
+  }
+
+
 
   points: Points[] = [
     {value: 'standard', viewValue: 'Standard'},
@@ -50,10 +103,6 @@ export class CreatequestionComponent {
     {value: 'B', viewValue: ' B'},
     {value: 'C', viewValue: ' C'},
     {value: 'D', viewValue: ' D'},
-
   ]
-  // library(){
-  //   this.router.navigate(['/library']);
-  // }
 }
 

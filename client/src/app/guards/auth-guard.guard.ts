@@ -23,10 +23,10 @@ export class AuthGuardGuard implements CanActivate {
           if( users){
             resovle (true)
           }else {
-            // window.alert("LOGIN PLEASE!!")
+
             resovle(false);
           }
         })
-  })
+      })
 
     }}
