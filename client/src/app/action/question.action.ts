@@ -20,3 +20,7 @@ export const updateQuestionFailure = createAction("[Question] updateQuestionFail
 export const deleteQuestion = createAction("[Question] deleteQuestion", props<{question:question}>());
 export const deleteQuestionSuccess = createAction("[Question] deleteQuestionSuccess",props<{question:question}>());
 export const deleteQuestionFailure = createAction("[Question] deleteQuestionFailure",props<{error:string}>());
+
+export const deleteAllQuestion = createAction("[Question] deleteAllQuestion", props<{questions:question[]}>());
+export const deleteAllQuestionSuccess = createAction("[Question] deleteAllQuestionSuccess",props<{questions:question[]}>());
+export const deleteAllQuestionFailure = createAction("[Question] deleteAllQuestionFailure",props<{error:string}>());
