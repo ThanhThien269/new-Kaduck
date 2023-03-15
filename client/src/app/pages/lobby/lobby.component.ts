@@ -47,9 +47,7 @@ import * as QuestionKitActions from 'src/app/action/question_kit.action';
   ],
 })
 export class LobbyComponent {
-  user = this.lobbyService.user;
   id = this.lobbyService.id;
-  lists = this.lobbyService.lists;
   lock = false;
   time = 0;
   i = 0;
@@ -57,6 +55,7 @@ export class LobbyComponent {
   questionKit$ = new Observable<question_kit[]>();
   docId = '';
   questionData = new Array<question>();
+  players: any[] = [];
   constructor(
     private _socket: Socket,
     private lobbyService: LobbyService,
@@ -77,17 +76,27 @@ export class LobbyComponent {
       this.questionData = data[0].questions;
       console.log(this.questionData);
     });
+    this.lobbyService.getMessage(this.id).subscribe((msg: any) => {
+      console.log(msg);
+      this.players.push(msg);
+    });
   }
   locked() {
     this.lock = !this.lock;
   }
   start() {
+    this.lobbyService.sendMessage({
+      pin: this.id,
+      message: 'start',
+      question: this.questionData[this.i],
+    });
     let tempQuestionData = this.questionData;
-    this.time = tempQuestionData[0].timer;
+    this.time = tempQuestionData[this.i].timer;
     this.isStarting = true;
     let myInterval = setInterval(() => {
       if (this.time > 0) {
         this.time--;
+        this.lobbyService.sendMessage({ pin: this.id, time: this.time });
       } else {
         this.i++;
         if (this.i == tempQuestionData.length) {
@@ -96,6 +105,11 @@ export class LobbyComponent {
         } else {
           console.log(tempQuestionData);
           this.time = tempQuestionData[this.i].timer;
+          this.lobbyService.sendMessage({
+            pin: this.id,
+            time: this.time,
+            question: tempQuestionData[this.i],
+          });
         }
       }
     }, 1000);
