@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kaduck-56ac0": {
+      "hosting": {
+        "kaduck": [
+          "kaduck-56ac0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kaduck-56ac0"
+  }
+}
