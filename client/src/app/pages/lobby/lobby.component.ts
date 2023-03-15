@@ -51,10 +51,12 @@ export class LobbyComponent {
   id = this.lobbyService.id;
   lists = this.lobbyService.lists;
   lock = false;
+  time = 0;
+  i = 0;
   isStarting = false;
-  questionKit$ = this.store.select('question_kit', 'question_kits');
+  questionKit$ = new Observable<question_kit[]>();
   docId = '';
-  questionData = new Array<any>();
+  questionData = new Array<question>();
   constructor(
     private _socket: Socket,
     private lobbyService: LobbyService,
@@ -67,25 +69,36 @@ export class LobbyComponent {
     });
   }
   ngOnInit() {
+    this.questionKit$ = this.store
+      .select('question_kit')
+      .pipe(map((state) => state.question_kits));
     this.store.dispatch(QuestionKitActions.getQuestionKit({ id: this.docId }));
     this.questionKit$.subscribe((data) => {
-      console.log(data);
-      this.questionData = data;
+      this.questionData = data[0].questions;
       console.log(this.questionData);
     });
   }
-
-  // createPin(){
-  //   this.lobbyService.listenForChanged();
-  // }
-
   locked() {
     this.lock = !this.lock;
   }
   start() {
+    let tempQuestionData = this.questionData;
+    this.time = tempQuestionData[0].timer;
     this.isStarting = true;
-
-    // this._socket.emit("startGame")
+    let myInterval = setInterval(() => {
+      if (this.time > 0) {
+        this.time--;
+      } else {
+        this.i++;
+        if (this.i == tempQuestionData.length) {
+          clearInterval(myInterval);
+          return;
+        } else {
+          console.log(tempQuestionData);
+          this.time = tempQuestionData[this.i].timer;
+        }
+      }
+    }, 1000);
   }
 }
 

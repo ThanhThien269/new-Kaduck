@@ -15,7 +15,7 @@ export class AppComponent {
       if (user) {
         this.route.navigateByUrl('/home');
       } else {
-        this.route.navigateByUrl('/');
+        this.route.navigateByUrl('/login');
       }
     });
   }

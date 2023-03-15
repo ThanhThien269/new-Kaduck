@@ -45,7 +45,7 @@ export const postQuestionKitFailure = createAction(
 // Update QuestionKit
 export const updateQuestionKit = createAction(
   '[QuestionKit] updateQuestionKit',
-  props<{ question_kit: question_kit }>()
+  props<{ id: string; question_kit: question_kit }>()
 );
 export const updateQuestionKitSuccess = createAction(
   '[QuestionKit] updateQuestionKitSuccess',

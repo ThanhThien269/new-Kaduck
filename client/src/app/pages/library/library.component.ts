@@ -28,6 +28,7 @@ export class LibraryComponent {
   }
 
   lobby(id: string) {
-    this.router.navigate(['/lobby', { id }]);
+    console.log(id);
+    this.router.navigate(['/lobby/' + id]);
   }
 }

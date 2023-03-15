@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -13,8 +14,11 @@ import { LoginService } from 'src/app/services/login.service';
   providedIn: 'root',
 })
 export class AuthGuardGuard implements CanActivate {
-  router: any;
-  constructor(private LoginService: LoginService, private auth: Auth) {}
+  constructor(
+    private LoginService: LoginService,
+    private auth: Auth,
+    private router: Router
+  ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -28,6 +32,7 @@ export class AuthGuardGuard implements CanActivate {
         if (users) {
           resovle(true);
         } else {
+          // this.router.navigateByUrl('/login');
           resovle(false);
         }
       });

@@ -7,7 +7,6 @@ export const initialState: QuestionKitState = {
   question_kits: [],
   loading: false,
   error: '',
-  pickedKit: null,
   isSuccess: false,
 };
 
@@ -50,7 +49,7 @@ export const question_kitReducer = createReducer(
   on(questionKitActions.getQuestionKitSuccess, (state, { question_kit }) => {
     return {
       ...state,
-      pickedKit: question_kit,
+      question_kits: [question_kit],
       loading: false,
       error: '',
     };
@@ -66,7 +65,7 @@ export const question_kitReducer = createReducer(
   }),
 
   //postQuestionKit
-  on(questionKitActions.postQuestionKit, (state, { question_kit }) => {
+  on(questionKitActions.postQuestionKit, (state) => {
     return {
       ...state,
       loading: true,
@@ -101,11 +100,11 @@ export const question_kitReducer = createReducer(
   on(questionKitActions.updateQuestionKitSuccess, (state, { question_kit }) => {
     return {
       ...state,
-      question_kits: state.question_kits.map((quest) => {
-        if (quest.id === question_kit.id) {
+      question_kits: state.question_kits.map((x) => {
+        if (x.id === question_kit.id) {
           return question_kit;
         }
-        return quest;
+        return x;
       }),
       isSuccess: true,
       loading: false,

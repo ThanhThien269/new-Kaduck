@@ -1,3 +1,4 @@
+import { question_kit } from './../models/question_kit.model';
 import { QuestionKitService } from './../services/question-kit.service';
 import { Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
@@ -69,16 +70,18 @@ export class QuestionKitEffects {
     this.actions$.pipe(
       ofType(QuestionKitActions.updateQuestionKit),
       switchMap((action) =>
-        this.questionKitService.updateQuestionKit(action.question_kit).pipe(
-          map((question_kit) => {
-            return QuestionKitActions.updateQuestionKitSuccess({
-              question_kit: question_kit,
-            });
-          }),
-          catchError((error) =>
-            of(QuestionKitActions.updateQuestionKitFailure({ error: error }))
+        this.questionKitService
+          .updateQuestionKit(action.id, action.question_kit)
+          .pipe(
+            map((question_kit) => {
+              return QuestionKitActions.updateQuestionKitSuccess({
+                question_kit: question_kit,
+              });
+            }),
+            catchError((error) =>
+              of(QuestionKitActions.updateQuestionKitFailure({ error: error }))
+            )
           )
-        )
       )
     )
   );

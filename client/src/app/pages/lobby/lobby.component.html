@@ -60,26 +60,37 @@
   <div id="middle">
     <div id="middle_higher">
       <div id="middle_higher_left">
-        <div class="numofanswers"></div>
+        <div class="numofanswers">
+          Questions:{{ i + 1 }} /{{ questionData.length }}
+        </div>
       </div>
       <div id="middle_higher_container">
         <div id="typequestion">
-          <p style="text-align: center"></p>
+          <p style="text-align: center">{{ questionData[i].questions }}</p>
         </div>
         <div id="addimg"></div>
       </div>
       <div id="middle_higher_right">
-        <div id="timer"></div>
+        <!-- <div id="timer">{{ questionData[0].timer }}</div> -->
+        <div id="timer">{{ this.time }}</div>
       </div>
     </div>
     <div id="middle_lower">
       <div id="middle_lower_left">
-        <button id="A_box" mat-raised-button></button>
-        <button id="C_box" mat-raised-button></button>
+        <button id="A_box" mat-raised-button>
+          {{ questionData[i].answer_A }}
+        </button>
+        <button id="C_box" mat-raised-button>
+          {{ questionData[i].answer_C }}
+        </button>
       </div>
       <div id="middle_lower_right">
-        <button id="B_box" mat-raised-button></button>
-        <button id="D_box" mat-raised-button></button>
+        <button id="B_box" mat-raised-button>
+          {{ questionData[i].answer_B }}
+        </button>
+        <button id="D_box" mat-raised-button>
+          {{ questionData[i].answer_D }}
+        </button>
       </div>
     </div>
   </div>
