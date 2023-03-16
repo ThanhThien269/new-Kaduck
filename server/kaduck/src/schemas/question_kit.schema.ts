@@ -8,6 +8,8 @@ export type Question_KitDocument = HydratedDocument<Question_Kit>;
 @Schema()
 export class Question_Kit {
   @Prop()
+  Ownerid: string;
+  @Prop()
   id: string;
 
   @Prop()

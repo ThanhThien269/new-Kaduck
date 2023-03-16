@@ -14,7 +14,7 @@ export class QuestionKitService {
     @InjectModel(Question_Kit.name)
     private questionKitModel: Model<Question_KitDocument>,
     @InjectModel(Question.name) private questionModel: Model<QuestionDocument>,
-  ) {}
+  ) { }
 
   async getAllKits(): Promise<Question_Kit[]> {
     try {
@@ -47,10 +47,9 @@ export class QuestionKitService {
       question_kit.id = Date.now().toString();
       let createdQuestionKit = await this.questionKitModel.create(question_kit);
 
-      await kit.forEach(async (question: any) => {
+      kit.forEach(async (question: any) => {
         question.id = Date.now().toString();
         let newQues = await this.questionModel.create(question);
-
         await this.questionKitModel.findOneAndUpdate(
           { id: createdQuestionKit.id },
           {
@@ -74,7 +73,16 @@ export class QuestionKitService {
       console.log(error);
     }
   }
+  async getQuestionKitByIdUser(id: string): Promise<Question_Kit[] | null> {
+    console.log(id)
+    try {
+      let questionKitbyUser = await this.questionKitModel.find({ Ownerid: id }).lean().populate('questions').exec();
 
+      return questionKitbyUser;
+    } catch (error) {
+      return null;
+    }
+  }
   //   async deleteQuestionKit(question_kit: Question_Kit) {
   //     try {
   //       let questionKit = await this.questionKitModel
