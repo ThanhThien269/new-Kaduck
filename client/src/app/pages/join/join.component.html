@@ -5,14 +5,24 @@
   <div class="loader"></div>
 </div>
 <div id="content" *ngIf="isStarting">
-  <div id="middle_lower">
+  <div id="middle_lower" *ngIf="!alreadyAnswered">
     <div id="middle_lower_left">
-      <button id="A_box" mat-raised-button>{{ questionData.answer_A }}</button>
-      <button id="C_box" mat-raised-button>{{ questionData.answer_C }}</button>
+      <button (click)="chooseAnswer(questionData.answer_A )" id="A_box" mat-raised-button>{{ questionData.answer_A }}</button>
+      <button (click)="chooseAnswer(questionData.answer_C )" id="C_box" mat-raised-button>{{ questionData.answer_C }}</button>
     </div>
     <div id="middle_lower_right">
-      <button id="B_box" mat-raised-button>{{ questionData.answer_B }}</button>
-      <button id="D_box" mat-raised-button>{{ questionData.answer_D }}</button>
+      <button (click)="chooseAnswer(questionData.answer_B )" id="B_box" mat-raised-button>{{ questionData.answer_B }}</button>
+      <button (click)="chooseAnswer(questionData.answer_D )" id="D_box" mat-raised-button>{{ questionData.answer_D }}</button>
     </div>
   </div>
+  <div id="content"  *ngIf="isStarting">
+    <div class="lds-ring" *ngIf="time != 0 && alreadyAnswered">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h1 *ngIf="time == 0 || (time == 0 && alreadyAnswered)">Your score</h1>
+  </div>
+
 </div>

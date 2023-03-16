@@ -65,12 +65,22 @@ export class HomeComponent implements OnInit {
   }
 
   join() {
-    this.lobbyService.sendMessage({
-      pin: this.pin,
-      uid: this.uid,
-      name: this.currentUser?.displayName,
-      email: this.currentUser?.email,
-    });
+    this.lobbyService.joinLobby(
+      this.pin,
+      {
+        name: this.currentUser?.displayName,
+        score: 0,
+        correctAnswer: 0,
+      }
+    );
+    // this.lobbyService.sendMessage(
+    //   {
+    //     pin: this.pin,
+    //     uid: this.uid,
+    //     name: this.currentUser?.displayName,
+    //     email: this.currentUser?.email,
+    //   }
+    // );
     this.router.navigate([`join/${this.pin}`]);
     // this.homeService.join();
   }

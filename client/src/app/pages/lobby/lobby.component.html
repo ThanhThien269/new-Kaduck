@@ -70,10 +70,11 @@
       </div>
       <div id="middle_higher_right">
         <!-- <div id="timer">{{ questionData[0].timer }}</div> -->
-        <div id="timer">{{ this.time }}</div>
+        <div *ngIf="!isPaused" id="timer">{{ this.time }}</div>
+        <button *ngIf="isPaused && this.i+1 != this.questionData.length" (click)="nextQuestion()">Next</button>
       </div>
     </div>
-    <div id="middle_lower">
+    <div id="middle_lower" *ngIf="!isPaused">
       <div id="middle_lower_left">
         <button id="A_box" mat-raised-button>
           {{ questionData[i].answer_A }}
@@ -87,6 +88,26 @@
           {{ questionData[i].answer_B }}
         </button>
         <button id="D_box" mat-raised-button>
+          {{ questionData[i].answer_D }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Show correct answer -->
+    <div id="middle_lower" *ngIf="isPaused">
+      <div id="middle_lower_left">
+        <button [class]="'A' == questionData[i].true_answer ? 'answer_box ans_A correct' : 'answer_box ans_A'">
+          {{ questionData[i].answer_A }}
+        </button>
+        <button [class]="'C' == questionData[i].true_answer ? 'answer_box ans_C correct' : 'answer_box ans_C'">
+          {{ questionData[i].answer_C }}
+        </button>
+      </div>
+      <div id="middle_lower_right">
+        <button [class]="'B' == questionData[i].true_answer ? 'answer_box ans_B correct' : 'answer_box ans_B'">
+          {{ questionData[i].answer_B }}
+        </button>
+        <button [class]="'D' == questionData[i].true_answer ? 'answer_box ans_D correct' : 'answer_box ans_D'">
           {{ questionData[i].answer_D }}
         </button>
       </div>

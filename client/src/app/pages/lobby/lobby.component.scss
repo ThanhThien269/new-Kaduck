@@ -281,6 +281,7 @@
   background-color: #e58f04;
   color: #f2f2f2;
 }
+
 #A_box:hover,
 #B_box:hover,
 #C_box:hover,
@@ -359,4 +360,37 @@
     // scale: 1;
     background-color: #e8b8ae;
   }
+}
+
+
+
+// Showing correct answer
+.answer_box{
+  width: 100%;
+  height: 50%;
+  margin: 0 auto;
+  border-radius: 5px;
+  font-size: 30px;
+  opacity: 0.8;
+}
+
+.ans_A {
+  background-color: #ff6d66;
+  color: #f2f2f2;
+}
+.ans_C {
+  background-color: #e8b8ae;
+  color: #f2f2f2;
+}
+.ans_B {
+  background-color: #66e68e;
+  color: #f2f2f2;
+}
+.ans_D {
+  background-color: #e58f04;
+  color: #f2f2f2;
+}
+
+.correct{
+  opacity: 1;
 }
