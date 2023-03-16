@@ -16,7 +16,7 @@
 #contents{
   height: 100%;
   width: 100%;
-  background-color: rgb(41, 148, 113);
+  background-color: #499cfc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,8 +43,9 @@
 
 #enter{
   font-size: 25px;
-  background-color: rgb(205, 204, 204);
+  background-color: #424242;
   // border: 1px solid black;
+  color: #f2f2f2;
 }
 
 #enter:hover{
@@ -52,6 +53,6 @@
 }
 
 #enter:active{
-  background-color: rgb(205, 204, 204);
+  background-color: #424242;
 }
 

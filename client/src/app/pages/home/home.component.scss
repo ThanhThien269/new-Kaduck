@@ -41,21 +41,8 @@
   flex-direction: row;
 }
 
-<<<<<<< HEAD
-@media screen and (max-width:500px) {
-
-  // #pic_create>img{
-
-  // }
-
-}
-
-#pic_create{
-  background-color: #3441B1;
-=======
 #pic_create {
   background-color: #3441b1;
->>>>>>> 2eded96780086d8da9eebc4ef4e5cf24a172e8a8
   width: 50%;
   height: 100%;
 }
@@ -138,45 +125,7 @@
   display: flex;
   justify-content: center;
 }
-<<<<<<< HEAD
-@media screen and (max-width: 500px){
-
-  #pic_create>img{
-    // height: 1px;
-  }
-
-  #datadcv>p{
-    width: 100%;
-    font-size: 25px;
-    word-break: break-all;
-  }
-
-  #enter_btn>button{
-    width: 100%;
-    height: 100%;
-    font-size: 15px;
-  }
-
-  #create_btn>button{
-    width: 100%;
-    height: 100%;
-    font-size: 15px;
-  }
-
-  #mykaduckfont>p{
-    width: 100%;
-    height: 100%;
-    font-size: 5px;
-    word-break: break-all;
-    display: flex;
-    justify-content: center;
-  }
-
-}
-#datadcv{
-=======
 #datadcv {
->>>>>>> 2eded96780086d8da9eebc4ef4e5cf24a172e8a8
   width: 80%;
   height: 55%;
   margin: 10px;
@@ -214,7 +163,7 @@
   width: 90%;
   height: 40%;
   margin: 10px;
-  background-color: #f2f2f2;
+  background-color: #3a171d;
   margin: 0 auto;
 }
 #seeall {
@@ -282,6 +231,7 @@ mat-card {
   width: 80%;
   height: 45%;
   display: flex;
+
   #library-img {
     width: 20%;
   }
