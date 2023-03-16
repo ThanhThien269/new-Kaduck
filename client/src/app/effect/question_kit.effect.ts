@@ -10,7 +10,7 @@ export class QuestionKitEffects {
   constructor(
     private questionKitService: QuestionKitService,
     private actions$: Actions
-  ) { }
+  ) {}
 
   // getQuestionKitByOnwer$ = createEffect(() =>
   //   this.actions$.pipe(
@@ -37,17 +37,21 @@ export class QuestionKitEffects {
       ofType(QuestionKitActions.getQuestionKitByOwner),
       switchMap((action) =>
         this.questionKitService.getQuestionKitByOwner(action.id).pipe(
-          map((question_kit) => {
-            console.log(question_kit);
+          map((question_kits) => {
+            console.log(question_kits);
             return QuestionKitActions.getQuestionKitByOwnerSuccess({
-              question_kit: question_kit,
+              question_kits: question_kits,
             });
           }),
           catchError((error) =>
-            of(QuestionKitActions.getQuestionKitByOwnerFailure({ error: error }))
-          )))));
-
-
+            of(
+              QuestionKitActions.getQuestionKitByOwnerFailure({ error: error })
+            )
+          )
+        )
+      )
+    )
+  );
 
   getQuestionKits$ = createEffect(() =>
     this.actions$.pipe(
@@ -84,8 +88,6 @@ export class QuestionKitEffects {
       )
     )
   );
-
-
 
   postQuestionKit$ = createEffect(() =>
     this.actions$.pipe(

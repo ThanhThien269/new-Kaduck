@@ -14,34 +14,36 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./library.component.scss'],
 })
 export class LibraryComponent {
-
   constructor(
     private router: Router,
     private store: Store<{ question_kit: QuestionKitState }>,
     private authService: LoginService
   ) {
-    this.questionKits$ = this.store.select('question_kit').pipe(map((state) => state.question_kits));
-    this.store.dispatch(QuestionKitActions.getQuestionKitByOwner({ id: this.authService.user?.uid }));
-    this.questionKits$.subscribe((e) => {
-      console.log(e)
-    }
-    );
+    // this.questionKits$ = this.store.select('question_kit').pipe(map((state) => state.question_kits));
+    // this.store.dispatch(QuestionKitActions.getQuestionKitByOwner({ id: this.authService.user?.uid }));
+    // this.questionKits$.subscribe((e) => {
+    //   console.log(e)
+    // }
+    // );
   }
+  ownerId = this.authService.user?.uid;
   questionKits$ = new Observable<question_kit[]>();
 
-  // ngOnInit() {
-  //   this.questionKits$ = this.store
-  //     .select('question_kit')
-  //     .pipe(map((state) => state.question_kits));
-  //   this.store.dispatch(QuestionKitActions.getQuestionKitByOwner({ id: this.authService.user?.uid }));
-  //   this.questionKits$.subscribe((e) => {
-  //     console.log(e)
-  //   });
-  // }
+  ngOnInit() {
+    console.log(this.ownerId?.toString());
+    this.questionKits$ = this.store
+      .select('question_kit')
+      .pipe(map((state) => state.question_kits));
+    this.store.dispatch(
+      QuestionKitActions.getQuestionKitByOwner({ id: this.ownerId })
+    );
+    this.questionKits$.subscribe((e) => {
+      // console.log(e);
+    });
+  }
 
   lobby(id: string) {
     console.log(id);
     this.router.navigate(['/lobby/' + id]);
   }
-
 }

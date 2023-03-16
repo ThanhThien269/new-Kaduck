@@ -1,20 +1,21 @@
 import { question_kit } from './../models/question_kit.model';
 import { createAction, props } from '@ngrx/store';
 
-
 // Get Question by Owner
-export const getQuestionKitByOwner = createAction('[QuestionKit] getQuestionKits', props<{ id: string | undefined }>());
+export const getQuestionKitByOwner = createAction(
+  '[QuestionKit] getQuestionKits',
+  props<{ id: string | undefined }>()
+);
 
 export const getQuestionKitByOwnerSuccess = createAction(
   '[QuestionKit] getQuestionKitsSuccess',
-  props<{ question_kit: question_kit }>()
+  props<{ question_kits: question_kit[] }>()
 );
 
 export const getQuestionKitByOwnerFailure = createAction(
   '[QuestionKit] getQuestionKitsFailure',
   props<{ error: string }>()
 );
-
 
 // Get QuestionKits
 export const getQuestionKits = createAction('[QuestionKit] getQuestionKits');
@@ -42,9 +43,6 @@ export const getQuestionKitFailure = createAction(
   '[QuestionKit] getQuestionKitFailure',
   props<{ error: string }>()
 );
-
-
-
 
 // Post QuestionKit
 export const postQuestionKit = createAction(

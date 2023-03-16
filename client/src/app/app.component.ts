@@ -10,5 +10,13 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'kaduck';
   showFiller = false;
-  constructor(auth: Auth, private route: Router) {}
+  constructor(auth: Auth, private route: Router) {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.route.navigateByUrl('/home');
+      } else {
+        this.route.navigateByUrl('/login');
+      }
+    });
+  }
 }

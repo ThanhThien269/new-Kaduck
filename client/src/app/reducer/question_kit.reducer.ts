@@ -21,15 +21,18 @@ export const question_kitReducer = createReducer(
       error: '',
     };
   }),
-  on(questionKitActions.getQuestionKitByOwnerSuccess, (state, { question_kit }) => {
-    return {
-      ...state,
-      question_kit: question_kit,
-      loading: false,
-      isSuccess: true,
-      error: '',
-    };
-  }),
+  on(
+    questionKitActions.getQuestionKitByOwnerSuccess,
+    (state, { question_kits }) => {
+      return {
+        ...state,
+        question_kits: question_kits,
+        loading: false,
+        isSuccess: true,
+        error: '',
+      };
+    }
+  ),
   on(questionKitActions.getQuestionKitByOwnerFailure, (state, { error }) => {
     return {
       ...state,
@@ -38,8 +41,6 @@ export const question_kitReducer = createReducer(
       error: error,
     };
   }),
-
-
 
   on(questionKitActions.getQuestionKits, (state) => {
     return {
@@ -65,9 +66,6 @@ export const question_kitReducer = createReducer(
       error: error,
     };
   }),
-
-
-
 
   //getQuestionKit
   on(questionKitActions.getQuestionKit, (state) => {
