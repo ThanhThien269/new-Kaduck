@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(auth: Auth, private route: Router) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        this.route.navigateByUrl('/home');
+        // this.route.navigateByUrl('/home');
       } else {
         this.route.navigateByUrl('/login');
       }
