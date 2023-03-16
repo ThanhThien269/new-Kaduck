@@ -1,48 +1,47 @@
+import { question } from './../../models/question.model';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
-import { User } from '@angular/fire/auth'
+import { User } from '@angular/fire/auth';
 import { LoginService } from 'src/app/services/login.service';
-
+import { LobbyService } from 'src/app/services/lobby.service';
 
 @Component({
   selector: 'app-join',
   templateUrl: './join.component.html',
-  styleUrls: ['./join.component.scss']
+  styleUrls: ['./join.component.scss'],
 })
 export class JoinComponent {
   id: string = '';
   user: User | null = null;
-  time = 10;
+  time = 0;
+  questionData: question = <question>{};
   constructor(
     private route: ActivatedRoute,
     private _socket: Socket,
     private loginService: LoginService,
+    private lobbyService: LobbyService
   ) {}
   isStarting: boolean = false;
   ngOnInit() {
     this.user = this.loginService.user;
 
     let id = this.route.snapshot.paramMap.get('id');
-    if(!id) id = "No id found";
+    if (!id) id = 'No id found';
     this.id = id;
 
-    this._socket.on('connect', () => {
-      console.log("connected");
-      this._socket.emit('join', {
-        id: this.id,
-        name: this.user?.displayName,
-        type: "join"
-      });
-    })
+    this.lobbyService.getMessage(this.id).subscribe((msg: any) => {
+      console.log(msg);
+      if (msg.message == 'start') this.isStarting = true;
+      if (msg.question) this.questionData = msg.question;
+      if (msg.time) this.time = msg.data;
+      //   if(msg.answer){
+      //     if(msg.answer == questionData[i].answer){
+      //       let point = msg.timeLeft*10
+
+      //   }
+      // }
+    });
   }
-  timeUp(){
-    const timer = setInterval(() =>{
-        this.time -= 1;
-        if(this.time == 0){
-          clearInterval(timer);
-          this._socket.emit('timesUp');
-        }
-    }, 1000);
-  }
+  chooseAnswer() {}
 }

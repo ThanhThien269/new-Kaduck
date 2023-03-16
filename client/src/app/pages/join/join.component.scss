@@ -1,4 +1,4 @@
-#text{
+#text {
   color: white;
   display: flex;
   font-size: 20px;
@@ -6,102 +6,174 @@
 // .spacer{
 //   flex: 1 1 auto;
 // }
-#content{
+#content {
   height: 100%;
-  background-color: #499CFC;
+  background-color: #499cfc;
 }
-#middle_lower{
+#middle_lower {
   // flex-direction: row;
   display: flex;
   height: 100%;
   // margin-top: 5px;
   // background-color: #499CFC;
 }
-#middle_lower_left{
+#middle_lower_left {
   width: 50%;
   height: 100%;
-  background-color: #499CFC;
+  background-color: #499cfc;
   flex-direction: column;
   display: flex;
 }
-#middle_lower_right{
+#middle_lower_right {
   width: 50%;
   height: 100%;
-  background-color: #499CFC;
+  background-color: #499cfc;
   display: flex;
   flex-direction: column;
 }
-#A_box{
+#A_box {
   width: 100%;
   height: 100%;
   // margin: 0 auto;
   // margin-top: 7%;
   // border-radius: 15px;
   font-size: 60px;
-  background-color: #FF6D66;
+  background-color: #ff6d66;
   color: #f2f2f2;
-
 }
-#C_box{
+#C_box {
   width: 100%;
   height: 100%;
   // margin: 0 auto;
   // margin-top: 4%;
   // border-radius: 15px;
   font-size: 60px;
-  background-color: #E8B8AE;
+  background-color: #e8b8ae;
   color: #f2f2f2;
 }
-#B_box{
+#B_box {
   // border-radius: 15px;
   width: 100%;
   height: 100%;
   // margin: 0 auto;
   // margin-top: 7%;
   font-size: 60px;
-  background-color: #66E68E;
+  background-color: #66e68e;
   color: #f2f2f2;
 }
-#D_box{
+#D_box {
   width: 100%;
   height: 100%;
   // margin: 0 auto;
   // margin-top: 4%;
   // border-radius: 15px;
-  background-color: #E58F04;
+  background-color: #e58f04;
   color: #f2f2f2;
   font-size: 60px;
 }
 
-#A_box,#B_box,#C_box,#D_box{
-  border:1px solid black;
+#A_box,
+#B_box,
+#C_box,
+#D_box {
+  border: 1px solid black;
 }
-#A_box:hover{
+#A_box:hover {
   background-color: #b14a44;
   border: 1px solid black;
 }
-#B_box:hover{
+#B_box:hover {
   background-color: #4ca568;
   border: 1px solid black;
 }
-#C_box:hover{
+#C_box:hover {
   background-color: #a8847d;
   border: 1px solid black;
 }
-#D_box:hover{
+#D_box:hover {
   background-color: #a46b0f;
   border: 1px solid black;
 }
-#A_box:active{
-  background-color: #FF6D66;
+#A_box:active {
+  background-color: #ff6d66;
   animation: alternate-reverse;
 }
-#B_box:active{
-  background-color: #66E68E;
+#B_box:active {
+  background-color: #66e68e;
 }
-#C_box:active{
-  background-color: #E8B8AE;
+#C_box:active {
+  background-color: #e8b8ae;
 }
-#D_box:active{
-  background-color: #E58F04;
+#D_box:active {
+  background-color: #e58f04;
+}
+.loadFont {
+  font-family: "Poiret One", cursive;
+  text-align: center;
+}
+/* Progress Bar Placement & Styling */
+#progressive {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+}
+
+.loader {
+  margin: auto;
+  display: flex;
+  border: 16px solid #bdc3c7;
+  width: 120px;
+  height: 120px;
+  border-top-color: #1abc9c;
+  border-bottom-color: #3498db;
+  border-radius: 50%;
+  animation: coloredspin 4s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes coloredspin {
+  0% {
+    transform: rotate(0deg) scale(1);
+    border-top-color: #1abc9c;
+    border-bottom-color: #1abc9c;
+  }
+  25% {
+    border-top-color: #2ecc71;
+    border-bottom-color: #2ecc71;
+  }
+  50% {
+    transform: rotate(360deg) scale(1.05);
+    border-top-color: #3498db;
+    border-bottom-color: #3498db;
+  }
+  75% {
+    border-top-color: #9b59b6;
+    border-bottom-color: #9b59b6;
+  }
+  100% {
+    transform: rotate(720deg) scale(1);
+    border-top-color: #1abc9c;
+    border-bottom-color: #1abc9c;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
