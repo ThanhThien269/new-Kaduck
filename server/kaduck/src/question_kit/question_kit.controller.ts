@@ -13,7 +13,7 @@ import { QuestionKitService } from './question_kit.service';
 
 @Controller('questionkit')
 export class QuestionKitController {
-  constructor(private readonly questionKitService: QuestionKitService) {}
+  constructor(private readonly questionKitService: QuestionKitService) { }
   @Get('all')
   async getAll() {
     return await this.questionKitService.getAllKits();
@@ -25,8 +25,8 @@ export class QuestionKitController {
   }
 
   @Post('create')
-  async createQuestionKit(@Body() question_kit: Question_Kit) {
-    return await this.questionKitService.createQuestionKit(question_kit);
+  createQuestionKit(@Body() question_kit: Question_Kit) {
+    return this.questionKitService.createQuestionKit(question_kit);
   }
 
   @Put('update')
@@ -35,5 +35,9 @@ export class QuestionKitController {
     @Body() question_kit: Question_Kit,
   ) {
     return await this.questionKitService.update(id, question_kit);
+  }
+  @Get('byuser')
+  async getQuestionKitByIdUser(@Query('id') id: string) {
+    return await this.questionKitService.getQuestionKitByIdUser(id);
   }
 }

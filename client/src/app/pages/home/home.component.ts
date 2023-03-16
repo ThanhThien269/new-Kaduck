@@ -34,21 +34,16 @@ export class HomeComponent implements OnInit {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
   }
-  questionKit$ = new Observable<question_kit>();
 
   ngOnInit() {
     // this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
     // this.store.dispatch(QuestionKitActions.getQuestionKits());
     // this.questionKits$.subscribe(ques => console.log(ques));
 
-    this.store.dispatch(QuestionKitActions.getQuestionKits());
-    this.questionKit$ = this.store.select('question_kit').pipe(
-      map((state) => state.question_kits[0]),
-      take(1)
-    );
+
   }
 
-  callingFunction() {}
+  callingFunction() { }
 
   library() {
     this.router.navigate(['/library']);

@@ -9,6 +9,8 @@ import { Store } from '@ngrx/store';
 
 import { QuestionKitState } from 'src/app/state/question_kit.state';
 import * as QuestionKitActions from 'src/app/action/question_kit.action';
+import { AuthState } from 'src/app/state/auth.state';
+import { LoginService } from 'src/app/services/login.service';
 
 interface Points {
   value: string;
@@ -32,10 +34,12 @@ export class CreatequestionComponent {
   constructor(
     private router: Router,
     private dialog: MatDialog,
-    private store: Store<{ question_kit: QuestionKitState }>
-  ) {}
+    private store: Store<{ question_kit: QuestionKitState }>,
+    private authService: LoginService
+  ) { }
 
   question_kit_model: question_kit = {
+    Ownerid: this.authService.user?.uid,
     id: Date.now().toString(),
     name: '',
     description: '',
@@ -45,6 +49,7 @@ export class CreatequestionComponent {
 
   createQuestionModel() {
     let questionModel: question = {
+
       questions: '',
       timer: 0,
       img: '',

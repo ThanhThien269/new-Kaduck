@@ -10,7 +10,44 @@ export class QuestionKitEffects {
   constructor(
     private questionKitService: QuestionKitService,
     private actions$: Actions
-  ) {}
+  ) { }
+
+  // getQuestionKitByOnwer$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(QuestionKitActions.getQuestionKitByOwner),
+  //     switchMap((action) =>
+
+  //       this.questionKitService.getQuestionKitByOwner(action.id).pipe(
+  //         map((question_kit) => {
+  //           console.log(question_kit);
+  //           return QuestionKitActions.getQuestionKitByOwnerSuccess({
+  //             question_kit: question_kit,
+  //           });
+  //         }),
+  //         catchError((error) =>
+  //           of(QuestionKitActions.getQuestionKitByOwnerFailure({ error: error }))
+  //         )
+  //       )
+  //     )
+  //   )
+  // );
+
+  getQuestionKitByOnwer$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(QuestionKitActions.getQuestionKitByOwner),
+      switchMap((action) =>
+        this.questionKitService.getQuestionKitByOwner(action.id).pipe(
+          map((question_kit) => {
+            console.log(question_kit);
+            return QuestionKitActions.getQuestionKitByOwnerSuccess({
+              question_kit: question_kit,
+            });
+          }),
+          catchError((error) =>
+            of(QuestionKitActions.getQuestionKitByOwnerFailure({ error: error }))
+          )))));
+
+
 
   getQuestionKits$ = createEffect(() =>
     this.actions$.pipe(
@@ -47,6 +84,8 @@ export class QuestionKitEffects {
       )
     )
   );
+
+
 
   postQuestionKit$ = createEffect(() =>
     this.actions$.pipe(
