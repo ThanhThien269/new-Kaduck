@@ -66,6 +66,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/join/join.module').then((m) => m.JoinModule),
   },
+  { path: 'guestjoining',
+  loadChildren: () => import('./pages/guestjoining/guestjoining.module').then(m => m.GuestjoiningModule)
+  },
+
   {
     path: '**',
     redirectTo: 'login',

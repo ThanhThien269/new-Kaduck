@@ -66,6 +66,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/lobby']);
   }
 
+  guestJoining(){
+    this.router.navigate(['/guestjoining'])
+  }
+
   join() {
     this.lobbyService.sendMessage({
       pin: this.pin,
