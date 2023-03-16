@@ -1,0 +1,81 @@
+@media screen and (max-width: 500px) {
+
+  #input{
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+  }
+
+  #enter{
+    font-size: 25px;
+  }
+}
+
+#contents{
+  height: 100%;
+  width: 100%;
+  background-color: #499cfc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gamepin_container{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  // background-color: crimson;
+}
+
+#input{
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 20px;
+  // display: flex;
+  // justify-content: center;
+}
+
+#input:focus{
+  outline: none;
+}
+
+#enter_btn{
+  display: flex;
+  justify-content: center;
+  // background-color: #424242;
+}
+
+#enter{
+  width: 100%;
+  font-size: 25px;
+  background-color: #424242;
+  // border: 1px solid black;
+  color: #f2f2f2;
+}
+
+#enter:hover{
+  background-color: gray;
+}
+
+#enter:active{
+  background-color: rgb(205, 204, 204);
+}
+
+#login{
+  background-color: #499cfc;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#login-btn{
+  margin-top: 5px;
+  margin-right: 10px;
+  background-color: #064c9b;
+  color: #f2f2f2;
+}

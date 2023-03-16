@@ -235,6 +235,9 @@
 #typequestion {
   height: 19%;
   margin-top: 6%;
+  display: flex;
+  align-items: center;
+
   background-color: #f2f2f2;
 }
 #addimg {
@@ -252,6 +255,8 @@
   border-radius: 5px;
   font-size: 30px;
   background-color: #ff6d66;
+  display: flex;
+  justify-content: start;
   color: #f2f2f2;
 }
 #C_box {
@@ -261,6 +266,8 @@
   border-radius: 5px;
   font-size: 30px;
   background-color: #e8b8ae;
+  display: flex;
+  justify-content: start;
   color: #f2f2f2;
 }
 #B_box {
@@ -270,6 +277,8 @@
   margin: 0 auto;
   font-size: 30px;
   background-color: #66e68e;
+  display: flex;
+  justify-content: start;
   color: #f2f2f2;
 }
 #D_box {
@@ -279,6 +288,8 @@
   margin: 0 auto;
   border-radius: 5px;
   background-color: #e58f04;
+  display: flex;
+  justify-content: start;
   color: #f2f2f2;
 }
 
@@ -394,3 +405,9 @@
 .correct{
   opacity: 1;
 }
+// .ans {
+//   .material-icons {
+//     font-size: 48px;
+//     margin-right: 2rem;
+//   }
+// }

@@ -1,4 +1,3 @@
-
 <div>
   <app-tool-bar (newOpenSideBarEvent)="drawer.toggle()"></app-tool-bar>
 </div>
@@ -10,28 +9,46 @@
     <div id="createroom">
       <div id="createroom_container">
         <div id="pic_create">
-          <img src="../../../assets/Gaming-bro.png" alt="Gamingbro" style="width: 100%;height: 100%;">
+          <img
+            src="../../../assets/Gaming-bro.png"
+            alt="Gamingbro"
+            style="width: 100%; height: 100%"
+          />
         </div>
         <div id="gamepin_container">
-          <div id="gamepin">
-            <div id="PINenter" >
-              <!-- <form> -->
-                <mat-card>
-                  <input id="input" matInput placeholder="Gaming PIN" [(ngModel)]="pin">
-                  <div id="enter_btn">
-                    <button  id="enter" mat-raised-button (click)="join()">ENTER</button>
-                  </div>
-                </mat-card>
-              <!-- </form> -->
+          <!-- <div id="gamepin">
+            <div id="PINenter">
+
+              <mat-card>
+                <input
+                  id="input"
+                  matInput
+                  placeholder="Gaming PIN"
+                  [(ngModel)]="pin"
+                />
+                <div id="enter_btn">
+                  <button id="enter" mat-raised-button (click)="join()">
+                    ENTER
+                  </button>
+                </div>
+              </mat-card>
+
             </div>
-          </div>
+          </div> -->
           <div id="crea">
             <div id="create_box">
-              <div id="or">
-                <p style="font-size:x-large;color: #f2f2f2;">OR</p>
-              </div>
+              <!-- <div id="or">
+                <p style="font-size: x-large; color: #f2f2f2">OR</p>
+              </div> -->
               <div id="create_btn">
-                <button id="create" style="width: 100%;" mat-raised-button (click)="createquestion()">CREATE</button>
+                <button
+                  id="create"
+                  style="width: 100%"
+                  mat-raised-button
+                  (click)="createquestion()"
+                >
+                  CREATE
+                </button>
               </div>
             </div>
           </div>
@@ -40,39 +57,38 @@
     </div>
     <div id="lower">
       <div id="dcv">
-        <div id="maybedcv" >
-        <p style="font-size:x-large">Maybe you like</p>
+        <div id="maybedcv">
+          <p style="font-size: x-large">Maybe you like</p>
+        </div>
+        <div id="datadcv"><p>COMMING SOON</p></div>
+        <div id="seeall">
+          <a href="">See all</a>
+        </div>
       </div>
-      <div id="datadcv"><p>COMMING SOON</p></div>
-      <div id="seeall">
-        <a href="">See all</a>
-      </div>
-    </div>
       <div id="lower_right">
         <div id="mykaduck">
-          <div id="mykaduckfont" >
-            <p style="font-size:x-large">My Kaducks</p>
-
+          <div id="mykaduckfont">
+            <p style="font-size: x-large">My Kaducks</p>
           </div>
-          <div id="datamykaduck">{{(questionKit$ | async)?.name}}</div>
+          <div class="my-kaduct">
+            <img id="library-img" src="../../../assets/Kaduck.png" alt="" />
+            <div id="datamykaduck">{{ (questionKit$ | async)?.name }}</div>
+          </div>
+
           <div id="seeall">
-            <button (click)="library()" style ="outline: none;">See all</button>
+            <button (click)="library()" style="outline: none">See all</button>
           </div>
         </div>
         <div id="latest">
-          <div id="latestfont" >
-            <p style="font-size:x-large">Latest</p>
+          <div id="latestfont">
+            <p style="font-size: x-large">Latest</p>
           </div>
-          <div id="datalatest">..</div>
+          <div id="datalatest"></div>
           <div id="seeall">
-            <button (click)="history()">See all</button>
+            <button (click)="guestJoining()">See all</button>
           </div>
         </div>
       </div>
-
-  </div>
     </div>
-
+  </div>
 </mat-drawer-container>
-
-

@@ -47,4 +47,5 @@ export class LibraryComponent {
     });
     this.router.navigate(['/lobby/' + id]);
   }
+
 }

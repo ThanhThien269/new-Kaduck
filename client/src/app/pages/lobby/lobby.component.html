@@ -1,6 +1,6 @@
 <div class="container" *ngIf="!isStarting">
   <audio autoplay preload="none" loop>
-    <source src="../../../assets/Gigi_D_Agostino_L_Amour_Toujours.mp3" />
+    <source src="../../../assets/30minNekoAtsume.mp3" />
   </audio>
   <div class="top">
     <img @rotate id="imagelb" src="../../../assets/kaduck-logo (1).png" />
@@ -64,7 +64,9 @@
       </div>
       <div id="middle_higher_container">
         <div id="typequestion">
-          <p style="text-align: center">{{ questionData[i].questions }}</p>
+          <p style="text-align: center; font-size: 36px">
+            {{ questionData[i].questions }}
+          </p>
         </div>
         <div id="addimg"></div>
       </div>
@@ -76,18 +78,22 @@
     </div>
     <div id="middle_lower" *ngIf="!isPaused">
       <div id="middle_lower_left">
-        <button id="A_box" mat-raised-button>
+        <button class="ans" id="A_box" mat-raised-button>
+          <span class="material-icons"> favorite </span>
           {{ questionData[i].answer_A }}
         </button>
-        <button id="C_box" mat-raised-button>
+        <button class="ans" id="C_box" mat-raised-button>
           {{ questionData[i].answer_C }}
+          <span class="material-icons"> star_rate </span>
         </button>
       </div>
       <div id="middle_lower_right">
-        <button id="B_box" mat-raised-button>
+        <button class="ans" id="B_box" mat-raised-button>
+          <span class="material-icons"> square </span>
           {{ questionData[i].answer_B }}
         </button>
-        <button id="D_box" mat-raised-button>
+        <button class="ans" id="D_box" mat-raised-button>
+          <span class="material-icons"> pentagon </span>
           {{ questionData[i].answer_D }}
         </button>
       </div>

@@ -71,4 +71,5 @@ export class JoinComponent {
     //   this.id
     // )
   }
+  // chooseAnswer() {}
 }
