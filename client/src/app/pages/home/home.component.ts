@@ -9,6 +9,7 @@ import { QuestionKitState } from 'src/app/state/question_kit.state';
 import * as QuestionKitActions from 'src/app/action/question_kit.action';
 import { question_kit } from './../../models/question_kit.model';
 import { LobbyService } from 'src/app/services/lobby.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit {
     private lobbyService: LobbyService,
     private router: Router,
     private loginService: LoginService,
-    private store: Store<{ question_kit: QuestionKitState }>
+    private store: Store<{ question_kit: QuestionKitState }>,
+    private _snackBar: MatSnackBar
   ) {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
@@ -71,7 +73,15 @@ export class HomeComponent implements OnInit {
       name: this.currentUser?.displayName,
       email: this.currentUser?.email,
     });
-    this.router.navigate([`join/${this.pin}`]);
+    if (!this.pin || this.pin.length !== 6) {
+      this.openSnackBar('Enter game pin to join', 'Close');
+    } else {
+      this.router.navigate([`join/${this.pin}`]);
+    }
+
     // this.homeService.join();
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 }
