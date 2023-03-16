@@ -7,12 +7,20 @@
 <div id="content" *ngIf="isStarting">
   <div id="middle_lower">
     <div id="middle_lower_left">
-      <button id="A_box" mat-raised-button>{{ questionData.answer_A }}</button>
-      <button id="C_box" mat-raised-button>{{ questionData.answer_C }}</button>
+      <button id="A_box" mat-raised-button>
+        <span class="material-icons"> favorite </span>
+      </button>
+      <button id="C_box" mat-raised-button>
+        <span class="material-icons"> star_rate </span>
+      </button>
     </div>
     <div id="middle_lower_right">
-      <button id="B_box" mat-raised-button>{{ questionData.answer_B }}</button>
-      <button id="D_box" mat-raised-button>{{ questionData.answer_D }}</button>
+      <button id="B_box" mat-raised-button>
+        <span class="material-icons"> square </span>
+      </button>
+      <button id="D_box" mat-raised-button>
+        <span class="material-icons"> pentagon </span>
+      </button>
     </div>
   </div>
 </div>
