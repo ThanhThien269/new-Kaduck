@@ -12,6 +12,35 @@ export const initialState: QuestionKitState = {
 
 export const question_kitReducer = createReducer(
   initialState,
+
+  //getQuestionKitByOwner
+  on(questionKitActions.getQuestionKitByOwner, (state) => {
+    return {
+      ...state,
+      loading: true,
+      error: '',
+    };
+  }),
+  on(questionKitActions.getQuestionKitByOwnerSuccess, (state, { question_kit }) => {
+    return {
+      ...state,
+      question_kit: question_kit,
+      loading: false,
+      isSuccess: true,
+      error: '',
+    };
+  }),
+  on(questionKitActions.getQuestionKitByOwnerFailure, (state, { error }) => {
+    return {
+      ...state,
+      isSuccess: false,
+      loading: false,
+      error: error,
+    };
+  }),
+
+
+
   on(questionKitActions.getQuestionKits, (state) => {
     return {
       ...state,
@@ -36,6 +65,9 @@ export const question_kitReducer = createReducer(
       error: error,
     };
   }),
+
+
+
 
   //getQuestionKit
   on(questionKitActions.getQuestionKit, (state) => {

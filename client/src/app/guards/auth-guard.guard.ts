@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -18,7 +18,7 @@ export class AuthGuardGuard implements CanActivate {
     private LoginService: LoginService,
     private auth: Auth,
     private router: Router
-  ) {}
+  ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -27,15 +27,15 @@ export class AuthGuardGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return new Promise((resovle, reject) => {
-      onAuthStateChanged(this.auth, (users) => {
-        if (users) {
-          resovle(true);
-        } else {
-          // this.router.navigateByUrl('/login');
-          resovle(false);
-        }
-      });
-    });
+    if (this.LoginService.user) {
+      return true;
+    }
+
+    return this.LoginService.user$.pipe(map((userCre) => {
+      if (userCre) {
+        return true;
+      }
+      return false;
+    }))
   }
 }
