@@ -1,0 +1,57 @@
+@media screen and (max-width: 500px) {
+
+  #input{
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 20px;
+  }
+
+  #enter{
+    font-size: 25px;
+  }
+}
+
+#contents{
+  height: 100%;
+  width: 100%;
+  background-color: rgb(41, 148, 113);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gamepin_container{
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  // background-color: crimson;
+}
+
+#input{
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 20px;
+}
+
+
+
+#enter{
+  font-size: 25px;
+  background-color: rgb(205, 204, 204);
+  // border: 1px solid black;
+}
+
+#enter:hover{
+  background-color: gray;
+}
+
+#enter:active{
+  background-color: rgb(205, 204, 204);
+}
+

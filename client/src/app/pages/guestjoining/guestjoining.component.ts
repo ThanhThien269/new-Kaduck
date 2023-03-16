@@ -1,3 +1,4 @@
+// import { Component } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
@@ -10,12 +11,14 @@ import * as QuestionKitActions from 'src/app/action/question_kit.action';
 import { question_kit } from './../../models/question_kit.model';
 import { LobbyService } from 'src/app/services/lobby.service';
 
+
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-guestjoining',
+  templateUrl: './guestjoining.component.html',
+  styleUrls: ['./guestjoining.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class GuestjoiningComponent {
   currentUser: User | null = null;
   uid: string = '';
   pin: string = '';
@@ -32,42 +35,6 @@ export class HomeComponent implements OnInit {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
   }
-  questionKit$ = new Observable<question_kit>();
-
-  ngOnInit() {
-    // this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
-    // this.store.dispatch(QuestionKitActions.getQuestionKits());
-    // this.questionKits$.subscribe(ques => console.log(ques));
-
-    this.store.dispatch(QuestionKitActions.getQuestionKits());
-    this.questionKit$ = this.store.select('question_kit').pipe(
-      map((state) => state.question_kits[0]),
-      take(1)
-    );
-  }
-
-  callingFunction() {}
-
-  library() {
-    this.router.navigate(['/library']);
-  }
-
-  history() {
-    this.router.navigate(['/history']);
-  }
-
-  createquestion() {
-    this.router.navigate(['/createquestion']);
-  }
-
-  lobby() {
-    this.router.navigate(['/lobby']);
-  }
-
-  guestJoining(){
-    this.router.navigate(['/guestjoining'])
-  }
-
   join() {
     this.lobbyService.sendMessage({
       pin: this.pin,

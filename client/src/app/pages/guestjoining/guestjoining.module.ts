@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { GuestplayingRoutingModule } from './guestplaying-routing.module';
-import { GuestplayingComponent } from './guestplaying.component';
+import { GuestjoiningRoutingModule } from './guestjoining-routing.module';
+import { GuestjoiningComponent } from './guestjoining.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
-    GuestplayingComponent
+    GuestjoiningComponent
   ],
   imports: [
     CommonModule,
-    GuestplayingRoutingModule,
+    GuestjoiningRoutingModule,
     SharedModule
   ]
 })
-export class GuestplayingModule { }
+export class GuestjoiningModule { }
