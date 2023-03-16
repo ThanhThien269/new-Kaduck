@@ -31,7 +31,5 @@ export class LibraryComponent {
     console.log(id);
     this.router.navigate(['/lobby/' + id]);
   }
-  updateQuestionKit(question_kit: question_kit) {
-    this.store.dispatch(QuestionKitActions.updateQuestionKit({question_kit}));
-  }
+
 }
