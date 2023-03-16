@@ -6,42 +6,41 @@
     <app-side-bar></app-side-bar>
   </mat-drawer>
 
+  <div class="search_container">
+    <div class="btn_tags_container">
+      <mat-button-toggle-group appearance="legacy">
+        <mat-button-toggle class="btn_tags">Recent</mat-button-toggle>
+        <mat-button-toggle class="btn_tags">Favourite</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
 
-<div class="search_container">
-  <div class="btn_tags_container">
-    <mat-button-toggle-group appearance="legacy">
-      <mat-button-toggle class="btn_tags">Recent</mat-button-toggle>
-      <mat-button-toggle class="btn_tags">Favourite</mat-button-toggle>
-    </mat-button-toggle-group>
-</div>
-
-<span class="spacer"></span>
-<div><input class="input" type="text" placeholder="Search"></div>
-</div>
-<div id="rec_contain" *ngFor="let question of (questionKits$ | async)">
-  <div id="rec_recent">
-    <!-- <input id="checkbox" type="checkbox"> -->
-    <img src="../../../assets/kaduck-logo.png" alt="" style="width: 100px; height: 100px; float:left;padding-top:15px">
-    <div id="title">{{question.name}}</div>
     <span class="spacer"></span>
-    <div>
-      <div id="edit">
-        <div>
-          <button mat-icon-button>
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button (click)="deleteQuestionKit(question)">
-            <mat-icon>delete_forever</mat-icon>
-          </button>
+    <div><input class="input" type="text" placeholder="Search" /></div>
+  </div>
+  <div id="rec_contain" *ngFor="let question of questionKits$ | async">
+    <div id="rec_recent">
+      <!-- <input id="checkbox" type="checkbox"> -->
+      <img
+        src="../../../assets/kaduck-logo.png"
+        alt=""
+        style="width: 100px; height: 100px; float: left; padding-top: 15px"
+      />
+
+      <div id="title">{{ question.name }}</div>
+      <span class="spacer"></span>
+      <div>
+        <div id="edit">
+          <div>
+            <button mat-icon-button>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </div>
+          <button id="start" (click)="lobby(question.id)">START</button>
         </div>
-        <button id="start" (click)="lobby()">START</button>
       </div>
     </div>
   </div>
-</div>
-
 </mat-drawer-container>
-
-
-
-

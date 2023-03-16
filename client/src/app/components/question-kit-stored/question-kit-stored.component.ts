@@ -21,6 +21,6 @@ export class QuestionKitStoredComponent {
   save(){
     // this.dialog.close(this.form.value);
     //this.dialog.close();
-    //this.router.navigate(['/library']);
+    this.router.navigate(['/library']);
   }
 }
