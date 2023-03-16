@@ -26,12 +26,15 @@ export class GuestjoiningComponent {
   // userInput = new FormControl('');
   // inputMatches = false;
 
+  panelOpenState = false;
+
+
   constructor(
     private lobbyService: LobbyService,
     private router: Router,
     private loginService: LoginService,
     private store: Store<{ question_kit: QuestionKitState }>
-  ) {
+    ) {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
   }
@@ -45,4 +48,29 @@ export class GuestjoiningComponent {
     this.router.navigate([`join/${this.pin}`]);
     // this.homeService.join();
   }
+
+
+
+
+
+  user!: User|null;
+  user$= new Observable<User|null>
+
+  // ngOnInit(): void {
+  //     this.user$=this.loginService.user$;
+  //     this.user$.subscribe(user =>{
+  //       this.user =user;
+  //       console.log(user);
+  //     })
+  // }
+
+  login(){
+    this.loginService.login();
+
+  }
+  logout(){
+    this.loginService.logout();
+  }
+
+
 }
