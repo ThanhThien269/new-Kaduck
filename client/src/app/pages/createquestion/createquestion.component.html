@@ -3,9 +3,15 @@
 
   <div id="leftbar">
     <div class="question-box">
-      <div *ngFor="let question of question_kit_model.questions" (click)="switchQuestion(question)">
-        <div id="question-name">{{question.questions}}</div>
+      <div *ngFor="let question of question_kit_model.questions" (click)="switchQuestion(question)" id="question-box-box">
+        <div >
+          <div id="question-name">{{question.questions}}</div>
+        </div>
+        <div id ="question-box-timer">
+          <div id="question-timer">{{question.timer}}</div>
+        </div>
       </div>
+
     </div>
     <div id="addquestion_box">
       <button id="addquestion_btn" mat-raised-button (click)="createQuestionModel()">
