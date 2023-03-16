@@ -15,12 +15,12 @@
   justify-content: space-between;
 }
 #addquestion_box{
-  width: 80%;
+  width: 100%;
   height: 10%;
   background-color: #f2f2f2;
   margin: 10%   auto;
-
 }
+
 #addquestion_btn{
   width: 100%;
   height: 100%;
@@ -233,5 +233,6 @@
   margin: 0 auto;
   border: 1px solid black;
   border-radius: 5px;
-  width: 50%;
+  width: 100%;
+  word-break: keep-all;
 }
