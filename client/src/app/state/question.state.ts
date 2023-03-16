@@ -1,7 +1,9 @@
-import { question } from "../models/question.model";
+import { question } from 'src/app/models/question.model';
 
 export interface QuestionState {
   questions: question[];
-  loading : boolean;
-  error : string;
+  showedQuestion: question | null;
+  isSuccess: boolean;
+  loading: boolean;
+  error: string;
 }

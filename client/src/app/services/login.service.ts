@@ -18,7 +18,7 @@ export class LoginService {
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
       this.user = user;
-    })
+    });
   }
 
   async login() {

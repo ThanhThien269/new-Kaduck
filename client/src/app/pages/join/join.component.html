@@ -1,1 +1,18 @@
-<div><h1>WAITING FOR HOST TO START</h1></div>
+<div id="progressive" *ngIf="!isStarting">
+  <div>
+    <h1 class="loadFont text-center">Please Wait...</h1>
+  </div>
+  <div class="loader"></div>
+</div>
+<div id="content" *ngIf="isStarting">
+  <div id="middle_lower">
+    <div id="middle_lower_left">
+      <button id="A_box" mat-raised-button>{{ questionData.answer_A }}</button>
+      <button id="C_box" mat-raised-button>{{ questionData.answer_C }}</button>
+    </div>
+    <div id="middle_lower_right">
+      <button id="B_box" mat-raised-button>{{ questionData.answer_B }}</button>
+      <button id="D_box" mat-raised-button>{{ questionData.answer_D }}</button>
+    </div>
+  </div>
+</div>

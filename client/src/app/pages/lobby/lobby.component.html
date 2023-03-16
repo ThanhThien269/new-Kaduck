@@ -1,43 +1,95 @@
-<div class="top">
-  <img @rotate id="imagelb" src="../../../assets/kaduck-logo (1).png">
-  <div class="text">
-    <p style="font-size: 40px;">The Game start now!</p>
-    <p style="font-size: 20px;"> Here’s intruction player to join!</p>
-    <div class="pin">
-      <p style="font-size: 30px;">Game PIN</p>
-      <p style="font-size: 28px;">{{id}}</p>
+<div class="container" *ngIf="!isStarting">
+  <audio autoplay preload="none" loop>
+    <source src="../../../assets/Gigi_D_Agostino_L_Amour_Toujours.mp3" />
+  </audio>
+  <div class="top">
+    <img @rotate id="imagelb" src="../../../assets/kaduck-logo (1).png" />
+    <div class="text">
+      <p style="font-size: 40px">The Game start now!</p>
+      <p style="font-size: 20px">Here’s intruction player to join!</p>
+      <div class="pin">
+        <p style="font-size: 30px">Game PIN</p>
+        <p style="font-size: 28px">{{ id }}</p>
+      </div>
+    </div>
+    <div class="start">
+      <p style="font-size: 22px">Waiting for other Duck...</p>
+      <div class="btn">
+        <div class="btnkey">
+          <button mat-flat-button (click)="locked()" class="btn-key">
+            <span *ngIf="!this.lock" class="material-symbols-rounded">
+              lock_open
+            </span>
+            <span *ngIf="this.lock" class="material-symbols-rounded">
+              lock
+            </span>
+          </button>
+        </div>
+        <div class="btnst">
+          <button
+            mat-flat-button
+            (click)="start()"
+            color="primary"
+            class="btn-start"
+          >
+            start
+          </button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="start">
-    <p style="font-size: 22px;">Waiting for other Duck...</p>
-    <div class="btn">
-      <div class="btnkey">
-        <button mat-flat-button (click)="locked()" class="btn-key">
-          <span *ngIf="!this.lock" class="material-symbols-rounded ">
-            lock_open
-          </span>
-          <span *ngIf="this.lock" class="material-symbols-rounded">
-            lock
-          </span>
-        </button>
+  <div class="bottom">
+    <div class="userwait">
+      <div class="btn-user" mat-flat-button>
+        <mat-icon class="person">person filled</mat-icon>
+        <p>{{ players.length }}</p>
       </div>
-      <div class="btnst">
-        <button mat-flat-button [routerLink]="['../playing']" color="primary" class="btn-start">start</button>
+      <div class="users">
+        <div @fadeInOut class="user-join" *ngFor="let player of players">
+          <p class="nameuser">
+            {{ player.name }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="bottom">
-  <div class="userwait">
-    <div class="btn-user" mat-flat-button>
-      <mat-icon class="person">person filled</mat-icon>
-      <p>0</p>
+<div id="contents" *ngIf="isStarting">
+  <div id="middle">
+    <div id="middle_higher">
+      <div id="middle_higher_left">
+        <div class="numofanswers">
+          Questions:{{ i + 1 }} /{{ questionData.length }}
+        </div>
+      </div>
+      <div id="middle_higher_container">
+        <div id="typequestion">
+          <p style="text-align: center">{{ questionData[i].questions }}</p>
+        </div>
+        <div id="addimg"></div>
+      </div>
+      <div id="middle_higher_right">
+        <!-- <div id="timer">{{ questionData[0].timer }}</div> -->
+        <div id="timer">{{ this.time }}</div>
+      </div>
     </div>
-    <div class="users">
-      <div @fadeInOut class="user-join" *ngFor="let player of lists">
-        <p class="nameuser">
-          {{player}}
-        </p>
+    <div id="middle_lower">
+      <div id="middle_lower_left">
+        <button id="A_box" mat-raised-button>
+          {{ questionData[i].answer_A }}
+        </button>
+        <button id="C_box" mat-raised-button>
+          {{ questionData[i].answer_C }}
+        </button>
+      </div>
+      <div id="middle_lower_right">
+        <button id="B_box" mat-raised-button>
+          {{ questionData[i].answer_B }}
+        </button>
+        <button id="D_box" mat-raised-button>
+          {{ questionData[i].answer_D }}
+        </button>
       </div>
     </div>
   </div>
+</div>

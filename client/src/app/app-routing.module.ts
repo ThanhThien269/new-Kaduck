@@ -8,6 +8,7 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full',
   },
+
   {
     path: 'login',
     loadChildren: () =>
@@ -20,7 +21,7 @@ const routes: Routes = [
       import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'lobby',
+    path: 'lobby/:id',
     canActivate: [AuthGuardGuard],
     loadChildren: () =>
       import('./pages/lobby/lobby.module').then((m) => m.LobbyModule),
@@ -60,8 +61,15 @@ const routes: Routes = [
         (m) => m.GuestplayingModule
       ),
   },
-  { path: 'join/:id', loadChildren: () => import('./pages/join/join.module').then(m => m.JoinModule) },
-
+  {
+    path: 'join/:id',
+    loadChildren: () =>
+      import('./pages/join/join.module').then((m) => m.JoinModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'login',
+  },
 ];
 
 @NgModule({
