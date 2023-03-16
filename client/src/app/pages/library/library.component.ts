@@ -31,4 +31,5 @@ export class LibraryComponent {
     console.log(id);
     this.router.navigate(['/lobby/' + id]);
   }
+
 }
