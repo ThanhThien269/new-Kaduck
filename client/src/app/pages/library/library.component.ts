@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { updateQuestionKit } from './../../action/question_kit.action';
-=======
 // import { question_kit } from './../../models/question_kit.model';
->>>>>>> e048e1c13d96cc10a92aca52a2569e5db090754b
 import { map, Observable } from 'rxjs';
 import { question_kit } from './../../models/question_kit.model';
 import { Store } from '@ngrx/store';
