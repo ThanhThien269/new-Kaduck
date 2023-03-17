@@ -57,7 +57,6 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     let tempUser = this.lobbies[temp].players.findIndex(
       (player) => player.name === payload.player.name,
     );
-    console.log(tempUser);
     if (tempUser === -1) {
       this.lobbies[temp].players.push({
         ...payload.player,

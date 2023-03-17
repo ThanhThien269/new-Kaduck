@@ -55,7 +55,7 @@ export class GuestjoiningComponent {
         this.tempPlayerList = res.players;
         this.uid = (tempLength++).toString();
         this.alreadyJoined = true;
-        console.log(this.tempPlayerList);
+        // console.log(this.tempPlayerList);
       }else{
         // this._snackBar.open(res.msg,  'Close');
         this.openSnackBar(res.msg, 'Close');
@@ -69,7 +69,6 @@ export class GuestjoiningComponent {
     if (this.currentName != '') {
       let tempUser = -1;
       if (this.tempPlayerList.length > 0) {
-        console.log('Vào');
 
         tempUser = this.tempPlayerList.findIndex(
           (player) => player.name === this.currentName
@@ -86,7 +85,6 @@ export class GuestjoiningComponent {
           this.lobbyService.joinLobby(this.pin, temp);
           this.router.navigate([`join/${this.pin}`]);
         } else {
-          console.log('Username already taken');
           this._snackBar.open('Username already taken',  'Close');
         }
       

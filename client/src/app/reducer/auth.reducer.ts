@@ -8,11 +8,11 @@ const initialState: AuthState = {
 export const authReducer = createReducer(
   initialState,
   on(AuthActions.login, (state, { type }) => {
-    console.log(type);
+    // console.log(type);
     return { ...state, error: '' };
   }),
   on(AuthActions.loginSuccess, (state, { idToken, type }) => {
-    console.log(type);
+    // console.log(type);
     return {
       ...state,
       idToken,

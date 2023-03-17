@@ -48,7 +48,6 @@ export class JoinComponent {
     });
     this.lobbyService.showAnswer().subscribe((data: any) => {
       if(!this.alreadyAnswered){
-        console.log('not answered');
         this.isCorrect = 0;
         this.tempTotalScore += 0;
       }
@@ -89,7 +88,6 @@ export class JoinComponent {
     let tempScore =  this.isCorrect == 1 ? this.questionData.points : 0;
     this.tempScore = tempScore * this.time;
     this.tempTotalScore += this.tempScore;
-    console.log(tempScore);
     this.lobbyService.pickAnswer(
       {
         uid: this.lobbyService.currentPlayer.uid,

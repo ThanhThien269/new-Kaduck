@@ -73,12 +73,10 @@ export class LobbyComponent implements OnInit{
   ) {
     this.activate.params.subscribe((data) => {
       this.docId = data['id'];
-      console.log(this.docId);
     });
   }
 
   ngOnInit() {
-    console.log(this.lobbyService.id);
     if(this.lobbyService.id == ''){
       this.router.navigate(['/library']);
     }else{
@@ -111,7 +109,6 @@ export class LobbyComponent implements OnInit{
     this.lock = !this.lock;
   }
   start() {
-    console.log(this.players);
     if(this.players.length > 0){
       this.lobbyService.startGame(this.id, this.questionData[this.i]);
       let tempQuestionData = this.questionData;

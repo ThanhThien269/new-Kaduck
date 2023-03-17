@@ -87,7 +87,7 @@ export class CreatequestionComponent {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(result);
+      // console.log(result);
       if (!result) return;
 
       this.question_kit_model.name = result.title;

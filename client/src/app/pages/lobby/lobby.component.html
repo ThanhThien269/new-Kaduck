@@ -8,12 +8,12 @@
       <p style="font-size: 40px">Game is starting now!</p>
       <p style="font-size: 20px">Use the PIN below to join!</p>
       <div class="pin">
-        <p style="font-size: 30px">PIN:</p>
-        <p style="font-size: 28px">{{ id }}</p>
+        <p style="font-size: 20px; margin-bottom: 10px;">PIN:</p>
+        <p style="font-size: 35px; font-weight: 900;">{{ id }}</p>
       </div>
     </div>
     <div class="start">
-      <p style="font-size: 22px">Waiting for other Ducks...</p>
+      <p style="font-size: 20px">Waiting for other Ducks...</p>
       <div class="btn">
         <div class="btnkey">
           <button mat-flat-button (click)="locked()" class="btn-key">
@@ -180,8 +180,11 @@
 
 
 <!-- SHOWING RANKING LIST AT THE END -->
-<div class="container1" >
-  <div class="show-ranking" *ngIf="isShowRanking">
+<div class="container1" *ngIf="isShowRanking">
+  <audio autoplay preload="none" loop>
+    <source src="../../../assets/y2mate.com - Final Fantasy VII  Victory Fanfare HD.mp3" />
+  </audio>
+  <div class="show-ranking">
     <!-- <div class="show-ranking-header">
       <div class="show-ranking-header-title">
         <h1>Ranking</h1>

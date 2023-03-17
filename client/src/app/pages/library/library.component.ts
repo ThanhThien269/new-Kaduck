@@ -35,7 +35,6 @@ export class LibraryComponent {
 
   ngOnInit() {
     this.ownerId = this.authService.user?.uid;
-    console.log(this.ownerId?.toString());
 
     if(this.ownerId?.toString() != 'undefined'){
       this.questionKits$ = this.store

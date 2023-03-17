@@ -8,9 +8,9 @@ export class AuthController {
   async getUserProfile(@Headers() headers: any) {
     let authHeader = headers.authorization;
     authHeader = authHeader.replace('Bearer', '');
-    console.log(authHeader);
+    // console.log(authHeader);
     let authData = await this.authService.verifyToken(authHeader);
-    console.log(authData);
+    // console.log(authData);
     return this.authService.getUserProfile(authData.uid);
   }
 }
