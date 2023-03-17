@@ -119,7 +119,7 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.to(payload.pin).emit('show-ranking', this.lobbies[temp].players.sort((a, b) => b.score - a.score));
   }
 
-  @SubscribeMessage('show-ranking-user')
+  @SubscribeMessage('show-user-result')
   handleShowRanking2(client: Socket, payload: any): any {
     let temp = this.lobbies.findIndex((lobby) => lobby.pin === payload.pin);
     this.server.to(payload.pin).emit('ranking-user', this.lobbies[temp].players.sort((a, b) => b.score - a.score));

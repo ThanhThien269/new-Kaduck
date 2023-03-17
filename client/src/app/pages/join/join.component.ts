@@ -57,6 +57,7 @@ export class JoinComponent {
     // Showing final result of the player
     this.lobbyService.getUserResult().subscribe((data: any) => {
       this.isEndGame = true;
+      console.log(this.isEndGame);
       data.find((player: any) => {
         if(player.uid == this.lobbyService.currentPlayer.uid) {
           this.userResult = {
