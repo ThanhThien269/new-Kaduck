@@ -220,4 +220,35 @@
     transform: rotate(360deg);
   }
 }
+.correct {
+  background-color: #31a34f;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.false {
+  background-color: #e14032;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.correct .material-symbols-outlined{
+  font-size: 300px;
+  color: #f2f2f2;
 
+}
+.correct .false div p{
+  color: #f2f2f2;
+  font-size: 30px;
+}
+.false .material-symbols-outlined{
+  font-size: 300px;
+  color: #f2f2f2;
+
+}
