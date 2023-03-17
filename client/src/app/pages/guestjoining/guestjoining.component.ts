@@ -24,9 +24,8 @@ export class GuestjoiningComponent {
   pin: string = '';
   currentName: string = '';
   alreadyJoined: boolean = false;
-  // pin = this.homeService.pin;
-  // userInput = new FormControl('');
-  // inputMatches = false;
+
+  tempPlayerList: any[] = [];
 
   panelOpenState = false;
 
@@ -41,26 +40,14 @@ export class GuestjoiningComponent {
     this.uid = this.currentUser?.uid!;
   }
   join() {
-    // this.lobbyService.sendMessage({
-    //   pin: this.pin,
-    //   uid: this.uid,
-    //   name: this.currentUser?.displayName,
-    //   email: this.currentUser?.email,
-    // });
-    // this.lobbyService.joinLobby(
-    //   this.pin,
-    //   {
-    //     name: this.currentUser?.displayName,
-    //     score: 0,
-    //     correctAnswer: 0,
-    //   }
-    // );
     this.lobbyService.checkLobby(this.pin);
     this.lobbyService.getLobbyJoined().subscribe((res: any) => {
       console.log(res);
       
       if(res.msg == 'Lobby found'){
-        this.uid = (res.players.length++).toString();
+        let tempLength = res.players.length;
+        this.tempPlayerList = res.players;
+        this.uid = (tempLength++).toString();
         this.alreadyJoined = true;
       }
     });
@@ -68,19 +55,30 @@ export class GuestjoiningComponent {
   }
 
   enterName() {
-    console.log(this.uid);
-    let temp = {
-      name: this.currentName,
-      score: 0,
-      correctAnswer: 0,
-      uid: this.uid,
-    }
-    this.lobbyService.currentPlayer = temp;
-    this.lobbyService.joinLobby(
-      this.pin,
-      temp
-    )
-    this.router.navigate([`join/${this.pin}`]);
+      let tempUser = -1;
+      if(this.tempPlayerList.length > 1){
+        console.log('tempPlayerList', this.tempPlayerList);
+        tempUser = this.tempPlayerList.findIndex((player) => player.name === this.currentName);
+      }else{
+        if(tempUser === -1){
+          let temp = {
+            name: this.currentName,
+            score: 0,
+            correctAnswer: 0,
+            uid: this.uid,
+          }
+          this.lobbyService.currentPlayer = temp;
+          this.lobbyService.joinLobby(
+            this.pin,
+            temp
+          )
+          this.router.navigate([`join/${this.pin}`]);
+        }else{
+          console.log('Username already taken');
+        }
+      }
+      
+    // }
   }
 
 

@@ -56,6 +56,11 @@ export class LobbyService {
   }
 
 
+  checkName(pin: string, player: any) {
+    return this.socket.fromEvent('lobby-check');
+  }
+
+
   startGame(pin: string, quesData: question) {
     this.socket.emit('start-game', {
       pin: pin,
