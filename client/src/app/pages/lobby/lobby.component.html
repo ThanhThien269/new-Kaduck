@@ -107,21 +107,21 @@
     <!-- Show correct answer -->
     <div id="middle_lower" *ngIf="isPaused">
       <div id="middle_lower_left">
-        <button mat-raised-button id="A_box" [class]="'A' == questionData[i].true_answer ? 'ans correct' : 'ans'">
+        <button [class]="'A' == questionData[i].true_answer ? 'answer_box ans_A correct' : 'answer_box ans_A'">
           <span class="material-icons"> {{'A' == questionData[i].true_answer ? 'check': 'favorite'}} </span>
           {{ questionData[i].answer_A }}
         </button>
-        <button mat-raised-button id="C_box" [class]="'C' == questionData[i].true_answer ? 'ans correct' : 'ans'">
+        <button [class]="'C' == questionData[i].true_answer ? 'answer_box ans_C correct' : 'answer_box ans_C'">
           <span class="material-icons"> {{'C' == questionData[i].true_answer ? 'check':'star_rate' }} </span>
           {{ questionData[i].answer_C }}
         </button>
       </div>
       <div id="middle_lower_right">
-        <button mat-raised-button id="B_box" [class]="'B' == questionData[i].true_answer ? 'ans correct' : 'ans'">
+        <button [class]="'B' == questionData[i].true_answer ? 'answer_box ans_B correct' : 'answer_box ans_B'">
           <span class="material-icons"> {{'B' == questionData[i].true_answer ? 'check': 'square'}}  </span>
           {{ questionData[i].answer_B }}
         </button>
-        <button mat-raised-button id="D_box" [class]="'D' == questionData[i].true_answer ? 'ans correct' : 'ans'">
+        <button [class]="'D' == questionData[i].true_answer ? 'answer_box ans_D correct' : 'answer_box ans_D'">
           <span class="material-icons"> {{'D' == questionData[i].true_answer ? 'check':'pentagon'}}   </span>
           {{ questionData[i].answer_D }}
         </button>
