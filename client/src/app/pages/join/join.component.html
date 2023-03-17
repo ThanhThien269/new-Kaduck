@@ -25,12 +25,18 @@
   </div>
   <div id="content">
     <div class="lds-ring" *ngIf="time != 0 && alreadyAnswered || time == 0 && !isShowStatus">
-      <div></div>
+      <div ></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <h1 *ngIf="isShowStatus">{{isCorrect == 1 ? 'True' : 'False'}}</h1>
+    <h1 *ngIf="isShowStatus && isCorrect== 1" ><span class="material-symbols-outlined">
+      check_circle
+      </span></h1>
+    <h1 *ngIf="isShowStatus && isCorrect== 0" >
+      <span class="material-symbols-outlined">cancel
+      </span></h1>
+
   </div>
 
 </div>
