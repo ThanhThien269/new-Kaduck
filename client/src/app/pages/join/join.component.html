@@ -1,10 +1,10 @@
-<div id="progressive" *ngIf="!isStarting">
+<div id="progressive" *ngIf="!isStarting && !isEndGame">
   <div>
     <h1 class="loadFont text-center">Please Wait...</h1>
   </div>
   <div class="loader"></div>
 </div>
-<div id="content" *ngIf="isStarting">
+<div id="content" *ngIf="isStarting && !isEndGame">
   <div id="middle_lower" *ngIf="!alreadyAnswered && !isShowStatus">
     <div id="middle_lower_left">
       <button (click)="chooseAnswer('A')" id="A_box" mat-raised-button>
@@ -39,4 +39,10 @@
 
   </div>
 
+</div>
+
+<!-- SHOWING PLAYER FINAL RESULT -->
+<div *ngIf="isEndGame">
+  <h1>{{userResult.score}}</h1>
+  <h1>{{userResult.rank}}</h1>
 </div>

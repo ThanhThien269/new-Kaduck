@@ -91,7 +91,7 @@ export class LobbyComponent implements OnInit{
     });
     this.lobbyService.showRanking().subscribe((data: any) => {
       this.isEndGame = true;
-      this.ranking = data.sort((a: any, b: any) => b.score - a.score);
+      this.ranking = data;
       console.log(this.ranking);
     });
     // this.lobbyService.getMessage(this.id).subscribe((msg: any) => {
