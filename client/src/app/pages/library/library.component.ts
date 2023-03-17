@@ -34,16 +34,20 @@ export class LibraryComponent {
   questionKits$ = new Observable<question_kit[]>();
 
   ngOnInit() {
+    this.ownerId = this.authService.user?.uid;
     console.log(this.ownerId?.toString());
-    this.questionKits$ = this.store
-      .select('question_kit')
-      .pipe(map((state) => state.question_kits));
-    this.store.dispatch(
-      QuestionKitActions.getQuestionKitByOwner({ id: this.ownerId })
-    );
-    this.questionKits$.subscribe((e) => {
-      // console.log(e);
-    });
+
+    if(this.ownerId?.toString() != 'undefined'){
+      this.questionKits$ = this.store
+        .select('question_kit')
+        .pipe(map((state) => state.question_kits));
+      this.store.dispatch(
+        QuestionKitActions.getQuestionKitByOwner({ id: this.ownerId })
+      );
+      this.questionKits$.subscribe((e) => {
+        // console.log(e);
+      });
+    }
   }
 
   lobby(id: string) {

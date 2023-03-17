@@ -19,7 +19,7 @@
   </div>
 
 
-  <div id="container">
+  <div id="container" *ngIf="ownerId != 'undefined'">
   <div id="rec_contain" >
     <div id="rec_recent" *ngFor="let question of questionKits$ | async">
       <!-- <input id="checkbox" type="checkbox"> -->
