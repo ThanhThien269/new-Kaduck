@@ -1,7 +1,4 @@
 <div id="progressive" *ngIf="!isStarting && !isEndGame">
-  <audio autoplay preload="none" loop>
-    <source src="../../../assets/Gigi_D_Agostino_L_Amour_Toujours.mp3">
-  </audio>
   <div>
     <h1 class="loadFont text-center">Please Wait...</h1>
   </div>
@@ -13,50 +10,64 @@
       <button (click)="chooseAnswer('A')" id="A_box" mat-raised-button>
         <span class="material-icons"> favorite </span>
       </button>
-      <button (click)="chooseAnswer('C')"  id="C_box" mat-raised-button>
+      <button (click)="chooseAnswer('C')" id="C_box" mat-raised-button>
         <span class="material-icons"> star_rate </span>
       </button>
     </div>
     <div id="middle_lower_right">
-      <button (click)="chooseAnswer('B')"  id="B_box" mat-raised-button>
+      <button (click)="chooseAnswer('B')" id="B_box" mat-raised-button>
         <span class="material-icons"> square </span>
       </button>
-      <button (click)="chooseAnswer('D')"  id="D_box" mat-raised-button>
+      <button (click)="chooseAnswer('D')" id="D_box" mat-raised-button>
         <span class="material-icons"> pentagon </span>
       </button>
     </div>
   </div>
-  <div id="content" >
-    <div id="progressive"  style="display: flex;justify-content: center;">
-
-      <div class="loader" *ngIf="time != 0 && alreadyAnswered || time == 0 && !isShowStatus">
-        <div ></div>
+  <div id="content">
+    <div id="progressive" style="display: flex; justify-content: center">
+      <div
+        class="loader"
+        *ngIf="(time != 0 && alreadyAnswered) || (time == 0 && !isShowStatus)"
+      >
+        <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
     </div>
-    <div>
-    </div>
-    <h1  class="correct"  *ngIf="isShowStatus && isCorrect== 1" >
+    <div></div>
+    <h1 class="correct" *ngIf="isShowStatus && isCorrect == 1">
       <div>
-        <span class="material-symbols-outlined">
-          check_circle
-          </span>
-        <p style="color: #f2f2f2; font-size: 30px;display: flex;justify-content: center;">You are correct !</p>
+        <span class="material-symbols-outlined"> check_circle </span>
+        <p
+          style="
+            color: #f2f2f2;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+          "
+        >
+          You are correct !
+        </p>
       </div>
-     </h1>
+    </h1>
 
-    <h1  class="false" *ngIf="isShowStatus && isCorrect== 0" ><span class="material-symbols-outlined">cancel
-      </span><p style="color: #f2f2f2; font-size: 30px;display: flex;justify-content: center;">You are wrong !</p></h1>
-
+    <h1 class="false" *ngIf="isShowStatus && isCorrect == 0">
+      <span class="material-symbols-outlined">cancel </span>
+      <p
+        style="
+          color: #f2f2f2;
+          font-size: 30px;
+          display: flex;
+          justify-content: center;
+        "
+      >
+        You are wrong !
+      </p>
+    </h1>
   </div>
-
 </div>
 <div *ngIf="isEndGame">
-  <audio autoplay preload="none" loop>
-    <source src="../../../assets/nhaccuaNhanhehe.mp3">
-  </audio>
-  <h1>{{userResult.score}}</h1>
-  <h1>{{userResult.rank}}</h1>
+  <h1>{{ userResult.score }}</h1>
+  <h1>{{ userResult.rank }}</h1>
 </div>
