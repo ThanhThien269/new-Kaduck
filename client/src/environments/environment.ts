@@ -8,8 +8,8 @@ export const environment = {
     messagingSenderId: '1096704950281',
     measurementId: 'G-EQ7DNEDVRX',
   },
-  // apiEndpoint: 'https://kaduck-cpn2hi4fla-as.a.run.app/',
-  // socketEndpoint: 'wss://kaduck-cpn2hi4fla-as.a.run.app/',
-  apiEndpoint: 'http://localhost:4545/',
-  socketEndpoint: 'wss://localhost:4545/',
+  apiEndpoint: 'https://kaduck-cpn2hi4fla-as.a.run.app/',
+  socketEndpoint: 'wss://kaduck-cpn2hi4fla-as.a.run.app/',
+  // apiEndpoint: 'http://localhost:4545/',
+  // socketEndpoint: 'wss://localhost:4545/',
 };
