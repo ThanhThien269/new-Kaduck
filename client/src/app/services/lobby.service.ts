@@ -92,4 +92,12 @@ export class LobbyService {
   showRanking() {
     return this.socket.fromEvent('show-ranking');
   }
+
+  showUserResult(pin: string) {
+    this.socket.emit('show-user-result', {pin: pin});
+  }
+
+  getUserResult() {
+    return this.socket.fromEvent('ranking-user');
+  }
 }
