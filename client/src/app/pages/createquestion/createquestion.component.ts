@@ -60,7 +60,6 @@ export class CreatequestionComponent {
       answer_D: '',
       true_answer: '',
     };
-
     this.question_kit_model.questions.push(questionModel);
     this.currentQuestion = questionModel;
 
