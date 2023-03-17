@@ -20,6 +20,10 @@ export class JoinComponent {
   alreadyAnswered: boolean = false;
   isShowStatus: boolean = false;
   isCorrect: number = -1;
+  isEndGame: boolean = false;
+
+  userResult!: any;
+
   constructor(
     private route: ActivatedRoute,
     private _socket: Socket,
@@ -37,6 +41,7 @@ export class JoinComponent {
     this.lobbyService.playingGame().subscribe((data: any) => {
       this.isShowStatus = false;
       if(data.msg == 'playing') this.isStarting = true;
+      console.log(this.isStarting);
       if(data.question) this.questionData = data.question;
       this.time = data.question.time;
     });
@@ -49,6 +54,19 @@ export class JoinComponent {
       this.time = 0;
       this.isShowStatus = true;
     });
+
+    // Showing final result of the player
+    this.lobbyService.showRanking().subscribe((data: any) => {
+      this.isEndGame = true;
+      data.find((player: any) => {
+        if(player.uid == this.lobbyService.currentPlayer.uid) {
+          this.userResult = {
+            ... player,
+            rank: data.indexOf(player) + 1
+          };
+        };
+      })
+    })
   }
 
   chooseAnswer(answer: string) {
@@ -65,5 +83,8 @@ export class JoinComponent {
       this.id
     )
   }
-  // chooseAnswer() {}
+  // showFinalResult() {
+  //   this.isEndGame = true;
+    
+  // }
 }
