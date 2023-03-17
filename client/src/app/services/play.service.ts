@@ -9,7 +9,6 @@ export class PlayService {
   constructor(private socket: Socket) { }
 
 
-
   nextQuestion(){
     // this.socket.emit('nextQuestion');
   }

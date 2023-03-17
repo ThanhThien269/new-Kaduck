@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!isStarting">
+<div class="container" *ngIf="!isStarting && !isEndGame">
   <audio autoplay preload="none" loop>
     <source src="../../../assets/30minNekoAtsume.mp3" />
   </audio>
@@ -54,7 +54,7 @@
     </div>
   </div>
 </div>
-<div id="contents" *ngIf="isStarting">
+<div id="contents" *ngIf="isStarting && !isEndGame">
   <div id="middle">
     <div id="middle_higher">
       <div id="middle_higher_left">
@@ -83,8 +83,8 @@
           {{ questionData[i].answer_A }}
         </button>
         <button class="ans" id="C_box" mat-raised-button>
-          {{ questionData[i].answer_C }}
           <span class="material-icons"> star_rate </span>
+          {{ questionData[i].answer_C }}
         </button>
       </div>
       <div id="middle_lower_right">
@@ -103,19 +103,50 @@
     <div id="middle_lower" *ngIf="isPaused">
       <div id="middle_lower_left">
         <button [class]="'A' == questionData[i].true_answer ? 'answer_box ans_A correct' : 'answer_box ans_A'">
+          <span class="material-icons"> {{'A' == questionData[i].true_answer ? 'check': 'favorite'}} </span>
           {{ questionData[i].answer_A }}
         </button>
         <button [class]="'C' == questionData[i].true_answer ? 'answer_box ans_C correct' : 'answer_box ans_C'">
+          <span class="material-icons"> {{'C' == questionData[i].true_answer ? 'check':'star_rate' }} </span>
           {{ questionData[i].answer_C }}
         </button>
       </div>
       <div id="middle_lower_right">
         <button [class]="'B' == questionData[i].true_answer ? 'answer_box ans_B correct' : 'answer_box ans_B'">
+          <span class="material-icons"> {{'B' == questionData[i].true_answer ? 'check': 'square'}}  </span>
           {{ questionData[i].answer_B }}
         </button>
         <button [class]="'D' == questionData[i].true_answer ? 'answer_box ans_D correct' : 'answer_box ans_D'">
+          <span class="material-icons"> {{'D' == questionData[i].true_answer ? 'check':'pentagon'}}   </span>
           {{ questionData[i].answer_D }}
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" *ngIf="isEndGame">
+  <div class="show-ranking">
+    <div class="show-ranking-header">
+      <div class="show-ranking-header-title">
+        <h1>Ranking</h1>
+      </div>
+      <!-- <div class="show-ranking-header-close">
+        <button mat-icon-button (click)="closeRanking()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div> -->
+    </div>
+    <div class="show-ranking-body">
+      <div class="show-ranking-body-ranking">
+        <div class="show-ranking-body-ranking-item" *ngFor="let player of ranking">
+          <div class="show-ranking-body-ranking-item-name">
+            <p>{{ player.name }}</p>
+          </div>
+          <div class="show-ranking-body-ranking-item-score">
+            <p>{{ player.score }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

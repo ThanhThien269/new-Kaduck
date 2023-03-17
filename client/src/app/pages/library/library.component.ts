@@ -23,19 +23,27 @@ export class LibraryComponent {
     private lobbyService: LobbyService,
     private loginService: LoginService,
     private router: Router,
-    private store: Store<{ question_kit: QuestionKitState }>
+    private store: Store<{ question_kit: QuestionKitState }>,
+    private authService: LoginService
   ) {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
   }
+  ownerId = this.authService.user?.uid;
+
   questionKits$ = new Observable<question_kit[]>();
 
   ngOnInit() {
+    console.log(this.ownerId?.toString());
     this.questionKits$ = this.store
       .select('question_kit')
       .pipe(map((state) => state.question_kits));
-    this.store.dispatch(QuestionKitActions.getQuestionKits());
-    this.questionKits$.subscribe();
+    this.store.dispatch(
+      QuestionKitActions.getQuestionKitByOwner({ id: this.ownerId })
+    );
+    this.questionKits$.subscribe((e) => {
+      // console.log(e);
+    });
   }
 
   lobby(id: string) {
@@ -47,5 +55,4 @@ export class LibraryComponent {
     });
     this.router.navigate(['/lobby/' + id]);
   }
-
 }

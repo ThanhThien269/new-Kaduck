@@ -1,4 +1,4 @@
-import { from, map } from 'rxjs';
+import { from, map, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {
   Auth,
@@ -13,11 +13,19 @@ import {
   providedIn: 'root',
 })
 export class LoginService {
-  user: User | null = null;
 
-  constructor(private auth: Auth) {
+  user: User | null = null;
+  user$: any = new Subject<User | null>();
+
+  constructor(public auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
-      this.user = user;
+      if (user) {
+        this.user = user;
+        this.user$.next(this.user);
+      } else {
+        this.user = null;
+        this.user$.next(this.user);
+      }
     });
   }
 

@@ -22,6 +22,8 @@ export class GuestjoiningComponent {
   currentUser: User | null = null;
   uid: string = '';
   pin: string = '';
+  currentName: string = '';
+  alreadyJoined: boolean = false;
   // pin = this.homeService.pin;
   // userInput = new FormControl('');
   // inputMatches = false;
@@ -39,17 +41,47 @@ export class GuestjoiningComponent {
     this.uid = this.currentUser?.uid!;
   }
   join() {
-    this.lobbyService.sendMessage({
-      pin: this.pin,
-      uid: this.uid,
-      name: this.currentUser?.displayName,
-      email: this.currentUser?.email,
+    // this.lobbyService.sendMessage({
+    //   pin: this.pin,
+    //   uid: this.uid,
+    //   name: this.currentUser?.displayName,
+    //   email: this.currentUser?.email,
+    // });
+    // this.lobbyService.joinLobby(
+    //   this.pin,
+    //   {
+    //     name: this.currentUser?.displayName,
+    //     score: 0,
+    //     correctAnswer: 0,
+    //   }
+    // );
+    this.lobbyService.checkLobby(this.pin);
+    this.lobbyService.getLobbyJoined().subscribe((res: any) => {
+      console.log(res);
+      
+      if(res.msg == 'Lobby found'){
+        this.uid = (res.players.length++).toString();
+        this.alreadyJoined = true;
+      }
     });
-    this.router.navigate([`join/${this.pin}`]);
     // this.homeService.join();
   }
 
-
+  enterName() {
+    console.log(this.uid);
+    let temp = {
+      name: this.currentName,
+      score: 0,
+      correctAnswer: 0,
+      uid: this.uid,
+    }
+    this.lobbyService.currentPlayer = temp;
+    this.lobbyService.joinLobby(
+      this.pin,
+      temp
+    )
+    this.router.navigate([`join/${this.pin}`]);
+  }
 
 
 

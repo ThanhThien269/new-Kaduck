@@ -382,7 +382,6 @@
   margin: 0 auto;
   border-radius: 5px;
   font-size: 30px;
-  opacity: 0.8;
 }
 
 .ans_A {
@@ -403,7 +402,7 @@
 }
 
 .correct{
-  opacity: 1;
+  opacity: 1 !important;
 }
 // .ans {
 //   .material-icons {

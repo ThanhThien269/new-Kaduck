@@ -5,38 +5,32 @@
   <div class="loader"></div>
 </div>
 <div id="content" *ngIf="isStarting">
-  <div id="middle_lower" *ngIf="!alreadyAnswered">
+  <div id="middle_lower" *ngIf="!alreadyAnswered && !isShowStatus">
     <div id="middle_lower_left">
-      <button (click)="chooseAnswer(questionData.answer_A )" id="A_box" mat-raised-button>{{ questionData.answer_A }}</button>
-      <button (click)="chooseAnswer(questionData.answer_C )" id="C_box" mat-raised-button>{{ questionData.answer_C }}</button>
-    </div>
-    <div id="middle_lower_right">
-      <button (click)="chooseAnswer(questionData.answer_B )" id="B_box" mat-raised-button>{{ questionData.answer_B }}</button>
-      <button (click)="chooseAnswer(questionData.answer_D )" id="D_box" mat-raised-button>{{ questionData.answer_D }}</button>
-      <!-- <button id="A_box" mat-raised-button>
+      <button (click)="chooseAnswer('A')" id="A_box" mat-raised-button>
         <span class="material-icons"> favorite </span>
       </button>
-      <button id="C_box" mat-raised-button>
+      <button (click)="chooseAnswer('C')"  id="C_box" mat-raised-button>
         <span class="material-icons"> star_rate </span>
       </button>
     </div>
     <div id="middle_lower_right">
-      <button id="B_box" mat-raised-button>
+      <button (click)="chooseAnswer('B')"  id="B_box" mat-raised-button>
         <span class="material-icons"> square </span>
       </button>
-      <button id="D_box" mat-raised-button>
+      <button (click)="chooseAnswer('D')"  id="D_box" mat-raised-button>
         <span class="material-icons"> pentagon </span>
-      </button> -->
+      </button>
     </div>
   </div>
-  <div id="content"  *ngIf="isStarting">
-    <div class="lds-ring" *ngIf="time != 0 && alreadyAnswered">
+  <div id="content">
+    <div class="lds-ring" *ngIf="time != 0 && alreadyAnswered || time == 0 && !isShowStatus">
       <div></div>
       <div></div>
       <div></div>
       <div></div>
     </div>
-    <h1 *ngIf="time == 0 || (time == 0 && alreadyAnswered)">Your score</h1>
+    <h1 *ngIf="isShowStatus">{{isCorrect == 1 ? 'True' : 'False'}}</h1>
   </div>
 
 </div>

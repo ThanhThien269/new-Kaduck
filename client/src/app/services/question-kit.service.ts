@@ -11,6 +11,15 @@ export class QuestionKitService {
 
   url = 'http://localhost:4545/';
 
+  getQuestionKitByOwner(id: string | undefined) {
+    return this.httpClient.get(
+      `${this.url}questionkit/byuser?id=${id}`
+      // { headers:{
+
+      // }}
+    ) as Observable<question_kit[]>;
+  }
+
   getQuestionKits() {
     return this.httpClient.get(`${this.url}questionkit/all`) as Observable<
       question_kit[]

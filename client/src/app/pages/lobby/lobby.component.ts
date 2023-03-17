@@ -56,6 +56,9 @@ export class LobbyComponent implements OnInit{
   questionData = new Array<question>();
   players: any[] = [];
 
+  isEndGame: boolean = false;
+  ranking: any[] = [];
+
   joinList$!: Observable<any>;
 
   constructor(
@@ -77,7 +80,6 @@ export class LobbyComponent implements OnInit{
     this.store.dispatch(QuestionKitActions.getQuestionKit({ id: this.docId }));
     this.questionKit$.subscribe((data) => {
       this.questionData = data[0].questions;
-      console.log(this.questionData);
     });
     // this.socket.fromEvent('update-room').subscribe((data: any) => {
     //   console.log(data);
@@ -86,6 +88,14 @@ export class LobbyComponent implements OnInit{
     this.lobbyService.getLobbyPlayers(this.id).subscribe((msg: any) => {
       console.log(msg);
       this.players.push(msg);
+    });
+    this.lobbyService.showAnswer().subscribe((msg: any) => {
+      this.isPaused = true;
+    });
+    this.lobbyService.showRanking().subscribe((data: any) => {
+      this.isEndGame = true;
+      this.ranking = data.sort((a: any, b: any) => b.score - a.score);
+      console.log(this.ranking);
     });
     // this.lobbyService.getMessage(this.id).subscribe((msg: any) => {
     //   console.log(msg);
@@ -97,65 +107,24 @@ export class LobbyComponent implements OnInit{
     this.lock = !this.lock;
   }
   start() {
-    // this.lobbyService.sendMessage({
-    //   pin: this.id,
-    //   message: 'start',
-    //   question: this.questionData[this.i],
-    // });
     this.lobbyService.startGame(this.id, this.questionData[this.i]);
     let tempQuestionData = this.questionData;
     this.time = tempQuestionData[this.i].timer;
     this.isStarting = true;
-    // let myInterval = setInterval(() => {
-    //   if (this.time > 0) {
-    //     this.time--;
-    //     this.lobbyService.sendMessage({ pin: this.id, time: this.time });
-    //   } else {
-    //     this.i++;
-    //     if (this.i == tempQuestionData.length) {
-    //       clearInterval(myInterval);
-    //       return;
-    //     } else {
-    //       console.log(tempQuestionData);
-    //       this.time = tempQuestionData[this.i].timer;
-    //       this.lobbyService.sendMessage({
-    //         pin: this.id,
-    //         time: this.time,
-    //         question: tempQuestionData[this.i],
-    //       });
-    //     }
-    //   }
-    // }, 1000);
-    let myInterval = setInterval(() => {
-      if(!this.isPaused){
-        if (this.time > 0) {
-          this.time--;
-          this.lobbyService.sendMessage({ pin: this.id, time: this.time });
-        } else {
-          this.isPaused = true;
-          this.lobbyService.sendMessage({ pin: this.id, message: 'pause'});
-          // if (this.i == tempQuestionData.length) {
-          //   clearInterval(myInterval);
-          //   return;
-          // } else {
-          //   console.log(tempQuestionData);
-          //   this.time = tempQuestionData[this.i].timer;
-          //   this.lobbyService.sendMessage({
-          //     pin: this.id,
-          //     time: this.time,
-          //     question: tempQuestionData[this.i],
-          //   });
-          // }
-        }
-      }
-    }, 1000);
-
-    this.lobbyService.startGame(this.id, this.questionData[this.i]);
+    this.timer();
   }
 
   nextQuestion(){
     this.i++;
     this.isPaused = false;
+    this.lobbyService.startGame(this.id, this.questionData[this.i]);
+    this.time = this.questionData[this.i].timer;
+    this.timer();
+    // if (this.i == this.questionData.length++) {
+    //   console.log('end game');
+    //   this.lobbyService.endGame(this.id);
+    //   return;
+    // } 
     // let myInterval = setInterval(() => {
     //   if(!this.isPaused){
     //     if (this.time > 0) {
@@ -179,14 +148,24 @@ export class LobbyComponent implements OnInit{
     //   }
     // }, 1000);
   }
+
+  timer() {  
+    let myInterval = setInterval(() => {
+      if(!this.isPaused){
+        if (this.time > 0) {
+          this.time--;
+          // this.lobbyService.sendMessage({ pin: this.id, time: this.time });
+        } else {
+          this.lobbyService.timeOut(this.id);
+          if (this.i+1 == this.questionData.length) {
+            clearInterval(myInterval);
+            this.lobbyService.endGame(this.id);
+            return;
+          } 
+        }
+      }
+    }, 1000);
+  }
 }
 
-// listenForChanged() {
-//   return this._socket.fromEvent('receive-joiner')
-// }
 
-// lock = false;
-
-// locked(){
-//   this.lock=!this.lock
-// }
