@@ -1,4 +1,7 @@
 <div id="progressive" *ngIf="!isStarting && !isEndGame">
+  <audio autoplay preload="none" loop>
+    <source src="../../../assets/Gigi_D_Agostino_L_Amour_Toujours.mp3">
+  </audio>
   <div>
     <h1 class="loadFont text-center">Please Wait...</h1>
   </div>
@@ -51,6 +54,9 @@
 
 </div>
 <div *ngIf="isEndGame">
+  <audio autoplay preload="none" loop>
+    <source src="../../../assets/nhaccuaNhanhehe.mp3">
+  </audio>
   <h1>{{userResult.score}}</h1>
   <h1>{{userResult.rank}}</h1>
 </div>
