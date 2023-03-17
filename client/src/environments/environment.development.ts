@@ -7,4 +7,7 @@ export const environment = {
     authDomain: 'kaduck-56ac0.firebaseapp.com',
     messagingSenderId: '1096704950281',
     measurementId: 'G-EQ7DNEDVRX',
-  },};
+  },
+  apiEndpoint: 'https://kaduck-cpn2hi4fla-as.a.run.app/',
+  socketEndpoint: 'wss://kaduck-cpn2hi4fla-as.a.run.app/',
+};

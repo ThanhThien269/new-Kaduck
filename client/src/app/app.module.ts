@@ -18,7 +18,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { question_kitReducer } from './reducer/question_kit.reducer';
 import { QuestionKitEffects } from './effect/question_kit.effect';
 
-const config: SocketIoConfig = { url: 'http://localhost:4545/', options: {} };
+const config: SocketIoConfig = { url: environment.socketEndpoint, options: {} };
 
 @NgModule({
   declarations: [AppComponent],
