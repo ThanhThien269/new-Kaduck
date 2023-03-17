@@ -10,6 +10,7 @@ import { QuestionKitState } from 'src/app/state/question_kit.state';
 import * as QuestionKitActions from 'src/app/action/question_kit.action';
 import { question_kit } from './../../models/question_kit.model';
 import { LobbyService } from 'src/app/services/lobby.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -34,7 +35,8 @@ export class GuestjoiningComponent {
     private lobbyService: LobbyService,
     private router: Router,
     private loginService: LoginService,
-    private store: Store<{ question_kit: QuestionKitState }>
+    private store: Store<{ question_kit: QuestionKitState }>,
+    private _snackBar: MatSnackBar
     ) {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
@@ -49,6 +51,8 @@ export class GuestjoiningComponent {
         this.tempPlayerList = res.players;
         this.uid = (tempLength++).toString();
         this.alreadyJoined = true;
+      }else{
+        this.openSnackBar(res.msg, 'Close');
       }
     });
     // this.homeService.join();
@@ -98,7 +102,11 @@ export class GuestjoiningComponent {
     this.router.navigate(['/login']);
 
   }
-
-
+  logout(){
+    this.loginService.logout();
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
 
 }

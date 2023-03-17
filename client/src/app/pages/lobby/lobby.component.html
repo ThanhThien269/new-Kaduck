@@ -73,7 +73,7 @@
       <div id="middle_higher_right">
         <!-- <div id="timer">{{ questionData[0].timer }}</div> -->
         <div *ngIf="!isPaused" id="timer">{{ this.time }}</div>
-        <button *ngIf="isPaused && this.i+1 != this.questionData.length" (click)="nextQuestion()">Next</button>
+        <button id="next_btn"  *ngIf="isPaused && this.i+1 != this.questionData.length" (click)="nextQuestion()" >Next</button>
       </div>
     </div>
     <div id="middle_lower" *ngIf="!isPaused">
