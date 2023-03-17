@@ -114,9 +114,15 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('end-game')
-  handleShowRanking(client: Socket, payload: any): any {
+  handleEndGame(client: Socket, payload: any): any {
     let temp = this.lobbies.findIndex((lobby) => lobby.pin === payload.pin);
     this.server.to(payload.pin).emit('show-ranking', this.lobbies[temp].players.sort((a, b) => b.score - a.score));
+  }
+
+  @SubscribeMessage('show-user-result')
+  handleShowRanking2(client: Socket, payload: any): any {
+    let temp = this.lobbies.findIndex((lobby) => lobby.pin === payload.pin);
+    this.server.to(payload.pin).emit('ranking-user', this.lobbies[temp].players.sort((a, b) => b.score - a.score));
   }
 
   @SubscribeMessage('delete-lobby')
