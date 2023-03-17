@@ -78,6 +78,7 @@ export class LobbyComponent implements OnInit{
   }
 
   ngOnInit() {
+    console.log(this.lobbyService.id);
     if(this.lobbyService.id == ''){
       this.router.navigate(['/library']);
     }else{
@@ -89,7 +90,6 @@ export class LobbyComponent implements OnInit{
         this.questionData = data[0].questions;
       });
       this.lobbyService.getLobbyPlayers(this.id).subscribe((msg: any) => {
-        console.log(msg);
         this.players.push(msg);
       });
       this.lobbyService.showAnswer().subscribe((msg: any) => {
@@ -135,6 +135,7 @@ export class LobbyComponent implements OnInit{
       if(!this.isPaused){
         if (this.time > 0) {
           this.time--;
+          this.lobbyService.updateTimer(this.id, this.time);
           // this.lobbyService.sendMessage({ pin: this.id, time: this.time });
         } else {
           this.lobbyService.timeOut(this.id);

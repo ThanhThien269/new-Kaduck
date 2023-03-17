@@ -90,7 +90,6 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   @SubscribeMessage('start-game')
   handleStartGame(client: Socket, payload: any): any {
-    console.log('start-game');
     this.server.to(payload.pin).emit('next-question', {msg: 'playing', question: payload.question});
     // this.server
     //   .to(payload.pin)
@@ -125,13 +124,16 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.to(payload.pin).emit('ranking-user', this.lobbies[temp].players.sort((a, b) => b.score - a.score));
   }
 
+
+  @SubscribeMessage('lobby-timer')
+  handleLobbyTimer(client: Socket, payload: any): any {
+    this.server.to(payload.pin).emit('lobby-timer-update', payload.time);
+  }
+
   @SubscribeMessage('delete-lobby')
   handleDeleteLobby(client: Socket, payload: any): any {
     let temp = this.lobbies.findIndex((lobby) => lobby.pin === payload.pin);
     this.lobbies.splice(temp, 1);
-    this.server.to(payload.pin).emit(`delete-lobby`, { msg: 'delete-lobby' });
-    // this.server
-    //   .to(payload.pin)
-    //   .emit('show-ranking', this.lobbies[temp].players);
+    this.server.to(payload.pin).emit(`delete-lobby-update`, { msg: 'delete-lobby' });
   }
 }
