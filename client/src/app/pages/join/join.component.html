@@ -23,15 +23,17 @@
       </button>
     </div>
   </div>
-  <div id="content">
-    <div class="lds-ring" *ngIf="time != 0 && alreadyAnswered || time == 0 && !isShowStatus">
-      <div ></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <div id="content" >
+    <div id="progressive">
+
+      <div class="loader" *ngIf="time != 0 && alreadyAnswered || time == 0 && !isShowStatus" style="display: flex;justify-content: center;">
+        <div ></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
     <div>
-
     </div>
     <h1  class="correct"  *ngIf="isShowStatus && isCorrect== 1" >
       <div>
