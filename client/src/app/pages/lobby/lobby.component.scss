@@ -443,7 +443,11 @@ align-items: center;
 }
 .show-ranking-body{
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  .show-ranking-body-ranking-item{
+    display: flex;
+  }
 }
 }
