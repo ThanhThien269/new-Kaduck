@@ -410,3 +410,40 @@
 //     margin-right: 2rem;
 //   }
 // }
+
+//Show ranking
+.container1{
+background-color: #5614ac;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+.show-ranking{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #3b9658;
+  width: 80%;
+  height: 80%;
+  .show-ranking-header-title{
+    display: flex;
+    align-items: center;
+  justify-content: center;
+  h1{
+    font-size: 60px;
+  }
+  }
+  .show-ranking-header-close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.show-ranking-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+}

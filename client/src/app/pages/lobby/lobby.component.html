@@ -99,9 +99,6 @@
       </div>
 
     </div>
-<<<<<<< HEAD
-    <!-- <button mat-flat-button [routerLink]="['../result']"  color="primary" class="btn-result">result</button> -->
-=======
 
     <!-- Show correct answer -->
     <div id="middle_lower" *ngIf="isPaused">
@@ -130,7 +127,7 @@
 </div>
 
 <!-- SHOWING RANKING LIST AT THE END -->
-<div class="container" *ngIf="isEndGame">
+<div class="container1" *ngIf="isEndGame">
   <div class="show-ranking">
     <div class="show-ranking-header">
       <div class="show-ranking-header-title">
@@ -147,13 +144,13 @@
         <div class="show-ranking-body-ranking-item" *ngFor="let player of ranking">
           <div class="show-ranking-body-ranking-item-name">
             <p>{{ player.name }}</p>
-          </div>
-          <div class="show-ranking-body-ranking-item-score">
             <p>{{ player.score }}</p>
           </div>
+          <!-- <div class="show-ranking-body-ranking-item-score">
+            <p>{{ player.score }}</p>
+          </div> -->
         </div>
       </div>
     </div>
->>>>>>> 86dcaf8420ca385861c5e53a0dc9c40fcb80e793
   </div>
 </div>
