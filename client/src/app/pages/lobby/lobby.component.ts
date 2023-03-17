@@ -15,6 +15,7 @@ import { QuestionKitState } from 'src/app/state/question_kit.state';
 import { Observable, map } from 'rxjs';
 import { question_kit } from 'src/app/models/question_kit.model';
 import * as QuestionKitActions from 'src/app/action/question_kit.action';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-lobby',
@@ -66,7 +67,8 @@ export class LobbyComponent implements OnInit{
     private lobbyService: LobbyService,
     private router: Router,
     private activate: ActivatedRoute,
-    private store: Store<{ question_kit: QuestionKitState }>
+    private store: Store<{ question_kit: QuestionKitState }>,
+    private _snackBar: MatSnackBar,
   ) {
     this.activate.params.subscribe((data) => {
       this.docId = data['id'];
@@ -75,25 +77,29 @@ export class LobbyComponent implements OnInit{
   }
   
   ngOnInit() {
-    this.questionKit$ = this.store
-      .select('question_kit')
-      .pipe(map((state) => state.question_kits));
-    this.store.dispatch(QuestionKitActions.getQuestionKit({ id: this.docId }));
-    this.questionKit$.subscribe((data) => {
-      this.questionData = data[0].questions;
-    });
-    this.lobbyService.getLobbyPlayers(this.id).subscribe((msg: any) => {
-      console.log(msg);
-      this.players.push(msg);
-    });
-    this.lobbyService.showAnswer().subscribe((msg: any) => {
-      this.isPaused = true;
-    });
-    this.lobbyService.showRanking().subscribe((data: any) => {
-      this.isEndGame = true;
-      this.ranking = data;
-      console.log(this.ranking);
-    });
+    if(this.lobbyService.id == ''){
+      this.router.navigate(['/library']);
+    }else{
+        this.questionKit$ = this.store
+        .select('question_kit')
+        .pipe(map((state) => state.question_kits));
+      this.store.dispatch(QuestionKitActions.getQuestionKit({ id: this.docId }));
+      this.questionKit$.subscribe((data) => {
+        this.questionData = data[0].questions;
+      });
+      this.lobbyService.getLobbyPlayers(this.id).subscribe((msg: any) => {
+        console.log(msg);
+        this.players.push(msg);
+      });
+      this.lobbyService.showAnswer().subscribe((msg: any) => {
+        this.isPaused = true;
+      });
+      this.lobbyService.showRanking().subscribe((data: any) => {
+        this.isEndGame = true;
+        this.ranking = data;
+      });
+    }
+    
     // this.lobbyService.getMessage(this.id).subscribe((msg: any) => {
     //   console.log(msg);
     //   this.players.push(msg);
@@ -104,11 +110,15 @@ export class LobbyComponent implements OnInit{
     this.lock = !this.lock;
   }
   start() {
-    this.lobbyService.startGame(this.id, this.questionData[this.i]);
-    let tempQuestionData = this.questionData;
-    // this.time = tempQuestionData[this.i].timer;
-    this.isStarting = true;
-    this.timer();
+    console.log(this.players);
+    if(this.players.length > 0){
+      this.lobbyService.startGame(this.id, this.questionData[this.i]);
+      let tempQuestionData = this.questionData;
+      this.isStarting = true;
+      this.timer();
+    }else{
+      this._snackBar.open('Please wait for all players to join!',  'Close');
+    }
   }
 
   nextQuestion(){
@@ -116,33 +126,6 @@ export class LobbyComponent implements OnInit{
     this.isPaused = false;
     this.lobbyService.startGame(this.id, this.questionData[this.i]);
     this.timer();
-    // if (this.i == this.questionData.length++) {
-    //   console.log('end game');
-    //   this.lobbyService.endGame(this.id);
-    //   return;
-    // } 
-    // let myInterval = setInterval(() => {
-    //   if(!this.isPaused){
-    //     if (this.time > 0) {
-    //       this.time--;
-    //       this.lobbyService.sendMessage({ pin: this.id, time: this.time });
-    //     } else {
-    //       this.isPaused = true;
-    //       if (this.i == tempQuestionData.length) {
-    //         clearInterval(myInterval);
-    //         return;
-    //       } else {
-    //         console.log(tempQuestionData);
-    //         this.time = tempQuestionData[this.i].timer;
-    //         this.lobbyService.sendMessage({
-    //           pin: this.id,
-    //           time: this.time,
-    //           question: tempQuestionData[this.i],
-    //         });
-    //       }
-    //     }
-    //   }
-    // }, 1000);
   }
 
   timer() {  
