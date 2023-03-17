@@ -3,15 +3,22 @@
     <p>Login with Google</p>
   </button>
 </div>
-<div id="contents">
+<div id="contents" >
     <div id="gamepin_container">
       <div id="gamepin">
         <div id="PINenter">
           <!-- <form> -->
-          <mat-card>
+          <mat-card *ngIf="!alreadyJoined">
             <input id="input" matInput placeholder="Gaming PIN" [(ngModel)]="pin">
             <div id="enter_btn">
-              <button id="enter" mat-raised-button (click)="join()">ENTER</button>
+              <button id="enter" mat-raised-button (click)="join()">JOIN</button>
+            </div>
+          </mat-card>
+
+          <mat-card *ngIf="alreadyJoined">
+            <input id="input" matInput placeholder="Your Name..." [(ngModel)]="currentName">
+            <div id="enter_btn">
+              <button id="enter" mat-raised-button (click)="enterName()">ENTER</button>
             </div>
           </mat-card>
           <!-- </form> -->

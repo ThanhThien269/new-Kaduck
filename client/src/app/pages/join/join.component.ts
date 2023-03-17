@@ -16,6 +16,10 @@ export class JoinComponent {
   user: User | null = null;
   time = 0;
   questionData: question = <question>{};
+  chosenAnswer: string = '';
+  alreadyAnswered: boolean = false;
+  isShowStatus: boolean = false;
+  isCorrect: number = -1;
   constructor(
     private route: ActivatedRoute,
     private _socket: Socket,
@@ -25,23 +29,41 @@ export class JoinComponent {
   isStarting: boolean = false;
   ngOnInit() {
     this.user = this.loginService.user;
+    console.log(this.lobbyService.currentPlayer);
 
     let id = this.route.snapshot.paramMap.get('id');
     if (!id) id = 'No id found';
     this.id = id;
-
-    this.lobbyService.getMessage(this.id).subscribe((msg: any) => {
-      console.log(msg);
-      if (msg.message == 'start') this.isStarting = true;
-      if (msg.question) this.questionData = msg.question;
-      if (msg.time) this.time = msg.data;
-      //   if(msg.answer){
-      //     if(msg.answer == questionData[i].answer){
-      //       let point = msg.timeLeft*10
-
-      //   }
-      // }
+    this.lobbyService.playingGame().subscribe((data: any) => {
+      this.isShowStatus = false;
+      if(data.msg == 'playing') this.isStarting = true;
+      if(data.question) this.questionData = data.question;
+      this.time = data.question.time;
+    });
+    this.lobbyService.showAnswer().subscribe((data: any) => {
+      if(!this.alreadyAnswered){
+        this.isCorrect = 0;
+      }
+      this.alreadyAnswered = false;
+      this.chosenAnswer = '';
+      this.time = 0;
+      this.isShowStatus = true;
     });
   }
-  chooseAnswer() {}
+
+  chooseAnswer(answer: string) {
+    this.chosenAnswer = answer;
+    this.alreadyAnswered = true;
+    this.isCorrect = this.questionData.true_answer == answer ? 1 : 0;
+    let tempScore =  this.isCorrect == 1 ? this.questionData.points : 0;
+    this.lobbyService.pickAnswer(
+      {
+        uid: this.lobbyService.currentPlayer.uid,
+        score: tempScore,
+        correct: this.isCorrect,
+      },
+      this.id
+    )
+  }
+  // chooseAnswer() {}
 }

@@ -69,17 +69,38 @@ export class HomeComponent implements OnInit {
   }
 
   join() {
-    this.lobbyService.sendMessage({
-      pin: this.pin,
-      uid: this.uid,
-      name: this.currentUser?.displayName,
-      email: this.currentUser?.email,
-    });
-    if (!this.pin || this.pin.length !== 6) {
-      this.openSnackBar('Enter game pin to join', 'Close');
-    } else {
-      this.router.navigate([`join/${this.pin}`]);
-    }
+    // this.lobbyService.checkLobby(this.pin);
+    // this.lobbyService.getLobbyJoined().subscribe((res: any) => {
+    //   console.log(res);
+    // });
+    // this.lobbyService.joinLobby(
+    //   this.pin,
+    //   {
+    //     name: this.currentUser?.displayName,
+    //     score: 0,
+    //     correctAnswer: 0,
+    //   }
+    // );
+    // this.lobbyService.sendMessage(
+    //   {
+    //     pin: this.pin,
+    //     uid: this.uid,
+    //     name: this.currentUser?.displayName,
+    //     email: this.currentUser?.email,
+    //   }
+    // );
+    this.router.navigate([`join/${this.pin}`]);
+    // this.lobbyService.sendMessage({
+    //   pin: this.pin,
+    //   uid: this.uid,
+    //   name: this.currentUser?.displayName,
+    //   email: this.currentUser?.email,
+    // });
+    // if (!this.pin || this.pin.length !== 6) {
+    //   this.openSnackBar('Enter game pin to join', 'Close');
+    // } else {
+    //   this.router.navigate([`join/${this.pin}`]);
+    // }
 
     // this.homeService.join();
   }
