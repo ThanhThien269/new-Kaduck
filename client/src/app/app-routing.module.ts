@@ -5,7 +5,7 @@ import { AuthGuardGuard } from './guards/auth-guard.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'guestjoining',
     pathMatch: 'full',
   },
 
