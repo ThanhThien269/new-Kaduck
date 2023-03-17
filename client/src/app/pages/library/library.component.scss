@@ -1,6 +1,6 @@
 .example-container {
   width: 100%;
-  // height: 100%;
+  height: 100%;
   // background-color: #d9d9d9;
 }
 
@@ -32,13 +32,30 @@
   align-items: center;
   // height: 15px;
   margin-left: 120px;
-  border: 1px solid black;
+  // border: 1px solid black;
 }
 
 .btn_tags{
   font-size: 20px;
-  border: 1px solid black;
-  color: black;
+  // border: 1px solid black;
+  border-radius: 5px;
+  // color: black;
+  margin-right: 5px;
+}
+
+.btn_tags_fav{
+  font-size: 20px;
+  // border: 1px solid black;
+  border-radius: 5px;
+  // color: black;
+}
+
+.btn_tags:focus{
+  background-color: rgb(215, 213, 213);
+}
+
+.btn_tags_fav:focus{
+  background-color: rgb(215, 213, 213);
 }
 
 .search_container{
@@ -135,13 +152,11 @@
   background-color: #499cfc;
   border: none;
   box-shadow: 1px 1px rgb(203, 199, 199);
-
-}
-button{
   font-size: 12px;
   font-weight:bold;
   height: 35px;
 }
+
 #start:hover{
   background-color: #006be6;
 }
