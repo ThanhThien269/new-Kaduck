@@ -100,6 +100,7 @@
           {{ questionData[i].answer_D }}
         </button>
       </div>
+
     </div>
 
     <!-- Show correct answer -->
@@ -129,9 +130,9 @@
 </div>
 
 <!-- SHOWING RANKING LIST AT THE END -->
-<div class="container" *ngIf="isEndGame">
+<div class="container1" *ngIf="isEndGame">
   <div class="show-ranking">
-    <div class="show-ranking-header">
+    <!-- <div class="show-ranking-header">
       <div class="show-ranking-header-title">
         <h1>Ranking</h1>
       </div>
@@ -140,21 +141,69 @@
           <mat-icon>close</mat-icon>
         </button>
       </div>
+<<<<<<< HEAD
+    </div> -->
+    <!-- <div class="show-ranking-body">
+=======
     </div>
     <div class="show-ranking-body">
       <audio autoplay preload="none" loop>
         <source src="../../../assets/nhaccuaNhanhehe.mp3">
       </audio>
+>>>>>>> eb6496534d3414c0964309b2199184f7f3a5c250
       <div class="show-ranking-body-ranking">
         <div class="show-ranking-body-ranking-item" *ngFor="let player of ranking">
           <div class="show-ranking-body-ranking-item-name">
             <p>{{ player.name }}</p>
+
           </div>
           <div class="show-ranking-body-ranking-item-score">
             <p>{{ player.score }}</p>
           </div>
         </div>
       </div>
+
+    </div> -->
+    <div class="show-ranking-header-title">
+      <h1 style="font-size: 60px; color: #f2f2f2;">Ranking</h1>
     </div>
+    <div class="rating">
+      <div  class="name">
+        <div class="namewin" >
+          <div class="textname">
+            <p>{{this.ranking[0].name}}</p>
+          </div>
+
+          <div class="show-ranking-body-ranking-item-score">
+            <p style="font-size: 36px; color: #f2f2f2;">{{this.ranking[0].score}}</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="columrating">
+        <div class="podium__item2">
+          <div class="textname">
+            <p style="font-size: 40px;
+            color: #f2f2f2;">{{this.ranking[1].name}}</p>
+            <p style="font-size: 36px; color: #f2f2f2;">{{this.ranking[1].score}}</p>
+          </div>
+          <div class="podium__ranksecond2">2</div>
+        </div>
+        <div class="podium__item1">
+
+          <div class="podium__rankfirst">1</div>
+        </div>
+        <div class="podium__item3">
+          <div class="textname">
+            <p style="font-size: 40px;
+            color: #f2f2f2;">{{this.ranking[2].name}}</p>
+                 <p style="font-size: 36px; color: #f2f2f2;">{{this.ranking[2].score}}</p>
+          </div>
+          <div class="podium__rankthree">3</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

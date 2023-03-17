@@ -359,3 +359,186 @@
 //     margin-right: 2rem;
 //   }
 // }
+
+//Show ranking
+.container1{
+background-color: #5614ac;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+.show-ranking{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // background-color: #3b9658;
+  width: 80%;
+  height: 80%;
+//   .show-ranking-header-title{
+//     display: flex;
+//     align-items: center;
+//   justify-content: center;
+//   h1{
+//     font-size: 60px;
+//   }
+//   }
+//   .show-ranking-header-close{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+// }
+// .show-ranking-body{
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   border: 1px solid black;
+//   width: 60%;
+//   height: 60%;
+//   // .show-ranking-body-ranking-ranking
+//   // {
+//   //   border: 1px solid black;
+//   //   width: 40%;
+//   //   height: 40%;
+//   // }
+//   .show-ranking-body-ranking-item{
+//     display: flex;
+//     border: 1px solid black;
+//     justify-content: space-between;
+//     align-items: center;
+//     width: 60%;
+//     height: 60%;
+//   }
+.rating{
+  // border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content:  center;
+  align-items: center;
+  width: 60%;
+  height: 70%;
+  .name{
+    width: 90%;
+    height: 40%;
+    // border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .namewin{
+      width: 30%;
+      height: 40%;
+      // border: none ;
+      // border-radius: 6%;
+      // background-color: #f2f2f2;
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .textname{
+        width: 60%;
+        height: 80%;
+        // border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p{
+          font-size: 40px;
+          color: #f2f2f2;
+        }
+      }
+      .show-ranking-body-ranking-item-score{
+        width: 40%;
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+  .columrating{
+
+    display: flex;
+    align-items: flex-end;
+
+    // border: 1px solid black;
+    width: 90%;
+    height: 100%;
+    .podium__item2 {
+      width: 30%;
+      height: 60%;
+      display: flex;
+
+      justify-content:center;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      // background-color: red;
+      .podium__ranksecond2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+        color: #fff;
+        background-color: #E58F04;
+        width: 100%;
+        height: 100%;
+
+      }
+    }
+    .podium__item1 {
+      width: 40%;
+      height: 100%;
+      display: flex;
+
+      justify-content:center;
+      align-items: center;
+      text-align: center;
+      // background-color: red;
+      .podium__rankfirst {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+        color: #fff;
+        background-color:#FF6D66;
+        width: 100%;
+        height: 100%;
+
+      }
+    }
+    .podium__item3 {
+      width: 30%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items: center;
+      text-align: center;
+      // background-color: red;
+      .podium__rankthree {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+        color: #fff;
+        background-color: #66E68E;
+        width: 100%;
+        height: 100%;
+
+      }
+    }
+
+
+
+  }
+}
+
+}
+
+}
+
