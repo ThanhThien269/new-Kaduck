@@ -129,7 +129,7 @@
 <!-- SHOWING RANKING LIST AT THE END -->
 <div class="container1" *ngIf="isEndGame">
   <div class="show-ranking">
-    <div class="show-ranking-header">
+    <!-- <div class="show-ranking-header">
       <div class="show-ranking-header-title">
         <h1>Ranking</h1>
       </div>
@@ -138,8 +138,8 @@
           <mat-icon>close</mat-icon>
         </button>
       </div>
-    </div>
-    <div class="show-ranking-body">
+    </div> -->
+    <!-- <div class="show-ranking-body">
       <div class="show-ranking-body-ranking">
         <div class="show-ranking-body-ranking-item" *ngFor="let player of ranking">
           <div class="show-ranking-body-ranking-item-name">
@@ -151,6 +151,43 @@
           </div>
         </div>
       </div>
+
+    </div> -->
+    <div class="rating">
+      <div  class="name">
+        <div class="namewin" >
+          <div class="textname">
+            <p>{{this.ranking[0].name}}</p>
+          </div>
+
+          <div class="show-ranking-body-ranking-item-score">
+            <p style="font-size: 40px; color: #f2f2f2;">{{this.ranking[0].score}}</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="columrating">
+        <div class="podium__item2">
+          <div class="textname">
+            <p style="font-size: 40px;
+            color: #f2f2f2;">{{this.ranking[1].name}}</p>
+          </div>
+          <div class="podium__ranksecond2">2</div>
+        </div>
+        <div class="podium__item1">
+
+          <div class="podium__rankfirst">1</div>
+        </div>
+        <div class="podium__item3">
+          <div class="textname">
+            <p style="font-size: 40px;
+            color: #f2f2f2;">{{this.ranking[2].name}}</p>
+          </div>
+          <div class="podium__rankthree">3</div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

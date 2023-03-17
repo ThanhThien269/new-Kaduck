@@ -73,7 +73,7 @@ export class LobbyComponent implements OnInit{
       console.log(this.docId);
     });
   }
-  
+
   ngOnInit() {
     this.questionKit$ = this.store
       .select('question_kit')
@@ -91,7 +91,7 @@ export class LobbyComponent implements OnInit{
     });
     this.lobbyService.showRanking().subscribe((data: any) => {
       this.isEndGame = true;
-      this.ranking = data;
+      this.ranking = data.sort((a: any, b: any) => b.score - a.score);
       console.log(this.ranking);
     });
     // this.lobbyService.getMessage(this.id).subscribe((msg: any) => {
@@ -120,7 +120,7 @@ export class LobbyComponent implements OnInit{
     //   console.log('end game');
     //   this.lobbyService.endGame(this.id);
     //   return;
-    // } 
+    // }
     // let myInterval = setInterval(() => {
     //   if(!this.isPaused){
     //     if (this.time > 0) {
@@ -145,7 +145,7 @@ export class LobbyComponent implements OnInit{
     // }, 1000);
   }
 
-  timer() {  
+  timer() {
     this.time = this.questionData[this.i].timer;
     let myInterval = setInterval(() => {
       if(!this.isPaused){
@@ -159,8 +159,8 @@ export class LobbyComponent implements OnInit{
             this.lobbyService.endGame(this.id);
             return;
           }
-          
-          clearInterval(myInterval); 
+
+          clearInterval(myInterval);
         }
       }
     }, 1000);
