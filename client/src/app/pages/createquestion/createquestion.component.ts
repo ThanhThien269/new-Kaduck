@@ -36,7 +36,7 @@ export class CreatequestionComponent {
     private dialog: MatDialog,
     private store: Store<{ question_kit: QuestionKitState }>,
     private authService: LoginService
-  ) { }
+  ) {}
 
   question_kit_model: question_kit = {
     Ownerid: this.authService.user?.uid,
@@ -49,11 +49,10 @@ export class CreatequestionComponent {
 
   createQuestionModel() {
     let questionModel: question = {
-
       questions: '',
       timer: 0,
       img: '',
-      points: 0,
+      points: 50,
       point_type: '',
       id: Date.now().toString(),
       answer_A: '',
@@ -112,9 +111,9 @@ export class CreatequestionComponent {
     { value: '15', viewValue: '15 Seconds' },
   ];
   answers: Answer[] = [
-    { value: this.currentQuestion.answer_A, viewValue: ' A' },
-    { value: this.currentQuestion.answer_B, viewValue: ' B' },
-    { value: this.currentQuestion.answer_C, viewValue: ' C' },
-    { value: this.currentQuestion.answer_D, viewValue: ' D' },
+    { value: 'A', viewValue: ' A' },
+    { value: 'B', viewValue: ' B' },
+    { value: 'C', viewValue: ' C' },
+    { value: 'D', viewValue: ' D' },
   ];
 }
