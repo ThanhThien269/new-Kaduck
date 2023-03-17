@@ -38,7 +38,7 @@ export class QuestionKitEffects {
       switchMap((action) =>
         this.questionKitService.getQuestionKitByOwner(action.id).pipe(
           map((question_kits) => {
-            console.log(question_kits);
+            // console.log(question_kits);
             return QuestionKitActions.getQuestionKitByOwnerSuccess({
               question_kits: question_kits,
             });
