@@ -58,6 +58,7 @@ export class LobbyComponent implements OnInit{
   players: any[] = [];
 
   isEndGame: boolean = false;
+  isShowRanking: boolean = false;
   ranking: any[] = [];
 
   joinList$!: Observable<any>;
@@ -150,6 +151,11 @@ export class LobbyComponent implements OnInit{
   }
   closeRanking(){
     this.router.navigate(['/library']);
+  }
+
+  showRanking(){
+    this.isShowRanking  = true;
+    this.lobbyService.showUserResult(this.id);
   }
 }
 

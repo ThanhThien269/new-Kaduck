@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!isStarting && !isEndGame">
+<div class="container" *ngIf="!isStarting && !isShowRanking">
   <audio autoplay preload="none" loop>
     <source src="../../../assets/30minNekoAtsume.mp3" />
   </audio>
@@ -54,7 +54,7 @@
     </div>
   </div>
 </div>
-<div id="contents" *ngIf="isStarting && !isEndGame">
+<div id="contents" *ngIf="isStarting && !isShowRanking">
   <div id="middle">
     <div id="middle_higher">
       <div id="middle_higher_left">
@@ -73,7 +73,8 @@
       <div id="middle_higher_right">
         <!-- <div id="timer">{{ questionData[0].timer }}</div> -->
         <div *ngIf="!isPaused" id="timer">{{ this.time }}</div>
-        <button id="next_btn"  *ngIf="isPaused && this.i+1 != this.questionData.length" (click)="nextQuestion()" >Next</button>
+        <button id="next_btn" mat-raised-button *ngIf="isPaused && this.i+1 != this.questionData.length" (click)="nextQuestion()" >Next</button>
+        <button id="next_btn" mat-raised-button *ngIf="isEndGame" (click)="showRanking()" >Show Podium</button>
       </div>
     </div>
     <div id="middle_lower" *ngIf="!isPaused">
@@ -102,21 +103,21 @@
     <!-- Show correct answer -->
     <div id="middle_lower" *ngIf="isPaused">
       <div id="middle_lower_left">
-        <button [class]="'A' == questionData[i].true_answer ? 'answer_box ans_A correct' : 'answer_box ans_A'">
+        <button mat-raised-button id="A_box" [class]="'A' == questionData[i].true_answer ? 'ans correct' : 'ans'">
           <span class="material-icons"> {{'A' == questionData[i].true_answer ? 'check': 'favorite'}} </span>
           {{ questionData[i].answer_A }}
         </button>
-        <button [class]="'C' == questionData[i].true_answer ? 'answer_box ans_C correct' : 'answer_box ans_C'">
+        <button mat-raised-button id="C_box" [class]="'C' == questionData[i].true_answer ? 'ans correct' : 'ans'">
           <span class="material-icons"> {{'C' == questionData[i].true_answer ? 'check':'star_rate' }} </span>
           {{ questionData[i].answer_C }}
         </button>
       </div>
       <div id="middle_lower_right">
-        <button [class]="'B' == questionData[i].true_answer ? 'answer_box ans_B correct' : 'answer_box ans_B'">
+        <button mat-raised-button id="B_box" [class]="'B' == questionData[i].true_answer ? 'ans correct' : 'ans'">
           <span class="material-icons"> {{'B' == questionData[i].true_answer ? 'check': 'square'}}  </span>
           {{ questionData[i].answer_B }}
         </button>
-        <button [class]="'D' == questionData[i].true_answer ? 'answer_box ans_D correct' : 'answer_box ans_D'">
+        <button mat-raised-button id="D_box" [class]="'D' == questionData[i].true_answer ? 'ans correct' : 'ans'">
           <span class="material-icons"> {{'D' == questionData[i].true_answer ? 'check':'pentagon'}}   </span>
           {{ questionData[i].answer_D }}
         </button>
@@ -126,7 +127,7 @@
 </div>
 
 <!-- SHOWING RANKING LIST AT THE END -->
-<div class="container" *ngIf="isEndGame">
+<div class="container" *ngIf="isShowRanking">
   <div class="show-ranking">
     <div class="show-ranking-header">
       <div class="show-ranking-header-title">
