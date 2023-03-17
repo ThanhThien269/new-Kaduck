@@ -17,6 +17,9 @@
     <span class="spacer"></span>
     <div><input class="input" type="text" placeholder="Search" /></div>
   </div>
+
+
+  <!-- <div id="container"> -->
   <div id="rec_contain" *ngFor="let question of questionKits$ | async">
     <div id="rec_recent">
       <!-- <input id="checkbox" type="checkbox"> -->
@@ -25,7 +28,6 @@
         alt=""
         style="width: 100px; height: 100px; float: left; padding-top: 15px"
       />
-
       <div id="title">{{ question.name }}</div>
       <span class="spacer"></span>
       <div>
@@ -43,4 +45,5 @@
       </div>
     </div>
   </div>
+<!-- </div> -->
 </mat-drawer-container>
