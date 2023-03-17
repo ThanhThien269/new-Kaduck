@@ -19,9 +19,9 @@
   </div>
 
 
-  <!-- <div id="container"> -->
-  <div id="rec_contain" *ngFor="let question of questionKits$ | async">
-    <div id="rec_recent">
+  <div id="container">
+  <div id="rec_contain" >
+    <div id="rec_recent" *ngFor="let question of questionKits$ | async">
       <!-- <input id="checkbox" type="checkbox"> -->
       <img
         src="../../../assets/Gaming-bro.png"
@@ -36,14 +36,14 @@
             <button mat-icon-button>
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button>
-              <mat-icon>more_vert</mat-icon>
-            </button>
+            <!-- <button mat-icon-button>
+              <mat-icon>delete_forever</mat-icon>
+            </button> -->
           </div>
           <button id="start" (click)="lobby(question.id)">START</button>
         </div>
       </div>
     </div>
   </div>
-<!-- </div> -->
+</div>
 </mat-drawer-container>

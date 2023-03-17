@@ -20,9 +20,11 @@ export class HomeComponent implements OnInit {
   currentUser: User | null = null;
   uid: string = '';
   pin: string = '';
+  firstEle: any = [];
   // pin = this.homeService.pin;
   // userInput = new FormControl('');
   // inputMatches = false;
+  questionKits$ = new Observable<question_kit[]>();
 
   constructor(
     private lobbyService: LobbyService,
@@ -33,17 +35,18 @@ export class HomeComponent implements OnInit {
   ) {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
+    this.questionKits$ = this.store
+      .select('question_kit')
+      .pipe(map((state) => state.question_kits));
+    this.store.dispatch(
+      QuestionKitActions.getQuestionKitByOwner({ id: this.uid })
+    );
+    this.questionKits$.subscribe((ques) => console.log(ques));
   }
 
-  ngOnInit() {
-    // this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
-    // this.store.dispatch(QuestionKitActions.getQuestionKits());
-    // this.questionKits$.subscribe(ques => console.log(ques));
+  ngOnInit() {}
 
-
-  }
-
-  callingFunction() { }
+  callingFunction() {}
 
   library() {
     this.router.navigate(['/library']);
@@ -61,22 +64,43 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/lobby']);
   }
 
-  guestJoining(){
-    this.router.navigate(['/guestjoining'])
+  guestJoining() {
+    this.router.navigate(['/guestjoining']);
   }
 
   join() {
-    this.lobbyService.sendMessage({
-      pin: this.pin,
-      uid: this.uid,
-      name: this.currentUser?.displayName,
-      email: this.currentUser?.email,
-    });
-    if (!this.pin || this.pin.length !== 6) {
-      this.openSnackBar('Enter game pin to join', 'Close');
-    } else {
-      this.router.navigate([`join/${this.pin}`]);
-    }
+    // this.lobbyService.checkLobby(this.pin);
+    // this.lobbyService.getLobbyJoined().subscribe((res: any) => {
+    //   console.log(res);
+    // });
+    // this.lobbyService.joinLobby(
+    //   this.pin,
+    //   {
+    //     name: this.currentUser?.displayName,
+    //     score: 0,
+    //     correctAnswer: 0,
+    //   }
+    // );
+    // this.lobbyService.sendMessage(
+    //   {
+    //     pin: this.pin,
+    //     uid: this.uid,
+    //     name: this.currentUser?.displayName,
+    //     email: this.currentUser?.email,
+    //   }
+    // );
+    this.router.navigate([`join/${this.pin}`]);
+    // this.lobbyService.sendMessage({
+    //   pin: this.pin,
+    //   uid: this.uid,
+    //   name: this.currentUser?.displayName,
+    //   email: this.currentUser?.email,
+    // });
+    // if (!this.pin || this.pin.length !== 6) {
+    //   this.openSnackBar('Enter game pin to join', 'Close');
+    // } else {
+    //   this.router.navigate([`join/${this.pin}`]);
+    // }
 
     // this.homeService.join();
   }
