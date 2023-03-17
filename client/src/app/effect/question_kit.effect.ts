@@ -12,6 +12,47 @@ export class QuestionKitEffects {
     private actions$: Actions
   ) {}
 
+  // getQuestionKitByOnwer$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(QuestionKitActions.getQuestionKitByOwner),
+  //     switchMap((action) =>
+
+  //       this.questionKitService.getQuestionKitByOwner(action.id).pipe(
+  //         map((question_kit) => {
+  //           console.log(question_kit);
+  //           return QuestionKitActions.getQuestionKitByOwnerSuccess({
+  //             question_kit: question_kit,
+  //           });
+  //         }),
+  //         catchError((error) =>
+  //           of(QuestionKitActions.getQuestionKitByOwnerFailure({ error: error }))
+  //         )
+  //       )
+  //     )
+  //   )
+  // );
+
+  getQuestionKitByOnwer$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(QuestionKitActions.getQuestionKitByOwner),
+      switchMap((action) =>
+        this.questionKitService.getQuestionKitByOwner(action.id).pipe(
+          map((question_kits) => {
+            // console.log(question_kits);
+            return QuestionKitActions.getQuestionKitByOwnerSuccess({
+              question_kits: question_kits,
+            });
+          }),
+          catchError((error) =>
+            of(
+              QuestionKitActions.getQuestionKitByOwnerFailure({ error: error })
+            )
+          )
+        )
+      )
+    )
+  );
+
   getQuestionKits$ = createEffect(() =>
     this.actions$.pipe(
       ofType(QuestionKitActions.getQuestionKits),

@@ -20,9 +20,11 @@ export class HomeComponent implements OnInit {
   currentUser: User | null = null;
   uid: string = '';
   pin: string = '';
+  firstEle: any = [];
   // pin = this.homeService.pin;
   // userInput = new FormControl('');
   // inputMatches = false;
+  questionKits$ = new Observable<question_kit[]>();
 
   constructor(
     private lobbyService: LobbyService,
@@ -33,20 +35,16 @@ export class HomeComponent implements OnInit {
   ) {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
-  }
-  questionKit$ = new Observable<question_kit>();
-
-  ngOnInit() {
-    // this.questionKits$ = this.store.select('question_kit').pipe(map(state => state.question_kits));
-    // this.store.dispatch(QuestionKitActions.getQuestionKits());
-    // this.questionKits$.subscribe(ques => console.log(ques));
-
-    this.store.dispatch(QuestionKitActions.getQuestionKits());
-    this.questionKit$ = this.store.select('question_kit').pipe(
-      map((state) => state.question_kits[0]),
-      take(1)
+    this.questionKits$ = this.store
+      .select('question_kit')
+      .pipe(map((state) => state.question_kits));
+    this.store.dispatch(
+      QuestionKitActions.getQuestionKitByOwner({ id: this.uid })
     );
+    this.questionKits$.subscribe((ques) => console.log(ques));
   }
+
+  ngOnInit() {}
 
   callingFunction() {}
 
@@ -64,6 +62,10 @@ export class HomeComponent implements OnInit {
 
   lobby() {
     this.router.navigate(['/lobby']);
+  }
+
+  guestJoining() {
+    this.router.navigate(['/guestjoining']);
   }
 
   join() {

@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuestionKitState } from 'src/app/state/question_kit.state';
 import * as QuestionKitActions from 'src/app/action/question_kit.action';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-library',
@@ -15,16 +16,30 @@ import * as QuestionKitActions from 'src/app/action/question_kit.action';
 export class LibraryComponent {
   constructor(
     private router: Router,
-    private store: Store<{ question_kit: QuestionKitState }>
-  ) {}
+    private store: Store<{ question_kit: QuestionKitState }>,
+    private authService: LoginService
+  ) {
+    // this.questionKits$ = this.store.select('question_kit').pipe(map((state) => state.question_kits));
+    // this.store.dispatch(QuestionKitActions.getQuestionKitByOwner({ id: this.authService.user?.uid }));
+    // this.questionKits$.subscribe((e) => {
+    //   console.log(e)
+    // }
+    // );
+  }
+  ownerId = this.authService.user?.uid;
   questionKits$ = new Observable<question_kit[]>();
 
   ngOnInit() {
+    console.log(this.ownerId?.toString());
     this.questionKits$ = this.store
       .select('question_kit')
       .pipe(map((state) => state.question_kits));
-    this.store.dispatch(QuestionKitActions.getQuestionKits());
-    this.questionKits$.subscribe();
+    this.store.dispatch(
+      QuestionKitActions.getQuestionKitByOwner({ id: this.ownerId })
+    );
+    this.questionKits$.subscribe((e) => {
+      // console.log(e);
+    });
   }
 
   lobby(id: string) {
