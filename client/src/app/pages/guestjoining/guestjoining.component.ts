@@ -99,7 +99,7 @@ export class GuestjoiningComponent {
   // }
 
   login(){
-    this.loginService.login();
+    this.router.navigate(['/login']);
 
   }
   logout(){
