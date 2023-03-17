@@ -29,7 +29,7 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect{
   handleCheckLobby(client: Socket, payload: any): any {
     let temp = this.lobbies.findIndex((lobby) => lobby.pin === payload.pin);
     if(temp !== -1){
-      // client.join(payload.pin);
+      client.join(payload.pin);
       this.server.to(client.id).emit('lobby-status', {msg: 'Lobby found', players: this.lobbies[temp].players});
     }else{
       this.server.to(client.id).emit('lobby-status', {msg: 'Lobby not found'});
@@ -45,7 +45,6 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect{
       this.lobbies[temp].players.push({
         ...payload.player,
       });
-      console.log( this.lobbies[temp].players.length);
 
       client.emit('lobby-status', {msg: 'Lobby updated', players: this.lobbies[temp].players});
       this.server.to(payload.pin).emit('update-room', payload.player);
@@ -71,6 +70,7 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect{
 
   @SubscribeMessage('start-game')
   handleStartGame(client: Socket, payload: any): any {
+    console.log('start-game');
     this.server.to(payload.pin).emit('next-question', {msg: 'playing', question: payload.question});
   }
 
@@ -93,6 +93,12 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect{
   @SubscribeMessage('end-game')
   handleShowRanking(client: Socket, payload: any): any {
     let temp = this.lobbies.findIndex((lobby) => lobby.pin === payload.pin);
-    this.server.to(payload.pin).emit('show-ranking', this.lobbies[temp].players);
+    this.server.to(payload.pin).emit('show-ranking', this.lobbies[temp].players.sort((a, b) => b.score - a.score));
+  }
+
+  @SubscribeMessage('delete-lobby')
+  handleDeleteLobby(client: Socket, payload: any): any {
+    let temp = this.lobbies.findIndex((lobby) => lobby.pin === payload.pin);
+    this.lobbies.splice(temp, 1);
   }
 }
