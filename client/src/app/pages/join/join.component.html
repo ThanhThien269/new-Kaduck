@@ -23,12 +23,9 @@
       </button>
     </div>
   </div>
-  <div id="content">
+  <div id="content" *ngIf="alreadyAnswered || isShowStatus">
     <div id="progressive" style="display: flex; justify-content: center">
-      <div
-        class="loader"
-        *ngIf="(time != 0 && alreadyAnswered) || (time == 0 && !isShowStatus)"
-      >
+      <div class="loader" *ngIf="(time != 0 && alreadyAnswered) || (time == 0 && !isShowStatus)">
         <div></div>
         <div></div>
         <div></div>
@@ -36,35 +33,55 @@
       </div>
     </div>
     <div></div>
-    <h1 class="correct" *ngIf="isShowStatus && isCorrect == 1">
+      <div class="status-bg correct" *ngIf="isShowStatus && isCorrect == 1">
+       <div>
+          <span class="material-symbols-outlined"> check_circle </span>
+          <h3 style="
+            color: #f2f2f2;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            margin: 0 0 10px 0;
+            font-weight: 900;
+          ">
+            + {{tempScore}}
+          </h3>
+          <p style="
+              color: #f2f2f2;
+              font-size: 18px;
+              display: flex;
+              justify-content: center;
+            ">
+
+            You are correct !
+          </p>
+       </div>
+        <div class="user-totalscore">
+          <div class="total-score">
+            <p>{{tempTotalScore}}</p>
+          </div>
+        </div>
+      </div>
+
+    <div class="status-bg false" *ngIf="isShowStatus && isCorrect == 0">
       <div>
-        <span class="material-symbols-outlined"> check_circle </span>
-        <p
-          style="
+        <span class="material-symbols-outlined">cancel </span>
+        <p style="
             color: #f2f2f2;
             font-size: 30px;
             display: flex;
             justify-content: center;
-          "
-        >
-          You are correct !
+          ">
+          You are wrong!
         </p>
       </div>
-    </h1>
-
-    <h1 class="false" *ngIf="isShowStatus && isCorrect == 0">
-      <span class="material-symbols-outlined">cancel </span>
-      <p
-        style="
-          color: #f2f2f2;
-          font-size: 30px;
-          display: flex;
-          justify-content: center;
-        "
-      >
-        You are wrong !
-      </p>
-    </h1>
+      <div class="user-totalscore">
+        <div class="total-score">
+          <p>{{tempTotalScore}}</p>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </div>
 

@@ -72,8 +72,17 @@ export class LobbyService {
     return this.socket.fromEvent('next-question');
   }
 
+
   timeOut(pin: string) {
     this.socket.emit('question-timeout', {pin: pin});
+  }
+
+  updateTimer(pin: string, timer: number) {
+    this.socket.emit('lobby-timer', {pin: pin,time: timer});
+  }
+
+  getTimer() {
+    return this.socket.fromEvent('lobby-timer-update');
   }
 
   pickAnswer(data: any, pin: string) {
@@ -99,5 +108,9 @@ export class LobbyService {
 
   getUserResult() {
     return this.socket.fromEvent('ranking-user');
+  }
+
+  leaveLobby() {
+    return this.socket.fromEvent('delete-lobby-update');
   }
 }

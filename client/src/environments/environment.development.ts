@@ -10,4 +10,6 @@ export const environment = {
   },
   apiEndpoint: 'https://kaduck-cpn2hi4fla-as.a.run.app/',
   socketEndpoint: 'wss://kaduck-cpn2hi4fla-as.a.run.app/',
+  // apiEndpoint: 'http://localhost:4545/',
+  // socketEndpoint: 'ws://localhost:4545/',
 };

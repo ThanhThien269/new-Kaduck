@@ -47,7 +47,7 @@
     }
   }
   .start {
-    padding: 2%;
+    padding: 2rem 2rem 2rem 0;
 
     display: flex;
     flex-direction: column;
@@ -103,7 +103,6 @@
   animation: dancing 250s infinite;
 }
 .userwait {
-  display: flex;
   width: 90%;
   height: 90%;
   display: flex;
@@ -114,14 +113,14 @@
     align-items: center;
     background-color: #333;
     border: none;
-    border-radius: 5%;
-    margin-top: 2%;
+    border-radius: 8px;
     margin-left: 2%;
-    width: 5%;
+    padding: 5px 10px;
+    // width: 5rem;
     height: 8%;
     p {
       text-align: center;
-      margin: 0;
+      margin: 0 0 0 8px;
       color: #f2f2f2;
     }
     .person {
@@ -134,18 +133,19 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
   .user-join {
-    width: 15%;
-    height: 30%;
-
+    // width: 15%;
     // border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    padding: 2rem;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 10px 1.5rem;
+    margin: 0 10px;
 
     // .duck{
     //   width: 8%;
@@ -155,12 +155,11 @@
       width: 100%;
       height: 40%;
       border: none;
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 6% 0;
+      // padding: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0;
     }
   }
   // .user-joinecho{
@@ -375,8 +374,8 @@
 //Show ranking
 .container1 {
   background-color: #5614ac;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -385,9 +384,163 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // background-color: #3b9658;
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 100%;
+
+    .show-ranking-header-close{
+      height: 8%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 92%;
+
+      .show-ranking-header-title{
+        height: 10%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .rating {
+        // border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 85%;
+
+        div{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 85%;
+          height: 100%;
+          .name {
+            width: 90%;
+            height: 40%;
+            // border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            .namewin {
+              width: 30%;
+              height: 40%;
+              // border: none ;
+              // border-radius: 6%;
+              // background-color: #f2f2f2;
+              flex-direction: column;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              .textname {
+                width: 60%;
+                height: 80%;
+                // border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                p {
+                  font-size: 40px;
+                  color: #f2f2f2;
+                }
+              }
+              .show-ranking-body-ranking-item-score {
+                width: 40%;
+                height: 80%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+    
+          .columrating {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: row;
+    
+            // border: 1px solid black;
+            width: 90%;
+            height: 100%;
+            .podium__item2 {
+              width: 30%;
+              height: 60%;
+              display: flex;
+    
+              justify-content: center;
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+              // background-color: red;
+              .podium__ranksecond2 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 35px;
+                color: #fff;
+                background-color: #e58f04;
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .podium__item1 {
+              width: 40%;
+              height: 100%;
+              display: flex;
+    
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              // background-color: red;
+              .podium__rankfirst {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 35px;
+                color: #fff;
+                background-color: #ff6d66;
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .podium__item3 {
+              width: 30%;
+              height: 40%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              // background-color: red;
+              .podium__rankthree {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 35px;
+                color: #fff;
+                background-color: #66e68e;
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+        
+      }
+    }
     //   .show-ranking-header-title{
     //     display: flex;
     //     align-items: center;
@@ -424,124 +577,7 @@
     //     width: 60%;
     //     height: 60%;
     //   }
-    .rating {
-      // border: 1px solid black;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 60%;
-      height: 70%;
-      .name {
-        width: 90%;
-        height: 40%;
-        // border: 1px solid black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        .namewin {
-          width: 30%;
-          height: 40%;
-          // border: none ;
-          // border-radius: 6%;
-          // background-color: #f2f2f2;
-          flex-direction: column;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          .textname {
-            width: 60%;
-            height: 80%;
-            // border: 1px solid black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            p {
-              font-size: 40px;
-              color: #f2f2f2;
-            }
-          }
-          .show-ranking-body-ranking-item-score {
-            width: 40%;
-            height: 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
-      }
-
-      .columrating {
-        display: flex;
-        align-items: flex-end;
-
-        // border: 1px solid black;
-        width: 90%;
-        height: 100%;
-        .podium__item2 {
-          width: 30%;
-          height: 60%;
-          display: flex;
-
-          justify-content: center;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          // background-color: red;
-          .podium__ranksecond2 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 35px;
-            color: #fff;
-            background-color: #e58f04;
-            width: 100%;
-            height: 100%;
-          }
-        }
-        .podium__item1 {
-          width: 40%;
-          height: 100%;
-          display: flex;
-
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          // background-color: red;
-          .podium__rankfirst {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 35px;
-            color: #fff;
-            background-color: #ff6d66;
-            width: 100%;
-            height: 100%;
-          }
-        }
-        .podium__item3 {
-          width: 30%;
-          height: 40%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          // background-color: red;
-          .podium__rankthree {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 35px;
-            color: #fff;
-            background-color: #66e68e;
-            width: 100%;
-            height: 100%;
-          }
-        }
-      }
-    }
+    
   }
 }
 
