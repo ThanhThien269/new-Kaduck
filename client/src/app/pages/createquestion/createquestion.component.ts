@@ -37,7 +37,6 @@ export class CreatequestionComponent {
     private store: Store<{ question_kit: QuestionKitState }>,
     private authService: LoginService
   ) {}
-
   question_kit_model: question_kit = {
     Ownerid: this.authService.user?.uid,
     id: Date.now().toString(),
@@ -64,6 +63,7 @@ export class CreatequestionComponent {
 
     this.question_kit_model.questions.push(questionModel);
     this.currentQuestion = questionModel;
+
     return questionModel;
   }
 
@@ -105,6 +105,7 @@ export class CreatequestionComponent {
     { value: 'standard', viewValue: 'Standard' },
     { value: 'double', viewValue: 'Double' },
   ];
+
   time: Time[] = [
     { value: '5', viewValue: '5 Seconds' },
     { value: '10', viewValue: '10 Seconds' },
