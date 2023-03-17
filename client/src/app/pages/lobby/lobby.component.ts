@@ -75,25 +75,29 @@ export class LobbyComponent implements OnInit{
   }
   
   ngOnInit() {
-    this.questionKit$ = this.store
-      .select('question_kit')
-      .pipe(map((state) => state.question_kits));
-    this.store.dispatch(QuestionKitActions.getQuestionKit({ id: this.docId }));
-    this.questionKit$.subscribe((data) => {
-      this.questionData = data[0].questions;
-    });
-    this.lobbyService.getLobbyPlayers(this.id).subscribe((msg: any) => {
-      console.log(msg);
-      this.players.push(msg);
-    });
-    this.lobbyService.showAnswer().subscribe((msg: any) => {
-      this.isPaused = true;
-    });
-    this.lobbyService.showRanking().subscribe((data: any) => {
-      this.isEndGame = true;
-      this.ranking = data;
-      console.log(this.ranking);
-    });
+    if(this.lobbyService.id == ''){
+      this.router.navigate(['/library']);
+    }else{
+        this.questionKit$ = this.store
+        .select('question_kit')
+        .pipe(map((state) => state.question_kits));
+      this.store.dispatch(QuestionKitActions.getQuestionKit({ id: this.docId }));
+      this.questionKit$.subscribe((data) => {
+        this.questionData = data[0].questions;
+      });
+      this.lobbyService.getLobbyPlayers(this.id).subscribe((msg: any) => {
+        console.log(msg);
+        this.players.push(msg);
+      });
+      this.lobbyService.showAnswer().subscribe((msg: any) => {
+        this.isPaused = true;
+      });
+      this.lobbyService.showRanking().subscribe((data: any) => {
+        this.isEndGame = true;
+        this.ranking = data;
+      });
+    }
+    
     // this.lobbyService.getMessage(this.id).subscribe((msg: any) => {
     //   console.log(msg);
     //   this.players.push(msg);
@@ -104,11 +108,15 @@ export class LobbyComponent implements OnInit{
     this.lock = !this.lock;
   }
   start() {
-    this.lobbyService.startGame(this.id, this.questionData[this.i]);
-    let tempQuestionData = this.questionData;
-    // this.time = tempQuestionData[this.i].timer;
-    this.isStarting = true;
-    this.timer();
+    if(this.players.length < 0){
+      this.lobbyService.startGame(this.id, this.questionData[this.i]);
+      let tempQuestionData = this.questionData;
+      // this.time = tempQuestionData[this.i].timer;
+      this.isStarting = true;
+      this.timer();
+    }else{
+      alert('Please wait for all players to join');
+    }
   }
 
   nextQuestion(){

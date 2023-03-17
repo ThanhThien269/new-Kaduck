@@ -26,7 +26,6 @@ export class JoinComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private _socket: Socket,
     private loginService: LoginService,
     private lobbyService: LobbyService
   ) {}

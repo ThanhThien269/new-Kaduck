@@ -123,6 +123,7 @@ export class PlayerGateway implements OnGatewayConnection, OnGatewayDisconnect {
   handleDeleteLobby(client: Socket, payload: any): any {
     let temp = this.lobbies.findIndex((lobby) => lobby.pin === payload.pin);
     this.lobbies.splice(temp, 1);
+    this.server.to(payload.pin).emit(`delete-lobby`, { msg: 'delete-lobby' });
     // this.server
     //   .to(payload.pin)
     //   .emit('show-ranking', this.lobbies[temp].players);

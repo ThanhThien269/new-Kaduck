@@ -10,13 +10,12 @@ import { QuestionKitState } from 'src/app/state/question_kit.state';
 import * as QuestionKitActions from 'src/app/action/question_kit.action';
 import { question_kit } from './../../models/question_kit.model';
 import { LobbyService } from 'src/app/services/lobby.service';
-
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-guestjoining',
   templateUrl: './guestjoining.component.html',
-  styleUrls: ['./guestjoining.component.scss']
+  styleUrls: ['./guestjoining.component.scss'],
 })
 export class GuestjoiningComponent {
   currentUser: User | null = null;
@@ -29,62 +28,65 @@ export class GuestjoiningComponent {
 
   panelOpenState = false;
 
-
   constructor(
     private lobbyService: LobbyService,
     private router: Router,
     private loginService: LoginService,
+    private _snackBar: MatSnackBar,
     private store: Store<{ question_kit: QuestionKitState }>
-    ) {
+  ) {
     this.currentUser = this.loginService.user;
     this.uid = this.currentUser?.uid!;
   }
   join() {
     this.lobbyService.checkLobby(this.pin);
+    if(this.pin != ''){
+      this._snackBar.open('Please fill the pin!!!',  'Close');
+    }
     this.lobbyService.getLobbyJoined().subscribe((res: any) => {
-      console.log(res);
-      
-      if(res.msg == 'Lobby found'){
+      if (res.msg == 'Lobby found') {
         let tempLength = res.players.length;
         this.tempPlayerList = res.players;
         this.uid = (tempLength++).toString();
         this.alreadyJoined = true;
+      }else{
+        this._snackBar.open(res.msg,  'Close');
       }
     });
     // this.homeService.join();
   }
 
   enterName() {
+    this.currentName = this.currentName.trim();
+    if (this.currentName != '') {
       let tempUser = -1;
-      if(this.tempPlayerList.length > 1){
-        console.log('tempPlayerList', this.tempPlayerList);
-        tempUser = this.tempPlayerList.findIndex((player) => player.name === this.currentName);
-      }else{
-        if(tempUser === -1){
+      if (this.tempPlayerList.length > 1) {
+        tempUser = this.tempPlayerList.findIndex(
+          (player) => player.name === this.currentName
+        );
+      }
+        if (tempUser === -1) {
           let temp = {
             name: this.currentName,
             score: 0,
             correctAnswer: 0,
             uid: this.uid,
-          }
+          };
           this.lobbyService.currentPlayer = temp;
-          this.lobbyService.joinLobby(
-            this.pin,
-            temp
-          )
+          this.lobbyService.joinLobby(this.pin, temp);
           this.router.navigate([`join/${this.pin}`]);
-        }else{
-          console.log('Username already taken');
+        } else {
+          this._snackBar.open('Username already taken',  'Close');
         }
-      }
       
-    // }
+    }else{
+      this._snackBar.open('Please fill in your name!!!',  'Close');
+
+    }
   }
 
-
-
-  user!: User|null;
-  user$= new Observable<User|null>
+  user!: User | null;
+  user$ = new Observable<User | null>();
 
   // ngOnInit(): void {
   //     this.user$=this.loginService.user$;
@@ -94,13 +96,10 @@ export class GuestjoiningComponent {
   //     })
   // }
 
-  login(){
+  login() {
     this.loginService.login();
-
   }
-  logout(){
+  logout() {
     this.loginService.logout();
   }
-
-
 }
