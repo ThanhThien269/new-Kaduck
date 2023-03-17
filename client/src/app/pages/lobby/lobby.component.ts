@@ -64,6 +64,7 @@ export class LobbyComponent implements OnInit{
   constructor(
     private socket: Socket,
     private lobbyService: LobbyService,
+    private router: Router,
     private activate: ActivatedRoute,
     private store: Store<{ question_kit: QuestionKitState }>
   ) {
@@ -81,10 +82,6 @@ export class LobbyComponent implements OnInit{
     this.questionKit$.subscribe((data) => {
       this.questionData = data[0].questions;
     });
-    // this.socket.fromEvent('update-room').subscribe((data: any) => {
-    //   console.log(data);
-    //   this.players.push(data);
-    // })
     this.lobbyService.getLobbyPlayers(this.id).subscribe((msg: any) => {
       console.log(msg);
       this.players.push(msg);
@@ -109,7 +106,7 @@ export class LobbyComponent implements OnInit{
   start() {
     this.lobbyService.startGame(this.id, this.questionData[this.i]);
     let tempQuestionData = this.questionData;
-    this.time = tempQuestionData[this.i].timer;
+    // this.time = tempQuestionData[this.i].timer;
     this.isStarting = true;
     this.timer();
   }
@@ -118,7 +115,6 @@ export class LobbyComponent implements OnInit{
     this.i++;
     this.isPaused = false;
     this.lobbyService.startGame(this.id, this.questionData[this.i]);
-    this.time = this.questionData[this.i].timer;
     this.timer();
     // if (this.i == this.questionData.length++) {
     //   console.log('end game');
@@ -150,6 +146,7 @@ export class LobbyComponent implements OnInit{
   }
 
   timer() {  
+    this.time = this.questionData[this.i].timer;
     let myInterval = setInterval(() => {
       if(!this.isPaused){
         if (this.time > 0) {
@@ -161,10 +158,15 @@ export class LobbyComponent implements OnInit{
             clearInterval(myInterval);
             this.lobbyService.endGame(this.id);
             return;
-          } 
+          }
+          
+          clearInterval(myInterval); 
         }
       }
     }, 1000);
+  }
+  closeRanking(){
+    this.router.navigate(['/library']);
   }
 }
 
