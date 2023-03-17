@@ -42,12 +42,12 @@ export class JoinComponent {
     this.id = id;
     this.lobbyService.playingGame().subscribe((data: any) => {
       this.isShowStatus = false;
-      if(data.msg == 'playing') this.isStarting = true;
-      if(data.question) this.questionData = data.question;
+      if (data.msg == 'playing') this.isStarting = true;
+      if (data.question) this.questionData = data.question;
       this.time = data.question.time;
     });
     this.lobbyService.showAnswer().subscribe((data: any) => {
-      if(!this.alreadyAnswered){
+      if (!this.alreadyAnswered) {
         this.isCorrect = 0;
         this.tempTotalScore += 0;
       }
@@ -61,14 +61,14 @@ export class JoinComponent {
     this.lobbyService.getUserResult().subscribe((data: any) => {
       this.isEndGame = true;
       data.find((player: any) => {
-        if(player.uid == this.lobbyService.currentPlayer.uid) {
+        if (player.uid == this.lobbyService.currentPlayer.uid) {
           this.userResult = {
-            ... player,
-            rank: data.indexOf(player) + 1
+            ...player,
+            rank: data.indexOf(player) + 1,
           };
-        };
-      })
-    })
+        }
+      });
+    });
 
     // update timer
     this.lobbyService.getTimer().subscribe((data: any) => {
@@ -85,7 +85,7 @@ export class JoinComponent {
     this.chosenAnswer = answer;
     this.alreadyAnswered = true;
     this.isCorrect = this.questionData.true_answer == answer ? 1 : 0;
-    let tempScore =  this.isCorrect == 1 ? this.questionData.points : 0;
+    let tempScore = this.isCorrect == 1 ? this.questionData.points : 0;
     this.tempScore = tempScore * this.time;
     this.tempTotalScore += this.tempScore;
     this.lobbyService.pickAnswer(
@@ -95,10 +95,10 @@ export class JoinComponent {
         correct: this.isCorrect,
       },
       this.id
-    )
+    );
   }
   // showFinalResult() {
   //   this.isEndGame = true;
-    
+
   // }
 }
