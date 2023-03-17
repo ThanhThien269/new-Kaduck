@@ -67,7 +67,15 @@
     </h1>
   </div>
 </div>
-<div *ngIf="isEndGame">
-  <h1>{{ userResult.score }}</h1>
-  <h1>{{ userResult.rank }}</h1>
+
+<div id="player-rank" *ngIf="isEndGame">
+  <div id="rank-score">
+    <div id="TotalScore">Your Score: {{ userResult.score }}</div>
+    <div id="TotalRank">Rank: {{ userResult.rank }}</div>
+    <div id="icon">
+      <span class="material-symbols-outlined" style="font-size: 200px; color: gold;">
+        social_leaderboard
+      </span>
+    </div>
+  </div>
 </div>
