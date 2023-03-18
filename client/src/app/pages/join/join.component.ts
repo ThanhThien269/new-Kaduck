@@ -50,8 +50,8 @@ export class JoinComponent {
       if (!this.alreadyAnswered) {
         this.isCorrect = 0;
         this.tempTotalScore += 0;
-        this.alreadyAnswered = false;
       }
+      this.alreadyAnswered = false;
       this.chosenAnswer = '';
       this.time = 0;
       this.isShowStatus = true;
@@ -73,7 +73,6 @@ export class JoinComponent {
     // update timer
     this.lobbyService.getTimer().subscribe((data: any) => {
       this.time = data;
-      console.log(this.time);
     });
 
     // Return to lobby if the game is ended
@@ -86,14 +85,14 @@ export class JoinComponent {
     this.chosenAnswer = answer;
     this.alreadyAnswered = true;
     this.isCorrect = this.questionData.true_answer == answer ? 1 : 0;
-    let tempScoreAns = this.isCorrect == 1 ? this.questionData.points : 0;
-    console.log(tempScoreAns);
     if (this.alreadyAnswered) {
-      console.log(this.time);
-      console.log(typeof this.time);
-      this.tempScore = tempScoreAns * this.time;
+      let tempScoreAns = this.isCorrect == 1 ? this.questionData.points : 0;
+      if (this.isCorrect == 1) {
+        this.tempScore =
+          tempScoreAns * this.time + Math.floor(Math.random() * 4) + 1;
+      }
+      if (this.isCorrect == 0) this.tempScore = tempScoreAns * this.time;
       console.log(this.tempScore);
-
       this.tempTotalScore += this.tempScore;
       this.lobbyService.pickAnswer(
         {
